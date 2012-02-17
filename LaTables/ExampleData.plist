@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Olivia&apos;s Order (Ex)</key>
+	<dict>
+		<key>SowSoftwareListOrder</key>
+		<dict>
+			<key>Order</key>
+			<string>0</string>
+		</dict>
+		<key>SowSoftwareDateOrder</key>
+		<dict>
+			<key>Date</key>
+			<string>20120111133145</string>
+		</dict>
+		<key>Do-si-dos</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>1</string>
+		</dict>
+		<key>Trefoils</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
+		<key>Savannah Smiles</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>3</string>
+		</dict>
+		<key>Samoas</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>5</string>
+		</dict>
+		<key>Tagalongs</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>6</string>
+		</dict>
+		<key>Thin Mints</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>10</string>
+		</dict>
+	</dict>
+	<key>Wendy&apos;s Sales Sunday (Ex)</key>
+	<dict>
+		<key>SowSoftwareListOrder</key>
+		<dict>
+			<key>Order</key>
+			<string>1</string>
+		</dict>
+		<key>Do-si-dos</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>5</string>
+		</dict>
+		<key>SowSoftwareDateOrder</key>
+		<dict>
+			<key>Date</key>
+			<string>20120111093147</string>
+		</dict>
+		<key>Trefoils</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>4</string>
+		</dict>
+		<key>Savannah Smiles</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>3</string>
+		</dict>
+		<key>Samoas</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
+		<key>Tagalongs</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>1</string>
+		</dict>
+		<key>Thin Mints</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>20</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

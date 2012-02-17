@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C2002" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lko-iM-rUN">
+    <dependencies>
+        <development defaultVersion="4200" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="rq6-Pm-IN7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PaL-Ie-4QZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="ac7-ea-5Yq" customClass="MainTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tJg-7d-G7P">
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainTableCell" id="IpN-Z9-iwD">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ac7-ea-5Yq" id="ALf-oK-Iqe"/>
+                            <outlet property="delegate" destination="ac7-ea-5Yq" id="6fY-RJ-Ci1"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="0FG-yi-0IW">
+                            <connections>
+                                <action selector="sendEmailFromMain" destination="ac7-ea-5Yq" id="agF-QF-LPK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Settings" id="48w-uo-8qX">
+                            <connections>
+                                <segue destination="TDZ-H4-mUC" kind="modal" identifier="EditSettings" id="bEa-qn-GH0"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Cookie Sales" id="fdq-ZU-BJT">
+                        <barButtonItem key="backBarButtonItem" title="List" id="UyW-Yh-rsm"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="5ga-xf-IAg">
+                            <connections>
+                                <segue destination="hKc-e7-j0H" kind="modal" identifier="AddPlayer" id="yVL-AQ-5Hk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="607" y="108"/>
+        </scene>
+        <scene sceneID="n7U-HO-asb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YiI-sU-QYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="cookieCountTable" id="I9G-Ab-9RX" customClass="CookieCountViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" tag="200" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="GZt-o0-wQ9">
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CookieCountCell" rowHeight="60" id="GEL-E6-eDK" customClass="CookieCountCell">
+                                <rect key="frame" x="0.0" y="46" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="CookeName" lineBreakMode="tailTruncation" minimumFontSize="10" id="inm-jf-bkw">
+                                            <rect key="frame" x="20" y="1" width="198" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" text="Quantity" lineBreakMode="tailTruncation" minimumFontSize="10" id="WVa-vz-vwH">
+                                            <rect key="frame" x="20" y="31" width="198" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <stepper opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" autorepeat="NO" maximumValue="10000" id="s2t-Cq-RnZ">
+                                            <rect key="frame" x="196" y="16" width="94" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <action selector="stepperChangeValue:" destination="I9G-Ab-9RX" eventType="valueChanged" id="zpi-vQ-W8a"/>
+                                            </connections>
+                                        </stepper>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="cookieNameLabel" destination="inm-jf-bkw" id="Ne2-MS-r93"/>
+                                    <outlet property="quantityLabel" destination="WVa-vz-vwH" id="NeA-ag-S3f"/>
+                                    <outlet property="stepper" destination="s2t-Cq-RnZ" id="dJv-iL-Czs"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TotalCountCell" rowHeight="60" id="HtN-CQ-phc" customClass="CookieCountCell">
+                                <rect key="frame" x="0.0" y="107" width="320" height="61"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="Total" lineBreakMode="tailTruncation" minimumFontSize="10" id="qSf-mi-4Si">
+                                            <rect key="frame" x="20" y="11" width="269" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="cookieNameLabel" destination="qSf-mi-4Si" id="9cz-Xh-dFj"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I9G-Ab-9RX" id="bMc-3W-qxw"/>
+                            <outlet property="delegate" destination="I9G-Ab-9RX" id="NIv-3n-87P"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem tag="22" systemItem="action" id="Og5-fN-4fD">
+                            <connections>
+                                <action selector="sendEmailFromCookieCount" destination="I9G-Ab-9RX" id="xCJ-q0-X3q"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Cookie Count" id="n0e-fB-5bc"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2399" y="-584"/>
+        </scene>
+        <scene sceneID="TzW-me-hmo">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rsw-Oz-zRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Xd2-zW-vG0" customClass="CookieListDetailsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="IFD-nB-roT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="List Name" id="Ywc-bf-QkG">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Add" id="lIl-Cg-meJ">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="T8e-cP-EMN">
+                                                    <rect key="frame" x="13" y="6" width="274" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Xd2-zW-vG0" id="jav-7s-Pbx"/>
+                            <outlet property="delegate" destination="Xd2-zW-vG0" id="Xri-bq-GPi"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add" id="wfe-p4-DiM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vxB-S4-Tpx">
+                            <connections>
+                                <action selector="cancel:" destination="Xd2-zW-vG0" id="bll-F5-DpG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aDj-ai-9kg">
+                            <connections>
+                                <action selector="done:" destination="Xd2-zW-vG0" id="LNF-M8-Mzz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="T8e-cP-EMN" id="LL2-9M-YqE"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1524" y="110"/>
+        </scene>
+        <scene sceneID="a4a-eP-iXj">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YIY-nv-AoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController toolbarHidden="NO" id="Lko-iM-rUN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3GB-lM-FXO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vhT-dQ-iJX">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="ac7-ea-5Yq" kind="relationship" relationship="rootViewController" id="ZVw-eE-AVS"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="81" y="108"/>
+        </scene>
+        <scene sceneID="dzz-hb-8T5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggo-ae-9AG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="hKc-e7-j0H" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qhm-J4-KJm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xd2-zW-vG0" kind="relationship" relationship="rootViewController" id="DHN-Pd-Qs4"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="998" y="110"/>
+        </scene>
+        <scene sceneID="iK6-P8-MPj">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lZG-Bo-5Id" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="TDZ-H4-mUC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="p0A-on-Gxg"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="n1M-9T-8Ye">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lk7-NQ-LYl" kind="relationship" relationship="rootViewController" id="Klg-mP-sV4"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="485" y="-575"/>
+        </scene>
+        <scene sceneID="ibt-i1-ZDG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZM7-Fq-RV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController title="Settings" id="lk7-NQ-LYl" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FQ5-mL-zFL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Price" id="N1K-zZ-ZS9">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fCz-6J-Awz">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="1Yc-6P-NWu">
+                                                    <rect key="frame" x="20" y="6" width="260" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="0nb-Y5-2Hb">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KIy-8e-NRa" style="IBUITableViewCellStyleDefault" id="oIU-wf-6xc">
+                                        <rect key="frame" x="0.0" y="112" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Cookie Types" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KIy-8e-NRa">
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="Ygs-6r-QAK" kind="push" identifier="EditCookieTypes" id="ca0-49-rcb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="lk7-NQ-LYl" id="Ci9-Kn-ia0"/>
+                            <outlet property="delegate" destination="lk7-NQ-LYl" id="EoZ-tS-nkl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="dv5-nq-Vi1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qtf-dH-Oin">
+                            <connections>
+                                <action selector="cancel:" destination="lk7-NQ-LYl" id="HW5-K5-KtP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BNC-jn-DV2">
+                            <connections>
+                                <action selector="done:" destination="lk7-NQ-LYl" id="stZ-nv-MVj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="priceTextField" destination="1Yc-6P-NWu" id="dXD-4A-WVv"/>
+                    </connections>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="974" y="-575"/>
+        </scene>
+        <scene sceneID="AZD-aF-UjP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UzF-Y9-2pM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Ygs-6r-QAK" customClass="SettingsCookieTypesController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8fu-CC-ec1">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CookieTypeCell" textLabel="2cO-Z3-lCe" style="IBUITableViewCellStyleDefault" id="NEq-Y9-vc8">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2cO-Z3-lCe">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ygs-6r-QAK" id="WJ5-PS-PYe"/>
+                            <outlet property="delegate" destination="Ygs-6r-QAK" id="n1R-AZ-t0N"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cookie Types" id="VLp-q4-gDh"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1435" y="-575"/>
+        </scene>
+        <scene sceneID="0nj-ID-IZg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b7q-xR-71h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="P3J-4k-pUS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MDf-Hu-wPz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Dgb-fg-t2H" customClass="CookieCountToolbar">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="I9G-Ab-9RX" kind="relationship" relationship="rootViewController" id="GiW-lM-Ti9"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1903" y="-584"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="CookieCountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieCountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cookieNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="quantityLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="CookieCountViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieCountViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sendEmailFromCookieCount"/>
+                <relationship kind="action" name="stepperChangeValue:" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+        <class className="CookieListDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieListDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sendEmailFromMain"/>
+            </relationships>
+        </class>
+        <class className="SettingsCookieTypesController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsCookieTypesController.h"/>
+        </class>
+        <class className="SettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
