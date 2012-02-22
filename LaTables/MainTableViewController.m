@@ -90,7 +90,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //NSLog(@"Here in viewWillAppear");
+    NSLog(@"Here in MainTableViewController:viewWillAppear");
     //self.navigationController.toolbarHidden = YES;
     [super viewWillAppear:animated];
 }
@@ -160,7 +160,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    NSLog(@"MainTableViewController:canEditRowAtIndexPath");
+    //NSLog(@"MainTableViewController:canEditRowAtIndexPath");
     return YES;
 }
 
@@ -222,7 +222,7 @@
     
     // How to know the cookie list name to pull the next screens data out of the associative array
     CookieListName *cookieListName = [self.cookieLists objectAtIndex:indexPath.row];
-    //NSLog(@"In MainTableViewController:didSelectRowAtIndexPath cookieListName: %@", cookieListName.name);
+    NSLog(@"In MainTableViewController:didSelectRowAtIndexPath cookieListName: %@", cookieListName.name);
     
     // Pass along the cookie names and prices
     cookieCountViewController.cookiesAllInfo = [allTheData objectForKey:cookieListName.name];

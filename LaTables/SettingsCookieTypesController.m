@@ -8,6 +8,7 @@
 
 #import "SettingsCookieTypesController.h"
 #import "GlobalSettings.h"
+#import "AddCookieTypeViewController.h"
 
 @implementation SettingsCookieTypesController
 
@@ -35,7 +36,7 @@
     [super viewDidLoad];
 
     GlobalSettings *globalSettings = [GlobalSettings sharedManager];
-    cookieTypes = [NSArray arrayWithArray:globalSettings.cookieTypes];
+    cookieTypes = [NSMutableArray arrayWithArray:globalSettings.cookieTypes];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -146,25 +147,22 @@
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         NSLog(@"Here to add a row");
+        AddCookieTypeViewController *addCookieTypeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCookieTypeTable"];
+        
+        // How to know the cookie list name to pull the next screens data out of the associative array
+        //CookieListName *cookieListName = [self.cookieLists objectAtIndex:indexPath.row];
+        //NSLog(@"In MainTableViewController:didSelectRowAtIndexPath cookieListName: %@", cookieListName.name);
+        
+        // Pass along the cookie names and prices
+        //cookieCountViewController.cookiesAllInfo = [allTheData objectForKey:cookieListName.name];
+        //cookieCountViewController.listName = cookieListName.name;
+        addCookieTypeViewController.delegate = self;
+        [self.navigationController pushViewController:addCookieTypeViewController animated:YES];
+        
+        
     }   
 }
 
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -177,6 +175,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    NSLog(@"DidselectRowAtIndexPath");
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -192,4 +191,13 @@
     }
 }
 
+#pragma mark - AddCookieTypeViewController delegate
+- (void)addCookieTypeViewControllerDidCancel:(AddCookieTypeViewController *)controller  {
+    NSLog(@"SettingsCookieTypesController:didCancel");
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)addCookieTypeViewControllerDidSave:(AddCookieTypeViewController *)controller  {
+    NSLog(@"SettingsCookieTypesController:didSave");
+    //[self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

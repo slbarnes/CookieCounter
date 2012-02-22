@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "AddCookieTypeViewController.h"
 
-@interface SettingsCookieTypesController : UITableViewController  {
-    NSArray *cookieTypes;
+@interface SettingsCookieTypesController : UITableViewController <AddCookieTypeViewControllerDelegate> {
+    NSMutableArray *cookieTypes;
 }
 
 @end
