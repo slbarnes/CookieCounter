@@ -10,6 +10,7 @@
 		D90CCE4B1476C498006FC65B /* CookieCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90CCE4A1476C498006FC65B /* CookieCountCell.m */; };
 		D96DB90E14C7C1A200D95C07 /* Cookie_Counter_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = D96DB90D14C7C1A200D95C07 /* Cookie_Counter_72x72.png */; };
 		D9956896147BF5B200588439 /* ExampleData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9956895147BF5B200588439 /* ExampleData.plist */; };
+		D99DB21D14F82D530064412A /* CookieListNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DB21C14F82D530064412A /* CookieListNotesViewController.m */; };
 		D9A4730114F58163004A2A08 /* AddCookieTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */; };
 		D9AC1B5014EEBF0D00B60452 /* GlobalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AC1B4F14EEBF0D00B60452 /* GlobalSettings.m */; };
 		D9AC1B5314EECD8100B60452 /* SettingsCookieTypesController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AC1B5214EECD8100B60452 /* SettingsCookieTypesController.m */; };
@@ -36,6 +37,8 @@
 		D90CCE4A1476C498006FC65B /* CookieCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieCountCell.m; sourceTree = "<group>"; };
 		D96DB90D14C7C1A200D95C07 /* Cookie_Counter_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cookie_Counter_72x72.png; sourceTree = "<group>"; };
 		D9956895147BF5B200588439 /* ExampleData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExampleData.plist; sourceTree = "<group>"; };
+		D99DB21B14F82D530064412A /* CookieListNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CookieListNotesViewController.h; sourceTree = "<group>"; };
+		D99DB21C14F82D530064412A /* CookieListNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieListNotesViewController.m; sourceTree = "<group>"; };
 		D9A472FF14F58163004A2A08 /* AddCookieTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCookieTypeViewController.h; sourceTree = "<group>"; };
 		D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCookieTypeViewController.m; sourceTree = "<group>"; };
 		D9AC1B4E14EEBF0D00B60452 /* GlobalSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalSettings.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				D9E37F3D1475D684001C711F /* AppDelegate.h */,
 				D9E37F3E1475D684001C711F /* AppDelegate.m */,
 				D9E37F401475D684001C711F /* MainStoryboard.storyboard */,
+				D99DB21B14F82D530064412A /* CookieListNotesViewController.h */,
+				D99DB21C14F82D530064412A /* CookieListNotesViewController.m */,
 				D9AC1B5114EECD8100B60452 /* SettingsCookieTypesController.h */,
 				D9AC1B5214EECD8100B60452 /* SettingsCookieTypesController.m */,
 				D9F310BE1476984300689DC7 /* CookieCountViewController.h */,
@@ -238,6 +243,7 @@
 				D9AC1B5014EEBF0D00B60452 /* GlobalSettings.m in Sources */,
 				D9AC1B5314EECD8100B60452 /* SettingsCookieTypesController.m in Sources */,
 				D9A4730114F58163004A2A08 /* AddCookieTypeViewController.m in Sources */,
+				D99DB21D14F82D530064412A /* CookieListNotesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
