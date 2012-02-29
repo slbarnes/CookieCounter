@@ -10,6 +10,7 @@
 
 
 @implementation AddCookieTypeViewController
+@synthesize cookieTypeToAdd;
 @synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -40,10 +41,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)viewDidUnload
 {
+    [self setCookieTypeToAdd:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -56,6 +59,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self.cookieTypeToAdd becomeFirstResponder];
     [super viewDidAppear:animated];
 }
 
@@ -76,25 +80,39 @@
 }
 
 #pragma mark - Table view data source
-/*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
-        [self.nameTextField becomeFirstResponder];
+        [self.cookieTypeToAdd becomeFirstResponder];
 }
-*/
+
 #pragma mark - Table view delegate
 
 
 - (IBAction)cancel:(id)sender  {
+    
     [self.delegate addCookieTypeViewControllerDidCancel:self];
-    NSLog(@"Here to cancel");
-    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
 - (IBAction)done:(id)sender  {
-    [self.delegate addCookieTypeViewControllerDidSave:self];
-    //NSLog(@"Here to done");
+        
+    // Check for only spaces in a name as well as no name entered
+    NSString *cookieType = self.cookieTypeToAdd.text;
+    NSString *tempString = cookieType;
+    NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *trimmedString = [tempString stringByTrimmingCharactersInSet:whitespace];
+    if ([trimmedString length] == 0)  {
+        cookieType = nil;
+        //NSLog(@"Found only spaces for the new cookie type.  Need to pop up an alert box.");
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The cookie type you entered did not contain any characters.  The cookie type will not be added." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [message show];
+        
+    }    
+    
+    //[self.delegate addCookieTypeViewControllerDidSave:self];
+    [self.delegate addCookieTypeViewController:self didAddCookieType:cookieType];
+
 }
 
 

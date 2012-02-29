@@ -10,11 +10,11 @@
 
 @interface GlobalSettings : NSObject  {
     NSString *cookiePrice;
-    NSArray *cookieTypes;
+    NSMutableArray *cookieTypes;
 }
 
 @property (nonatomic, retain) NSString *cookiePrice;
-@property (nonatomic, retain) NSArray *cookieTypes;
+@property (nonatomic, retain) NSMutableArray *cookieTypes;
 
 + (id)sharedManager;
 

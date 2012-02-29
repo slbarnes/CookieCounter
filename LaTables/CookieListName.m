@@ -10,7 +10,7 @@
 
 @implementation CookieListName
 @synthesize name;
-@synthesize sowSoftwareDateOrder;
 @synthesize sowSoftwareListOrder;
+@synthesize sowSoftwareListNotes;
 
 @end

@@ -14,6 +14,7 @@
 
 @synthesize cookiesAllInfo;
 @synthesize listName;
+@synthesize listNotes;
 
 - (void)calculateTotals  
 {
@@ -108,6 +109,17 @@
 
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"AddNotes"])
+    {        
+        CookieListNotesViewController *cookieListNotesViewController = segue.destinationViewController;
+        cookieListNotesViewController.delegate = self;
+        cookieListNotesViewController.listNotes = self.listNotes;
+    }
+    
+    
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -171,7 +183,7 @@
         [self calculateTotals];
 
         if (indexPath.row == 0) {
-            cell.cookieNameLabel.text = [NSString stringWithFormat:@"Cookies: %@", totalNumberOfCookies];
+            cell.cookieNameLabel.text = [NSString stringWithFormat:@"Cookies: %@ %@", totalNumberOfCookies, listNotes];
         }
         else if (indexPath.row == 1)  {
             cell.cookieNameLabel.text = [NSString stringWithFormat:@"Monies: $%.2f", [totalMonies floatValue]];
@@ -263,7 +275,7 @@
     
     [self calculateTotals];
     CookieCountCell *totalCookiesCell = (CookieCountCell *)[table cellForRowAtIndexPath:totalCookiesIndex];
-    totalCookiesCell.cookieNameLabel.text = [NSString stringWithFormat:@"Cookies: %@", totalNumberOfCookies];
+    totalCookiesCell.cookieNameLabel.text = [NSString stringWithFormat:@"Cookies: %@ %@", totalNumberOfCookies, listNotes];
     
     CookieCountCell *totalMoniesCell = (CookieCountCell *)[table cellForRowAtIndexPath:totalMoniesIndex];
     totalMoniesCell.cookieNameLabel.text = [NSString stringWithFormat:@"Monies: $%.2f", [totalMonies floatValue]];
@@ -287,6 +299,7 @@
         [messageBody appendFormat:@"%@: %@ @ $%.2f = $%.2f\n",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
     }
     
+    [messageBody appendFormat:@"\nNotes:\n%@\n",self.listNotes];
 	[controller setMessageBody:messageBody isHTML:NO];
 	[self presentModalViewController:controller animated:YES];
 
@@ -294,6 +307,20 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
 	[self becomeFirstResponder];
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+# pragma mark - CookieListNotesViewControllerDelegate methods
+- (void)cookieListNotesViewControllerDidCancel:(CookieListNotesViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)cookieListNotesViewController:(CookieListNotesViewController *)controller didUpdateNotes:(NSString *)theListNotes  {
+    
+    
+    listNotes = theListNotes;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

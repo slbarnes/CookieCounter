@@ -11,11 +11,14 @@
 @protocol AddCookieTypeViewControllerDelegate <NSObject>
 
 - (void)addCookieTypeViewControllerDidCancel:(AddCookieTypeViewController *)controller;
-- (void)addCookieTypeViewControllerDidSave:(AddCookieTypeViewController *)controller;
+- (void)addCookieTypeViewController:(AddCookieTypeViewController *)controller didAddCookieType:(NSString   *)cookieType;
+
 
 @end
 
 @interface AddCookieTypeViewController : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UITextField *cookieTypeToAdd;
 
 @property (nonatomic, weak) id <AddCookieTypeViewControllerDelegate> delegate;
 - (IBAction)cancel:(id)sender;

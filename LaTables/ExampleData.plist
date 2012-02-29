@@ -4,15 +4,12 @@
 <dict>
 	<key>Olivia&apos;s Order (Ex)</key>
 	<dict>
-		<key>SowSoftwareListOrder</key>
+		<key>SowSoftwareProperties</key>
 		<dict>
 			<key>Order</key>
 			<string>0</string>
-		</dict>
-		<key>SowSoftwareDateOrder</key>
-		<dict>
-			<key>Date</key>
-			<string>20120111133145</string>
+			<key>ListNotes</key>
+			<string>You can write notes about this list here.</string>
 		</dict>
 		<key>Do-si-dos</key>
 		<dict>
@@ -59,10 +56,12 @@
 	</dict>
 	<key>Wendy&apos;s Sales Sunday (Ex)</key>
 	<dict>
-		<key>SowSoftwareListOrder</key>
+		<key>SowSoftwareProperties</key>
 		<dict>
 			<key>Order</key>
 			<string>1</string>
+			<key>ListNotes</key>
+			<string>Enter notes about the list here.</string>
 		</dict>
 		<key>Do-si-dos</key>
 		<dict>
@@ -70,11 +69,6 @@
 			<string>3.5</string>
 			<key>Quantity</key>
 			<string>5</string>
-		</dict>
-		<key>SowSoftwareDateOrder</key>
-		<dict>
-			<key>Date</key>
-			<string>20120111093147</string>
 		</dict>
 		<key>Trefoils</key>
 		<dict>

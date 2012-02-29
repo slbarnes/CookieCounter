@@ -113,15 +113,8 @@
         
     }
     else  {
-    //[self.delegate cookieListDetailsViewControllerDidSave:self];
-    NSDate *now = [NSDate date];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"YYYYMMddHHmmss"];
-    cookieListName.sowSoftwareDateOrder = [dateFormat stringFromDate:now];
-    }
-
-    //NSLog(@"CookieListDetailViewController:done:cookieListName.sowSoftwareDateOrder : %@",cookieListName.sowSoftwareDateOrder);
     [self.delegate cookieListDetailsViewController:self didAddCookieList:cookieListName];
+    }
      
 }
 

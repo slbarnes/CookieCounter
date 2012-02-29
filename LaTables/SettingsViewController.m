@@ -44,8 +44,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     self.priceTextField.text = globalSettings.cookiePrice;
+    //[self.priceTextField resignFirstResponder];
+    [self.priceTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
+- (IBAction)textFieldFinished:(id)sender  {
+    //NSLog(@"textFieldFinished");
+    [sender resignFirstResponder];
+}
 - (void)viewDidUnload
 {
     [self setPriceTextField:nil];
@@ -66,6 +72,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    //NSLog(@"viewWillDisappear");
+    [self.priceTextField resignFirstResponder];
     [super viewWillDisappear:animated];
 }
 
@@ -92,23 +100,34 @@
     if (indexPath.section == 0) {
         [self.priceTextField becomeFirstResponder];
     }
+    else  {
+        //NSLog(@"HERE");
+        //[self.priceTextField resignFirstResponder];
+    }
     
 }
 
 
 - (IBAction)done:(id)sender  {
-    GlobalSettings *globalSettings = [GlobalSettings sharedManager];
-    globalSettings.cookiePrice = self.priceTextField.text;
-    NSLog(@"editSettings done. Setting global cookie price to %@", globalSettings.cookiePrice);
-    [self.delegate settingsViewControllerDidSave:self];
+    
+    // TODO: Check that price is in price form: /d+\.\d\d
+    //NSLog(@"editSettings done. Setting global cookie price to %@", self.priceTextField.text);
+    NSString *regex = @"^\\d+\\.\\d\\d";
+    NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    BOOL ret = [valtest evaluateWithObject:self.priceTextField.text];
+    if (ret) {
+        [self.delegate settingsViewController:self didChangePrice:self.priceTextField.text];
+    }
+    else  {
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The price you entered is not a valid price." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [message show];
+    }
 
 }
 
 - (IBAction)cancel:(id)sender {
-    NSLog(@"editSettings cancel");
-    [self.delegate settingsViewCOntrollerDidCancel:self];
-
+    [self.delegate settingsViewControllerDidCancel:self];
 }
-
 
 @end

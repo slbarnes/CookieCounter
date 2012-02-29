@@ -6,8 +6,8 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "MainTableViewController.h"
+#import "GlobalSettings.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>  {
     IBOutlet MainTableViewController *mainController;

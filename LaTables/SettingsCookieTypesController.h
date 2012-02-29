@@ -7,9 +7,10 @@
 //
 
 #import "AddCookieTypeViewController.h"
+#import "GlobalSettings.h"
 
 @interface SettingsCookieTypesController : UITableViewController <AddCookieTypeViewControllerDelegate> {
-    NSMutableArray *cookieTypes;
+    GlobalSettings *globalSettings;
 }
 
 @end

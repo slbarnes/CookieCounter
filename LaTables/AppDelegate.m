@@ -10,6 +10,7 @@
 #import "GSCookie.h"
 #import "CookieCountViewController.h"
 #import "MainTableViewController.h"
+#import "GlobalSettings.h"
 
 @implementation AppDelegate
 
@@ -94,6 +95,8 @@
     //          Add to array
     //      Add array for list name key
     NSLog(@"Here reading data");
+    GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"allthedata.plist"];
@@ -112,25 +115,28 @@
 
     NSMutableArray *unsortedCookieLists = [[NSMutableArray alloc] init];
     for (NSString *key in keysOfPlistData)  {
-        NSMutableArray *arrayOfGSCookieObjects = [[NSMutableArray alloc] init];
-        
         NSMutableDictionary *dictOfGSCookieObjects = [plistData objectForKey:key];
-        
+
+        if ([key isEqualToString:@"SowSoftwareSettings"]) {
+                //NSLog(@"Found SowSoftwareSettings");
+                globalSettings.cookiePrice = [dictOfGSCookieObjects objectForKey:@"GlobalPrice"];
+                globalSettings.cookieTypes = [dictOfGSCookieObjects objectForKey:@"GlobalCookieTypes"];
+                continue;
+            }
+        NSMutableArray *arrayOfGSCookieObjects = [[NSMutableArray alloc] init];
+                
         NSArray *keysOfDictOfGSCookieObjects = [[dictOfGSCookieObjects allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         
+
         CookieListName *cookieListName = [[CookieListName alloc] init];
         cookieListName.name = key;
 
         for (NSString *keyGSCookie in keysOfDictOfGSCookieObjects)  {
-            //NSLog(@"keyGSCookie: %@", keyGSCookie);
-            if ([keyGSCookie isEqualToString:@"SowSoftwareDateOrder"]) {
-                cookieListName.sowSoftwareDateOrder = [[dictOfGSCookieObjects objectForKey:keyGSCookie]objectForKey:@"Date"];
-                NSLog(@"Found date order tag: %@", cookieListName.sowSoftwareDateOrder);
-                continue;
-            }
-            if ([keyGSCookie isEqualToString:@"SowSoftwareListOrder"]) {
+            if ([keyGSCookie isEqualToString:@"SowSoftwareProperties"]) {
                 cookieListName.sowSoftwareListOrder = [[dictOfGSCookieObjects objectForKey:keyGSCookie]objectForKey:@"Order"];
-                NSLog(@"Found list order tag: %@", cookieListName.sowSoftwareListOrder);
+                //NSLog(@"Found list order tag: %@", cookieListName.sowSoftwareListOrder);
+                cookieListName.sowSoftwareListNotes = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"ListNotes"];
+                NSLog(@"Found list notes tag: %@", cookieListName.sowSoftwareListNotes);
                 continue;
             }
             GSCookie *newGSCookie = [[GSCookie alloc] init];
@@ -144,22 +150,22 @@
             //NSLog(@"cookie name: %@   cookie quantity: %@     cookie price: %@",newGSCookie.name, squantity, sprice);
 
         }
-        NSLog(@"List name: %@", key);
+        //NSLog(@"List name: %@", key);
         [mainController.allTheData setObject:arrayOfGSCookieObjects forKey:key];
-        //[mainController.cookieLists addObject:cookieListName];
         [unsortedCookieLists addObject:cookieListName];
     }
     
     // Now sort mainController.cookieLists
-    NSLog (@"unsortedCookieList count: %d",[unsortedCookieLists count]);
+    //NSLog (@"unsortedCookieList count: %d",[unsortedCookieLists count]);
     mainController.cookieLists = [[NSMutableArray alloc] init];
     NSSortDescriptor *sortDescriptor;
-    //sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sowSoftwareDateOrder" ascending:YES];
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sowSoftwareListOrder" ascending:YES];
+
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+
     mainController.cookieLists = [NSMutableArray arrayWithArray:[unsortedCookieLists sortedArrayUsingDescriptors:sortDescriptors]];
-    //mainController.cookieLists = [NSMutableArray arrayWithArray:unsortedCookieLists];
-    NSLog(@"readData:mainController.cookieLists count: %d",[mainController.cookieLists count]);
+
+    //NSLog(@"readData:mainController.cookieLists count: %d",[mainController.cookieLists count]);
     //NSLog (@"unsortedCookieList count: %d",[unsortedCookieLists count]);
 
 
@@ -168,6 +174,7 @@
 - (void)writeData
 {
     NSLog(@"Here writing data");
+    GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"allthedata.plist"];
@@ -179,6 +186,15 @@
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
+    // Write out the settings
+    //globalSettings = [GlobalSettings sharedManager];
+
+    NSMutableDictionary *sowSoftwareSettingsDict = [[NSMutableDictionary alloc] init];
+    [sowSoftwareSettingsDict setObject:globalSettings.cookiePrice forKey:@"GlobalPrice"];
+    [sowSoftwareSettingsDict setObject:globalSettings.cookieTypes forKey:@"GlobalCookieTypes"];
+    [dict setObject:sowSoftwareSettingsDict forKey:@"SowSoftwareSettings"];
+
+    // Write out the cookie lists
     // 1. Iterate over all the keys
     // Foreach key in mainController.allTheData
     //  1. Get the GSCookie Object
@@ -187,7 +203,7 @@
     //  4. Create a entry in dict with the key being the listname (ie the key in the foreach loop) and the value being the dictionary just created in step 3
     
     NSArray *keysOfAllTheData = [mainController.allTheData allKeys];
-    NSLog(@"Count of keysOfAllTheData: %d",[keysOfAllTheData count]);
+    //NSLog(@"Count of keysOfAllTheData: %d",[keysOfAllTheData count]);
     for (NSString *key in keysOfAllTheData)  {
         
         NSMutableArray *arrayOfGSCookies = [mainController.allTheData objectForKey:key];
@@ -202,19 +218,13 @@
             
         }
         
-        // Now that we have the cookie dictionary object, need to add the SowSoftwareDateOrder
+        // Now that we have the cookie dictionary object, need to add the SowSoftwareListOrder
         // dictionarry object so we know what order to load the lists the next time
-        // HOW: get the name from mainController.cookieList using the key variable, then grab the date attribute
         for (CookieListName *cookieListName in mainController.cookieLists)  {
             if ([cookieListName.name isEqualToString:key]) {
-                NSMutableDictionary *sowSoftwareDateOrder = [[NSMutableDictionary alloc] init];
-                [sowSoftwareDateOrder setObject:cookieListName.sowSoftwareDateOrder forKey:@"Date"];
-                [dictionaryOfGSCookies setObject:sowSoftwareDateOrder  forKey:@"SowSoftwareDateOrder"];
-                //NSLog(@"cookieListName: %@  key: %@",cookieListName.name,key);
-                
                 NSMutableDictionary *sowSoftwareListOrder = [[NSMutableDictionary alloc] init];
                 [sowSoftwareListOrder setObject:cookieListName.sowSoftwareListOrder forKey:@"Order"];
-                [dictionaryOfGSCookies setObject:sowSoftwareListOrder  forKey:@"SowSoftwareListOrder"];
+                [dictionaryOfGSCookies setObject:sowSoftwareListOrder  forKey:@"SowSoftwareProperties"];
                 //NSLog(@"cookieListName: %@  key: %@",cookieListName.name,key);
 
                 break;

@@ -11,11 +11,11 @@
 #import "AppDelegate.h"
 #import "GSCookie.h"
 #import "SettingsViewController.h"
+#import "GlobalSettings.h"
 
 @implementation MainTableViewController
 
 @synthesize cookieLists;
-@synthesize cookieNamesAndPrice;
 @synthesize allTheData;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -35,31 +35,13 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)setupArray{
-    
-    cookieLists = [[NSMutableArray alloc] init];
-}
-
--(void)setupCookieNames  {
-    
-    // This should be the default, but can be changed in preferences.
-    // Store in a plist file
-    cookieNamesAndPrice = [[NSMutableDictionary alloc] init];
-    [cookieNamesAndPrice setObject:@"3.50" forKey:@"Thin Mints"];
-    [cookieNamesAndPrice setObject:@"3.50" forKey:@"Samoas"];
-    [cookieNamesAndPrice setObject:@"3.50" forKey:@"Do-si-dos"];
-    [cookieNamesAndPrice setObject:@"3.50" forKey:@"Tagalongs"];
-    [cookieNamesAndPrice setObject:@"3.50" forKey:@"Savannah Smiles"];
-    [cookieNamesAndPrice setObject:@"3.50" forKey:@"Trefoils"];
-    
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
-    [self setupArray];
-    [self setupCookieNames];
+    
+    cookieLists = [[NSMutableArray alloc] init];
+    //[self setupCookieNames];
     [super viewDidLoad];
     
     NSLog(@"Here in MainTableViewController:viewDidLoad");
@@ -129,8 +111,8 @@
 {
     // Return the number of rows in the section.
     //return 5;
-    NSInteger c = [cookieLists count];
-    NSLog(@"numberOfRowsInSection:cookieLists count: %d",c);
+    //NSInteger c = [cookieLists count];
+    //NSLog(@"numberOfRowsInSection:cookieLists count: %d",c);
     return [self.cookieLists count];
 }
 
@@ -227,6 +209,7 @@
     // Pass along the cookie names and prices
     cookieCountViewController.cookiesAllInfo = [allTheData objectForKey:cookieListName.name];
     cookieCountViewController.listName = cookieListName.name;
+    cookieCountViewController.listNotes = cookieListName.sowSoftwareListNotes;
     
     [self.navigationController pushViewController:cookieCountViewController animated:YES];
      
@@ -237,11 +220,13 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+# pragma mark - CookieListDetailsViewControllerDelegate methods
 - (void)cookieListDetailsViewControllerDidCancel:(CookieListDetailsViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+// This delegate method is called when a new list is created
 - (void)cookieListDetailsViewController:(CookieListDetailsViewController *)controller didAddCookieList:(CookieListName *)cookieListName  {
         
     // Initialize the hash with the name as well as data with all quantities set to 0 only if no data is loaded from file
@@ -250,7 +235,9 @@
         
     if ([allTheData objectForKey:cookieListName.name] == nil) {
     
-        NSArray *sortedKeys = [[cookieNamesAndPrice allKeys] sortedArrayUsingSelector: @selector(localizedCaseInsensitiveCompare:)];  
+        GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+        
+        NSArray *sortedKeys = [globalSettings.cookieTypes sortedArrayUsingSelector: @selector(localizedCaseInsensitiveCompare:)];  
         NSMutableArray *initialCookieInfo = [NSMutableArray arrayWithCapacity:[sortedKeys count]];
     
       
@@ -263,7 +250,7 @@
         
             gscookie = [[GSCookie alloc] init];
             gscookie.name = key;
-            gscookie.price = [[NSDecimalNumber alloc] initWithString:[cookieNamesAndPrice objectForKey:key]];
+            gscookie.price = [[NSDecimalNumber alloc] initWithString:globalSettings.cookiePrice];
             gscookie.quantity = [[NSDecimalNumber alloc] initWithString:STARTING_QTY];
             [initialCookieInfo addObject:gscookie];
         }
@@ -295,7 +282,7 @@
     
 }
 
-
+# pragma mark
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"AddPlayer"])
@@ -398,13 +385,17 @@
 }
 
 #pragma mark - SettingsViewControllerDelegate
-
-- (void) settingsViewControllerDidSave:(SettingsViewController *)controller  {
-    NSLog(@"MainTableViewController:settingsViewControllerDidSave - Done button pressed in Settings");
+- (void) settingsViewController:(SettingsViewController *)controller didChangePrice:(NSString *)price  {
+    
+    if (price != nil)  {
+        GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+        globalSettings.cookiePrice = price;
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) settingsViewCOntrollerDidCancel:(SettingsViewController *)controller  {
+- (void) settingsViewControllerDidCancel:(SettingsViewController *)controller  {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

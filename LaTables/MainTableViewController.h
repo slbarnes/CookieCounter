@@ -13,15 +13,9 @@
 @interface MainTableViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, CookieListDetailsViewControllerDelegate, SettingsViewControllerDelegate, MFMailComposeViewControllerDelegate>  {
     
 }
-@property (nonatomic, strong) NSMutableArray *cookieLists;
+@property (nonatomic, retain) NSMutableArray *cookieLists;
 
-// Will store the cookie names and their price that is showed in the counting list.
-// Key : cookie list     value : price
-@property(nonatomic, retain)NSMutableDictionary *cookieNamesAndPrice;
 @property(nonatomic, retain)NSMutableDictionary *allTheData;
-
--(void)setupArray;
--(void)setupCookieNames;
 
 - (IBAction)sendEmailFromMain;
 

@@ -10,8 +10,9 @@
 @class SettingsViewController;
 @protocol SettingsViewControllerDelegate <NSObject>
 
-- (void)settingsViewControllerDidSave:(SettingsViewController *)controller;
-- (void) settingsViewCOntrollerDidCancel: (SettingsViewController *)controller;
+//- (void)settingsViewControllerDidSave:(SettingsViewController *)controller;
+- (void)settingsViewController:(SettingsViewController *)controller didChangePrice:(NSString   *)price;
+- (void)settingsViewControllerDidCancel: (SettingsViewController *)controller;
 
 @end
 
@@ -22,5 +23,6 @@
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
+- (IBAction)textFieldFinished:(id)sender;
 
 @end

@@ -8,7 +8,7 @@
 
 @interface CookieListName : NSObject
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *sowSoftwareDateOrder;
 @property (nonatomic, copy) NSString *sowSoftwareListOrder;
+@property (nonatomic, copy) NSString *sowSoftwareListNotes;
 
 @end

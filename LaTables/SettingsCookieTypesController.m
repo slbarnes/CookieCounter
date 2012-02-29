@@ -35,8 +35,7 @@
 {
     [super viewDidLoad];
 
-    GlobalSettings *globalSettings = [GlobalSettings sharedManager];
-    cookieTypes = [NSMutableArray arrayWithArray:globalSettings.cookieTypes];
+    globalSettings = [GlobalSettings sharedManager];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -50,7 +49,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    cookieTypes = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,9 +89,11 @@
 {
     // Return the number of rows in the section.
     if (self.editing)  {
-    return [cookieTypes count] + 1;
+        //return [cookieTypes count] + 1;
+        return [globalSettings.cookieTypes count] + 1;
+
     }
-    return [cookieTypes count];
+    return [globalSettings.cookieTypes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,13 +104,13 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSLog(@"cellforRowAtIndexPath %d %d %@",indexPath.row, [cookieTypes count], self.editing ? @"YES" : @"NO");
-    if ( (self.editing == YES) && (indexPath.row == [cookieTypes count] ) ) {
+    //NSLog(@"cellforRowAtIndexPath %d %d %@",indexPath.row, [globalSettings.cookieTypes count], self.editing ? @"YES" : @"NO");
+    if ( (self.editing == YES) && (indexPath.row == [globalSettings.cookieTypes count] ) ) {
         cell.textLabel.text = @"ADD";
         NSLog(@"Adding");
     }
     else  {
-        cell.textLabel.text = [cookieTypes objectAtIndex:indexPath.row]; 
+        cell.textLabel.text = [globalSettings.cookieTypes objectAtIndex:indexPath.row]; 
     }// Configure the cell...
     return cell;
 }
@@ -119,7 +119,7 @@
     if (self.editing == NO || !indexPath) {
         return UITableViewCellEditingStyleNone;
     }
-    if (self.editing && indexPath.row == [cookieTypes count]) {
+    if (self.editing && indexPath.row == [globalSettings.cookieTypes count]) {
         return UITableViewCellEditingStyleInsert;
     }
     else  {
@@ -141,24 +141,18 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        NSLog(@"Here to delete a row");
+        //NSLog(@"Here to delete a row");
+        [globalSettings.cookieTypes removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        NSLog(@"Here to add a row");
+        //NSLog(@"Here to add a row");
         AddCookieTypeViewController *addCookieTypeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCookieTypeTable"];
         
-        // How to know the cookie list name to pull the next screens data out of the associative array
-        //CookieListName *cookieListName = [self.cookieLists objectAtIndex:indexPath.row];
-        //NSLog(@"In MainTableViewController:didSelectRowAtIndexPath cookieListName: %@", cookieListName.name);
-        
-        // Pass along the cookie names and prices
-        //cookieCountViewController.cookiesAllInfo = [allTheData objectForKey:cookieListName.name];
-        //cookieCountViewController.listName = cookieListName.name;
         addCookieTypeViewController.delegate = self;
         [self.navigationController pushViewController:addCookieTypeViewController animated:YES];
-        
+        //[self presentModalViewController:addCookieTypeViewController animated:YES];        
         
     }   
 }
@@ -181,8 +175,8 @@
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
-    NSLog(@"in setEditing %@", editing ? @"YES" : @"NO");
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[cookieTypes count] inSection:0]];
+    //NSLog(@"in setEditing %@", editing ? @"YES" : @"NO");
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:[globalSettings.cookieTypes count] inSection:0]];
     if (editing) {
         [[self tableView] insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     }
@@ -192,12 +186,37 @@
 }
 
 #pragma mark - AddCookieTypeViewController delegate
+
 - (void)addCookieTypeViewControllerDidCancel:(AddCookieTypeViewController *)controller  {
-    NSLog(@"SettingsCookieTypesController:didCancel");
-    //[self dismissViewControllerAnimated:YES completion:nil];
+   // NSLog(@"SettingsCookieTypesController:didCancel");
+    
+    // disable editing
+    [self setEditing:NO animated:YES];
+    // Since this controller was programatically pushed, need to pop it instead of dismiss it
+    [self.navigationController popViewControllerAnimated:YES];
+
+
 }
-- (void)addCookieTypeViewControllerDidSave:(AddCookieTypeViewController *)controller  {
-    NSLog(@"SettingsCookieTypesController:didSave");
-    //[self dismissViewControllerAnimated:YES completion:nil];
+
+- (void)addCookieTypeViewController:(AddCookieTypeViewController *)controller didAddCookieType:(NSString *)cookieType  {
+    //NSLog(@"SettingsCookieTypesController:didAddCookieType");
+    
+    // Grab the new cookie name, add it to the table, add it to the global list
+    if (cookieType != nil) {
+        //[cookieTypes addObject:cookieType];
+        [globalSettings.cookieTypes addObject:cookieType];
+
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[globalSettings.cookieTypes count] - 1 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        
+    }
+    
+    // Disable Editing
+    [self setEditing:NO animated:YES];
+    
+    // Since this controller was programatically pushed, need to pop it instead of dismiss it
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 @end

@@ -27,7 +27,7 @@ static GlobalSettings *sharedGlobalSettings = nil;
 - (id)init  {
     if (self = [super init])  {
         cookiePrice = [[NSString alloc] initWithString:@"3.50"];
-        cookieTypes = [NSArray arrayWithObjects:@"Do-si-dos",@"Samoas",@"Savannah Smiles",@"Tagalongs",@"Thin Mints",@"Trefoils", nil];
+        cookieTypes = [NSMutableArray arrayWithObjects:@"Do-si-dos",@"Samoas",@"Savannah Smiles",@"Tagalongs",@"Thin Mints",@"Trefoils", nil];
     }
     return self;
 }
