@@ -46,10 +46,23 @@
     self.priceTextField.text = globalSettings.cookiePrice;
     //[self.priceTextField resignFirstResponder];
     [self.priceTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    //[self.priceTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEnd];
 }
 
 - (IBAction)textFieldFinished:(id)sender  {
     //NSLog(@"textFieldFinished");
+    NSString *regex = @"^\\d+\\.\\d\\d";
+    NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    BOOL ret = [valtest evaluateWithObject:self.priceTextField.text];
+    if (!ret) {
+        
+        GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+        self.priceTextField.text = globalSettings.cookiePrice;
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The price you entered is not a valid price." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [message show];
+    }
+
     [sender resignFirstResponder];
 }
 - (void)viewDidUnload
@@ -110,8 +123,6 @@
 
 - (IBAction)done:(id)sender  {
     
-    // TODO: Check that price is in price form: /d+\.\d\d
-    //NSLog(@"editSettings done. Setting global cookie price to %@", self.priceTextField.text);
     NSString *regex = @"^\\d+\\.\\d\\d";
     NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     BOOL ret = [valtest evaluateWithObject:self.priceTextField.text];
@@ -120,7 +131,10 @@
     }
     else  {
         
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The price you entered is not a valid price." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+        self.priceTextField.text = globalSettings.cookiePrice;
+
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Invalid Price" message:@"The price you entered is not a valid price. Please enter one." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [message show];
     }
 

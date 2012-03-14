@@ -13,9 +13,6 @@
 @interface MainTableViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, CookieListDetailsViewControllerDelegate, SettingsViewControllerDelegate, MFMailComposeViewControllerDelegate>  {
     
 }
-@property (nonatomic, retain) NSMutableArray *cookieLists;
-
-@property(nonatomic, retain)NSMutableDictionary *allTheData;
 
 - (IBAction)sendEmailFromMain;
 

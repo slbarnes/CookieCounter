@@ -13,9 +13,8 @@
     NSDecimalNumber *totalNumberOfCookies;
     NSDecimalNumber *totalMonies;
 }
-@property(nonatomic, retain)NSMutableArray *cookiesAllInfo;
-@property(nonatomic, retain)NSString *listName;
-@property(nonatomic, retain)NSString *listNotes;
+
+@property(nonatomic, retain)NSIndexPath *selectIndexPath;
 
 - (IBAction)stepperChangeValue:(UIStepper *)sender;
 - (IBAction)sendEmailFromCookieCount;

@@ -42,6 +42,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self.nameTextField addTarget:self action:@selector(done:) forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
 - (void)viewDidUnload
@@ -108,7 +110,7 @@
     if ([trimmedString length] == 0)  {
         cookieListName = nil;
         NSLog(@"Found only spaces for the list name.  Need to pop up an alert box.");
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The list name you entered did not contain any characters.  The list will not be added." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Invalid Name" message:@"A list must have a name.  Please enter one." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [message show];
         
     }

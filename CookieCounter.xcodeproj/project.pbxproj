@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D90CCE4B1476C498006FC65B /* CookieCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90CCE4A1476C498006FC65B /* CookieCountCell.m */; };
-		D96DB90E14C7C1A200D95C07 /* Cookie_Counter_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = D96DB90D14C7C1A200D95C07 /* Cookie_Counter_72x72.png */; };
 		D9956896147BF5B200588439 /* ExampleData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9956895147BF5B200588439 /* ExampleData.plist */; };
 		D99DB21D14F82D530064412A /* CookieListNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DB21C14F82D530064412A /* CookieListNotesViewController.m */; };
 		D9A4730114F58163004A2A08 /* AddCookieTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */; };
@@ -16,8 +15,14 @@
 		D9AC1B5314EECD8100B60452 /* SettingsCookieTypesController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AC1B5214EECD8100B60452 /* SettingsCookieTypesController.m */; };
 		D9C9F2F914E5BFDE00BF3D5B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */; };
 		D9D0957014853081006194B5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D0956F14853081006194B5 /* MessageUI.framework */; };
-		D9DA644414BF265B005A1896 /* Cookie_Counter_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DA644314BF265B005A1896 /* Cookie_Counter_57x57.png */; };
-		D9DA644614BF2662005A1896 /* Cookie_Counter_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DA644514BF2662005A1896 /* Cookie_Counter_114x114.png */; };
+		D9D95189150F99920048D80E /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95188150F99920048D80E /* Icon-57.png */; };
+		D9D9518C150F999E0048D80E /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518B150F999E0048D80E /* Icon-114.png */; };
+		D9D9518E150F99B10048D80E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518D150F99B10048D80E /* Default.png */; };
+		D9D95190150F99C00048D80E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518F150F99C00048D80E /* Default@2x.png */; };
+		D9D95192150F99D60048D80E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95191150F99D60048D80E /* Icon-72.png */; };
+		D9D95194150F99E20048D80E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95193150F99E20048D80E /* Default-Portrait~ipad.png */; };
+		D9D95196150F9A160048D80E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95195150F9A160048D80E /* Default-Landscape~ipad.png */; };
+		D9DB62011507F89C00A6B3D4 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB62001507F89C00A6B3D4 /* AppData.m */; };
 		D9E37F2F1475D684001C711F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F2E1475D684001C711F /* UIKit.framework */; };
 		D9E37F311475D684001C711F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F301475D684001C711F /* Foundation.framework */; };
 		D9E37F331475D684001C711F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F321475D684001C711F /* CoreGraphics.framework */; };
@@ -35,9 +40,8 @@
 /* Begin PBXFileReference section */
 		D90CCE491476C498006FC65B /* CookieCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieCountCell.h; sourceTree = "<group>"; };
 		D90CCE4A1476C498006FC65B /* CookieCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieCountCell.m; sourceTree = "<group>"; };
-		D96DB90D14C7C1A200D95C07 /* Cookie_Counter_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cookie_Counter_72x72.png; sourceTree = "<group>"; };
 		D9956895147BF5B200588439 /* ExampleData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExampleData.plist; sourceTree = "<group>"; };
-		D99DB21B14F82D530064412A /* CookieListNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CookieListNotesViewController.h; sourceTree = "<group>"; };
+		D99DB21B14F82D530064412A /* CookieListNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieListNotesViewController.h; sourceTree = "<group>"; };
 		D99DB21C14F82D530064412A /* CookieListNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieListNotesViewController.m; sourceTree = "<group>"; };
 		D9A472FF14F58163004A2A08 /* AddCookieTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCookieTypeViewController.h; sourceTree = "<group>"; };
 		D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCookieTypeViewController.m; sourceTree = "<group>"; };
@@ -48,8 +52,15 @@
 		D9C9F2F714E5BFDE00BF3D5B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D9D0956F14853081006194B5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		D9DA644314BF265B005A1896 /* Cookie_Counter_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cookie_Counter_57x57.png; path = ../Cookie_Counter_57x57.png; sourceTree = "<group>"; };
-		D9DA644514BF2662005A1896 /* Cookie_Counter_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Cookie_Counter_114x114.png; path = ../Cookie_Counter_114x114.png; sourceTree = "<group>"; };
+		D9D95188150F99920048D80E /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-57.png"; path = "../Icon-57.png"; sourceTree = "<group>"; };
+		D9D9518B150F999E0048D80E /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-114.png"; path = "../Icon-114.png"; sourceTree = "<group>"; };
+		D9D9518D150F99B10048D80E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		D9D9518F150F99C00048D80E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		D9D95191150F99D60048D80E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		D9D95193150F99E20048D80E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		D9D95195150F9A160048D80E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		D9DB61FF1507F89C00A6B3D4 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppData.h; path = ../AppData.h; sourceTree = "<group>"; };
+		D9DB62001507F89C00A6B3D4 /* AppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppData.m; path = ../AppData.m; sourceTree = "<group>"; };
 		D9E37F2A1475D684001C711F /* CookieCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookieCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E37F2E1475D684001C711F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D9E37F301475D684001C711F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,7 +102,6 @@
 		D9E37F1F1475D684001C711F = {
 			isa = PBXGroup;
 			children = (
-				D96DB90D14C7C1A200D95C07 /* Cookie_Counter_72x72.png */,
 				D9E37F341475D684001C711F /* CookieCounter */,
 				D9E37F2D1475D684001C711F /* Frameworks */,
 				D9E37F2B1475D684001C711F /* Products */,
@@ -120,32 +130,34 @@
 		D9E37F341475D684001C711F /* CookieCounter */ = {
 			isa = PBXGroup;
 			children = (
-				D9A472FF14F58163004A2A08 /* AddCookieTypeViewController.h */,
-				D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */,
+				D9DB61FF1507F89C00A6B3D4 /* AppData.h */,
+				D9DB62001507F89C00A6B3D4 /* AppData.m */,
+				D9E37F621475EF97001C711F /* CookieListName.h */,
+				D9E37F631475EF97001C711F /* CookieListName.m */,
+				D9F310C214769B1200689DC7 /* GSCookie.h */,
+				D9F310C314769B1200689DC7 /* GSCookie.m */,
+				D9AC1B4E14EEBF0D00B60452 /* GlobalSettings.h */,
+				D9AC1B4F14EEBF0D00B60452 /* GlobalSettings.m */,
+				D9E37F401475D684001C711F /* MainStoryboard.storyboard */,
 				D9E37F3D1475D684001C711F /* AppDelegate.h */,
 				D9E37F3E1475D684001C711F /* AppDelegate.m */,
-				D9E37F401475D684001C711F /* MainStoryboard.storyboard */,
-				D99DB21B14F82D530064412A /* CookieListNotesViewController.h */,
-				D99DB21C14F82D530064412A /* CookieListNotesViewController.m */,
-				D9AC1B5114EECD8100B60452 /* SettingsCookieTypesController.h */,
-				D9AC1B5214EECD8100B60452 /* SettingsCookieTypesController.m */,
-				D9F310BE1476984300689DC7 /* CookieCountViewController.h */,
-				D9F310BF1476984300689DC7 /* CookieCountViewController.m */,
-				D90CCE491476C498006FC65B /* CookieCountCell.h */,
-				D90CCE4A1476C498006FC65B /* CookieCountCell.m */,
-				D9E37F351475D684001C711F /* Supporting Files */,
 				D9E37F541475D775001C711F /* MainTableViewController.h */,
 				D9E37F551475D775001C711F /* MainTableViewController.m */,
 				D9E37F5B1475E2F5001C711F /* CookieListDetailsViewController.h */,
 				D9E37F5C1475E2F5001C711F /* CookieListDetailsViewController.m */,
-				D9E37F621475EF97001C711F /* CookieListName.h */,
-				D9E37F631475EF97001C711F /* CookieListName.m */,
-				D9F310C214769B1200689DC7 /* GSCookie.h */,
-				D9AC1B4E14EEBF0D00B60452 /* GlobalSettings.h */,
-				D9AC1B4F14EEBF0D00B60452 /* GlobalSettings.m */,
-				D9F310C314769B1200689DC7 /* GSCookie.m */,
+				D9F310BE1476984300689DC7 /* CookieCountViewController.h */,
+				D9F310BF1476984300689DC7 /* CookieCountViewController.m */,
+				D90CCE491476C498006FC65B /* CookieCountCell.h */,
+				D90CCE4A1476C498006FC65B /* CookieCountCell.m */,
+				D99DB21B14F82D530064412A /* CookieListNotesViewController.h */,
+				D99DB21C14F82D530064412A /* CookieListNotesViewController.m */,
+				D9A472FF14F58163004A2A08 /* AddCookieTypeViewController.h */,
+				D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */,
+				D9AC1B5114EECD8100B60452 /* SettingsCookieTypesController.h */,
+				D9AC1B5214EECD8100B60452 /* SettingsCookieTypesController.m */,
 				D9C9F2F714E5BFDE00BF3D5B /* SettingsViewController.h */,
 				D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */,
+				D9E37F351475D684001C711F /* Supporting Files */,
 			);
 			name = CookieCounter;
 			path = LaTables;
@@ -154,8 +166,13 @@
 		D9E37F351475D684001C711F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9DA644514BF2662005A1896 /* Cookie_Counter_114x114.png */,
-				D9DA644314BF265B005A1896 /* Cookie_Counter_57x57.png */,
+				D9D95195150F9A160048D80E /* Default-Landscape~ipad.png */,
+				D9D95193150F99E20048D80E /* Default-Portrait~ipad.png */,
+				D9D95191150F99D60048D80E /* Icon-72.png */,
+				D9D9518F150F99C00048D80E /* Default@2x.png */,
+				D9D9518D150F99B10048D80E /* Default.png */,
+				D9D9518B150F999E0048D80E /* Icon-114.png */,
+				D9D95188150F99920048D80E /* Icon-57.png */,
 				D9956895147BF5B200588439 /* ExampleData.plist */,
 				D9E37F361475D684001C711F /* CookieCounter-Info.plist */,
 				D9E37F371475D684001C711F /* InfoPlist.strings */,
@@ -218,9 +235,13 @@
 				D9E37F391475D684001C711F /* InfoPlist.strings in Resources */,
 				D9E37F421475D684001C711F /* MainStoryboard.storyboard in Resources */,
 				D9956896147BF5B200588439 /* ExampleData.plist in Resources */,
-				D9DA644414BF265B005A1896 /* Cookie_Counter_57x57.png in Resources */,
-				D9DA644614BF2662005A1896 /* Cookie_Counter_114x114.png in Resources */,
-				D96DB90E14C7C1A200D95C07 /* Cookie_Counter_72x72.png in Resources */,
+				D9D95189150F99920048D80E /* Icon-57.png in Resources */,
+				D9D9518C150F999E0048D80E /* Icon-114.png in Resources */,
+				D9D9518E150F99B10048D80E /* Default.png in Resources */,
+				D9D95190150F99C00048D80E /* Default@2x.png in Resources */,
+				D9D95192150F99D60048D80E /* Icon-72.png in Resources */,
+				D9D95194150F99E20048D80E /* Default-Portrait~ipad.png in Resources */,
+				D9D95196150F9A160048D80E /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +265,7 @@
 				D9AC1B5314EECD8100B60452 /* SettingsCookieTypesController.m in Sources */,
 				D9A4730114F58163004A2A08 /* AddCookieTypeViewController.m in Sources */,
 				D99DB21D14F82D530064412A /* CookieListNotesViewController.m in Sources */,
+				D9DB62011507F89C00A6B3D4 /* AppData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +315,7 @@
 		D9C6341C14C3763800145690 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shelley Barnes (W9ZWGP29W4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shelley Barnes";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,6 +326,7 @@
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = CookieCount;
+				PROVISIONING_PROFILE = "2C047B08-AE34-4941-9183-B40629E25FE0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5D32434B-DEC1-4A8D-AC5E-554CDA51E8B2";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -357,6 +381,8 @@
 		D9E37F491475D684001C711F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shelley Barnes (W9ZWGP29W4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shelley Barnes (W9ZWGP29W4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -366,6 +392,8 @@
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = CookieCount;
+				PROVISIONING_PROFILE = "2C047B08-AE34-4941-9183-B40629E25FE0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C047B08-AE34-4941-9183-B40629E25FE0";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

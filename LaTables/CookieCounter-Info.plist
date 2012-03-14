@@ -10,9 +10,9 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Cookie_Counter_57x57.png</string>
-		<string>Cookie_Counter_114x114.png</string>
-		<string>Cookie_Counter_72x72.png</string>
+		<string>Icon-57.png</string>
+		<string>Icon-114.png</string>
+		<string>Icon-72.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -20,9 +20,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Cookie_Counter_57x57.png</string>
-				<string>Cookie_Counter_114x114.png</string>
-				<string>Cookie_Counter_72x72.png</string>
+				<string>Icon-57.png</string>
+				<string>Icon-114.png</string>
+				<string>Icon-72.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>

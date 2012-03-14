@@ -12,11 +12,9 @@
 #import "GSCookie.h"
 #import "SettingsViewController.h"
 #import "GlobalSettings.h"
+#import "AppData.h"
 
 @implementation MainTableViewController
-
-@synthesize cookieLists;
-@synthesize allTheData;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,26 +38,13 @@
 - (void)viewDidLoad
 {
     
-    cookieLists = [[NSMutableArray alloc] init];
-    //[self setupCookieNames];
     [super viewDidLoad];
     
     NSLog(@"Here in MainTableViewController:viewDidLoad");
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    appDelegate.mainController = self;
-    [appDelegate readData];
+    // Example of how to get the application delegate object
+    //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    if (allTheData == nil)  {
-        NSLog(@"initializing allTheData");
-        allTheData = [[NSMutableDictionary alloc] init];
-    }
-    
-        
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
@@ -72,8 +57,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"Here in MainTableViewController:viewWillAppear");
-    //self.navigationController.toolbarHidden = YES;
+    //NSLog(@"Here in MainTableViewController:viewWillAppear");
     [super viewWillAppear:animated];
 }
 
@@ -94,8 +78,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
     return (YES);
 }
 
@@ -103,17 +85,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    //return 5;
-    //NSInteger c = [cookieLists count];
-    //NSLog(@"numberOfRowsInSection:cookieLists count: %d",c);
-    return [self.cookieLists count];
+    AppData *sharedAppData = [AppData sharedData];
+    return [sharedAppData.cookieLists count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,9 +104,9 @@
     }
     
     // Configure the cell...
-    CookieListName *cookieListName = [self.cookieLists objectAtIndex:indexPath.row];
-    //NSLog(@"Here: %@", cookieListName.name);
-    cell.textLabel.text = cookieListName.name;
+    AppData *sharedAppData = [AppData sharedData];
+    //cell.textLabel.text = [[sharedAppData.cookieLists objectAtIndex:indexPath.row] name];
+    cell.textLabel.text = [sharedAppData getListName:indexPath.row];
     
     //Arrow
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -141,8 +119,6 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    //NSLog(@"MainTableViewController:canEditRowAtIndexPath");
     return YES;
 }
 
@@ -153,10 +129,14 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         NSLog(@"Here deleting a list");
-        CookieListName *cookieListName = [self.cookieLists objectAtIndex:indexPath.row];
-        [allTheData removeObjectForKey:cookieListName.name];
-        [self.cookieLists removeObjectAtIndex:indexPath.row];
-        NSLog(@"commitEditingStyle:cookieLists count: %d",[self.cookieLists count]);
+        AppData *sharedAppData = [AppData sharedData];
+        //CookieListName *cookieListName = [sharedAppData.cookieLists objectAtIndex:indexPath.row];
+        //[sharedAppData.allTheData removeObjectForKey:[sharedAppData getListName:indexPath.row]];
+        //[sharedAppData.cookieLists removeObjectAtIndex:indexPath.row];
+        [sharedAppData removeCookieList:indexPath.row];
+        [sharedAppData writeDataToFile];
+        //NSLog(@"commitEditingStyle:cookieLists count: %d",[sharedAppData.cookieLists count]);
+        NSLog(@"commitEditingStyle:cookieLists count: %d",[sharedAppData getNumberOfCookieLists]);
 
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -174,14 +154,19 @@
     NSLog(@"MainTableViewController:moveRowAtIndexPath");
     
     // Update the cookieListName.sowSoftwareListOrder
-    CookieListName *fromCookieListName = [self.cookieLists objectAtIndex:fromIndexPath.row];
-    fromCookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",toIndexPath.row];
-    CookieListName *toCookieListName = [self.cookieLists objectAtIndex:toIndexPath.row];
-    toCookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",fromIndexPath.row];
+    AppData *sharedAppData = [AppData sharedData];
+    //CookieListName *fromCookieListName = [sharedAppData.cookieLists objectAtIndex:fromIndexPath.row];
+    //fromCookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",toIndexPath.row];
+    [sharedAppData setSowSoftwareListOrder:fromIndexPath.row order:toIndexPath.row];   
+    //CookieListName *toCookieListName = [sharedAppData.cookieLists objectAtIndex:toIndexPath.row];
+    //toCookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",fromIndexPath.row];
+    [sharedAppData setSowSoftwareListOrder:toIndexPath.row order:fromIndexPath.row];
 
     
     // Update the array
-    [cookieLists exchangeObjectAtIndex:fromIndexPath.row withObjectAtIndex:toIndexPath.row];
+    [sharedAppData.cookieLists exchangeObjectAtIndex:fromIndexPath.row withObjectAtIndex:toIndexPath.row];
+    // Write the data
+    [sharedAppData writeDataToFile];
 }
 
 
@@ -189,8 +174,6 @@
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the item to be re-orderable.
-    NSLog(@"MainTableViewController:canMoveRowAtIndexPath");
     return YES;
 }
 
@@ -201,16 +184,9 @@
 {
     
     CookieCountViewController *cookieCountViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"cookieCountTable"];
-    
-    // How to know the cookie list name to pull the next screens data out of the associative array
-    CookieListName *cookieListName = [self.cookieLists objectAtIndex:indexPath.row];
-    NSLog(@"In MainTableViewController:didSelectRowAtIndexPath cookieListName: %@", cookieListName.name);
-    
-    // Pass along the cookie names and prices
-    cookieCountViewController.cookiesAllInfo = [allTheData objectForKey:cookieListName.name];
-    cookieCountViewController.listName = cookieListName.name;
-    cookieCountViewController.listNotes = cookieListName.sowSoftwareListNotes;
-    
+
+    // Just pass the index path that was selected
+    cookieCountViewController.selectIndexPath = indexPath;
     [self.navigationController pushViewController:cookieCountViewController animated:YES];
      
 }
@@ -230,38 +206,18 @@
 - (void)cookieListDetailsViewController:(CookieListDetailsViewController *)controller didAddCookieList:(CookieListName *)cookieListName  {
         
     // Initialize the hash with the name as well as data with all quantities set to 0 only if no data is loaded from file
-    //NSArray *keysOfAllTheData = [allTheData allKeys];
+    AppData *sharedAppData = [AppData sharedData];
+
     if (cookieListName != nil) {
         
-    if ([allTheData objectForKey:cookieListName.name] == nil) {
-    
-        GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+    if (![sharedAppData doesCookieListNameExist:cookieListName.name]) {
+        [sharedAppData addNewCookieList:cookieListName.name];
         
-        NSArray *sortedKeys = [globalSettings.cookieTypes sortedArrayUsingSelector: @selector(localizedCaseInsensitiveCompare:)];  
-        NSMutableArray *initialCookieInfo = [NSMutableArray arrayWithCapacity:[sortedKeys count]];
-    
-      
-        NSString *STARTING_QTY = @"0";
-        GSCookie *gscookie;
-    
-        for (NSString *key in sortedKeys)  {
-            //NSLog(@"key: %@", key);
-
-        
-            gscookie = [[GSCookie alloc] init];
-            gscookie.name = key;
-            gscookie.price = [[NSDecimalNumber alloc] initWithString:globalSettings.cookiePrice];
-            gscookie.quantity = [[NSDecimalNumber alloc] initWithString:STARTING_QTY];
-            [initialCookieInfo addObject:gscookie];
-        }
-
-        // Need to determine the value for sowsoftwareListOrder
-        cookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",[self.cookieLists count]];
-        NSLog(@"cookieListName: %@   sowsoftwareListOrder: %@", cookieListName.name, cookieListName.sowSoftwareListOrder);
-        [self.cookieLists addObject:cookieListName];
-        [allTheData setObject:initialCookieInfo forKey:cookieListName.name];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.cookieLists count] - 1 inSection:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[sharedAppData getNumberOfCookieLists] - 1 inSection:0];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+      
+        // After adding the list to the data structure, write the data out
+        [sharedAppData writeDataToFile];
  
     }
     else  {
@@ -305,76 +261,13 @@
 
 - (IBAction)sendEmailFromMain  {
     //NSLog(@"Here sending email in Main");
+    AppData *sharedAppData = [AppData sharedData];
+    
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
 	controller.mailComposeDelegate = self;
     
 	[controller setSubject:[NSString stringWithString:@"All Cookie Lists Detail Report\n\n"]];
-    
-    NSMutableString *messageBody = [NSMutableString stringWithString:@"All Cookie Lists Detail Report\n\n"];
-
-    NSDecimalNumber *grandTotalMonies = [NSDecimalNumber decimalNumberWithString:@"0"];
-    NSDecimalNumber *grandTotalNumberOfCookies = [NSDecimalNumber decimalNumberWithString:@"0"];
-
-    NSMutableDictionary *grandTotalEachType = [[NSMutableDictionary alloc] init];
-    
-    NSArray *keysOfAllTheData = [allTheData allKeys];
-    for (NSString *key in keysOfAllTheData)  {
-        
-        NSDecimalNumber *totalMonies = [NSDecimalNumber decimalNumberWithString:@"0"];
-        NSDecimalNumber *totalNumberOfCookies = [NSDecimalNumber decimalNumberWithString:@"0"];
-
-        [messageBody appendFormat:@"%@ Cookie List Detail Report\n\n",key];
-        
-        //[messageBody appendFormat:@"Total Cookies: %@ \n", totalNumberOfCookies];
-        //[messageBody appendFormat:@"Total Monies: $%.2f \n\n", [totalMonies floatValue]];
-    
-        for (GSCookie *gscookie in [allTheData objectForKey:key])
-        {
-            NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
-            [messageBody appendFormat:@"%@: %@ @ $%.2f = $%.2f\n",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
-            totalNumberOfCookies = [totalNumberOfCookies decimalNumberByAdding:gscookie.quantity];
-            totalMonies = [totalNumberOfCookies decimalNumberByMultiplyingBy:gscookie.price];
-            
-            // Check if the cookie name is in grandTotalEachType.  If not, set the quantity.  If so, add the quantity
-            if ([grandTotalEachType objectForKey:gscookie.name]) {
-                NSDecimalNumber *t = [grandTotalEachType objectForKey:gscookie.name];
-                //NSLog(@"Cookie name exists: %@  with quantity %@",gscookie.name,t);
-
-                t = [t decimalNumberByAdding:gscookie.quantity];
-                [grandTotalEachType setObject:t forKey:gscookie.name];
-            }
-            else  {
-                [grandTotalEachType setObject:gscookie.quantity forKey:gscookie.name];
-            }
-
-        }
-        [messageBody appendFormat:@"\nTotal Cookies: %@ \n", totalNumberOfCookies];
-        [messageBody appendFormat:@"Total Monies: $%.2f \n\n", [totalMonies floatValue]];
-
-        [messageBody appendString:@"\n\n"];
-        
-        grandTotalNumberOfCookies = [grandTotalNumberOfCookies decimalNumberByAdding:totalNumberOfCookies];
-        grandTotalMonies = [grandTotalMonies decimalNumberByAdding:totalMonies];
-        
-
-    }
-    
-    [messageBody appendFormat:@"\nGrand Total Cookies: %@ \n", grandTotalNumberOfCookies];
-    [messageBody appendFormat:@"Grand Total Monies: $%.2f \n\n", [grandTotalMonies floatValue]];
-    
-    [messageBody appendString:@"\n\n"];
-    
-    [messageBody appendFormat:@"\nGrand Total For Each Cookie Type:\n"];
-    NSArray *keys = [[grandTotalEachType allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-
-    for (NSString *key in keys)  {
-        [messageBody appendFormat:@"%@ : %@\n",key,[grandTotalEachType objectForKey:key]];
-    }
-    
-    [messageBody appendString:@"\n\n"];
-    
-
-	[controller setMessageBody:messageBody isHTML:NO];
+	[controller setMessageBody:[sharedAppData createAllListSummary] isHTML:NO];
 	[self presentModalViewController:controller animated:YES];
      
     
