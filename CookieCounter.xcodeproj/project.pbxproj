@@ -208,7 +208,7 @@
 		D9E37F211475D684001C711F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = D9E37F241475D684001C711F /* Build configuration list for PBXProject "CookieCounter" */;
 			compatibilityVersion = "Xcode 3.2";
