@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		D90CCE4B1476C498006FC65B /* CookieCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90CCE4A1476C498006FC65B /* CookieCountCell.m */; };
+		D924AC6815372D5B001F058C /* 1334001990_Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D924AC6715372D5B001F058C /* 1334001990_Gear.png */; };
+		D97A596C1538610A00F4C144 /* iPad-Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D97A596B1538610A00F4C144 /* iPad-Icon-144.png */; };
+		D97DC70E15387F87005A0C5D /* IMG_0424.png in Resources */ = {isa = PBXBuildFile; fileRef = D97DC70D15387F87005A0C5D /* IMG_0424.png */; };
+		D97E6C44153889B70070D8BB /* LaunchScreen_320X480.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C43153889B70070D8BB /* LaunchScreen_320X480.png */; };
+		D97E6C4815388B470070D8BB /* iPad_LaunchImage_768X1004.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4715388B470070D8BB /* iPad_LaunchImage_768X1004.png */; };
+		D97E6C4A15388B600070D8BB /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4915388B600070D8BB /* Default-Portrait~ipad.png */; };
+		D97E6C4C15388BE50070D8BB /* iPad_LaunchScreen_1536X2008.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4B15388BE50070D8BB /* iPad_LaunchScreen_1536X2008.png */; };
+		D97E6C4E15388BEF0070D8BB /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4D15388BEF0070D8BB /* Default-Portrait@2x~ipad.png */; };
+		D97E6C5415388F3D0070D8BB /* iPad_LaunchImage_1024X748.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C5315388F3D0070D8BB /* iPad_LaunchImage_1024X748.png */; };
+		D97E6C5515388F640070D8BB /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C5115388EE20070D8BB /* Default-Landscape~ipad.png */; };
+		D97E6C5715388FC40070D8BB /* iPad_LaunchImage_2048X1496.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C5615388FC40070D8BB /* iPad_LaunchImage_2048X1496.png */; };
+		D97E6C5915388FCC0070D8BB /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C5815388FCC0070D8BB /* Default-Landscape@2x~ipad.png */; };
+		D97E6C5A153890090070D8BB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C45153889C10070D8BB /* Default.png */; };
+		D97E6C5B1538900C0070D8BB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9E52F4C15388371001B2714 /* Default@2x.png */; };
 		D9956896147BF5B200588439 /* ExampleData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9956895147BF5B200588439 /* ExampleData.plist */; };
 		D99DB21D14F82D530064412A /* CookieListNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DB21C14F82D530064412A /* CookieListNotesViewController.m */; };
 		D9A4730114F58163004A2A08 /* AddCookieTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */; };
@@ -17,11 +31,7 @@
 		D9D0957014853081006194B5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D0956F14853081006194B5 /* MessageUI.framework */; };
 		D9D95189150F99920048D80E /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95188150F99920048D80E /* Icon-57.png */; };
 		D9D9518C150F999E0048D80E /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518B150F999E0048D80E /* Icon-114.png */; };
-		D9D9518E150F99B10048D80E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518D150F99B10048D80E /* Default.png */; };
-		D9D95190150F99C00048D80E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518F150F99C00048D80E /* Default@2x.png */; };
 		D9D95192150F99D60048D80E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95191150F99D60048D80E /* Icon-72.png */; };
-		D9D95194150F99E20048D80E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95193150F99E20048D80E /* Default-Portrait~ipad.png */; };
-		D9D95196150F9A160048D80E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95195150F9A160048D80E /* Default-Landscape~ipad.png */; };
 		D9DB62011507F89C00A6B3D4 /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB62001507F89C00A6B3D4 /* AppData.m */; };
 		D9E37F2F1475D684001C711F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F2E1475D684001C711F /* UIKit.framework */; };
 		D9E37F311475D684001C711F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F301475D684001C711F /* Foundation.framework */; };
@@ -40,6 +50,19 @@
 /* Begin PBXFileReference section */
 		D90CCE491476C498006FC65B /* CookieCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieCountCell.h; sourceTree = "<group>"; };
 		D90CCE4A1476C498006FC65B /* CookieCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieCountCell.m; sourceTree = "<group>"; };
+		D924AC6715372D5B001F058C /* 1334001990_Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1334001990_Gear.png; sourceTree = "<group>"; };
+		D97A596B1538610A00F4C144 /* iPad-Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-Icon-144.png"; path = "../iPad-Icon-144.png"; sourceTree = "<group>"; };
+		D97DC70D15387F87005A0C5D /* IMG_0424.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0424.png; sourceTree = "<group>"; };
+		D97E6C43153889B70070D8BB /* LaunchScreen_320X480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen_320X480.png; sourceTree = "<group>"; };
+		D97E6C45153889C10070D8BB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D97E6C4715388B470070D8BB /* iPad_LaunchImage_768X1004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad_LaunchImage_768X1004.png; sourceTree = "<group>"; };
+		D97E6C4915388B600070D8BB /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		D97E6C4B15388BE50070D8BB /* iPad_LaunchScreen_1536X2008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad_LaunchScreen_1536X2008.png; path = ../../../Desktop/Untitled/iPad_LaunchScreen_1536X2008.png; sourceTree = "<group>"; };
+		D97E6C4D15388BEF0070D8BB /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		D97E6C5115388EE20070D8BB /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		D97E6C5315388F3D0070D8BB /* iPad_LaunchImage_1024X748.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad_LaunchImage_1024X748.png; path = ../../../Desktop/Untitled/iPad_LaunchImage_1024X748.png; sourceTree = "<group>"; };
+		D97E6C5615388FC40070D8BB /* iPad_LaunchImage_2048X1496.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad_LaunchImage_2048X1496.png; path = ../../../Desktop/Untitled/iPad_LaunchImage_2048X1496.png; sourceTree = "<group>"; };
+		D97E6C5815388FCC0070D8BB /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		D9956895147BF5B200588439 /* ExampleData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ExampleData.plist; sourceTree = "<group>"; };
 		D99DB21B14F82D530064412A /* CookieListNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieListNotesViewController.h; sourceTree = "<group>"; };
 		D99DB21C14F82D530064412A /* CookieListNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieListNotesViewController.m; sourceTree = "<group>"; };
@@ -54,11 +77,7 @@
 		D9D0956F14853081006194B5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D9D95188150F99920048D80E /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-57.png"; path = "../Icon-57.png"; sourceTree = "<group>"; };
 		D9D9518B150F999E0048D80E /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-114.png"; path = "../Icon-114.png"; sourceTree = "<group>"; };
-		D9D9518D150F99B10048D80E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
-		D9D9518F150F99C00048D80E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		D9D95191150F99D60048D80E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
-		D9D95193150F99E20048D80E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		D9D95195150F9A160048D80E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		D9DB61FF1507F89C00A6B3D4 /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppData.h; path = ../AppData.h; sourceTree = "<group>"; };
 		D9DB62001507F89C00A6B3D4 /* AppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppData.m; path = ../AppData.m; sourceTree = "<group>"; };
 		D9E37F2A1475D684001C711F /* CookieCount.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookieCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +97,7 @@
 		D9E37F5C1475E2F5001C711F /* CookieListDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieListDetailsViewController.m; sourceTree = "<group>"; };
 		D9E37F621475EF97001C711F /* CookieListName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieListName.h; sourceTree = "<group>"; };
 		D9E37F631475EF97001C711F /* CookieListName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieListName.m; sourceTree = "<group>"; };
+		D9E52F4C15388371001B2714 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D9F310BE1476984300689DC7 /* CookieCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieCountViewController.h; sourceTree = "<group>"; };
 		D9F310BF1476984300689DC7 /* CookieCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieCountViewController.m; sourceTree = "<group>"; };
 		D9F310C214769B1200689DC7 /* GSCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCookie.h; sourceTree = "<group>"; };
@@ -102,6 +122,12 @@
 		D9E37F1F1475D684001C711F = {
 			isa = PBXGroup;
 			children = (
+				D97E6C5815388FCC0070D8BB /* Default-Landscape@2x~ipad.png */,
+				D97E6C5115388EE20070D8BB /* Default-Landscape~ipad.png */,
+				D97E6C4D15388BEF0070D8BB /* Default-Portrait@2x~ipad.png */,
+				D97E6C4915388B600070D8BB /* Default-Portrait~ipad.png */,
+				D97E6C45153889C10070D8BB /* Default.png */,
+				D9E52F4C15388371001B2714 /* Default@2x.png */,
 				D9E37F341475D684001C711F /* CookieCounter */,
 				D9E37F2D1475D684001C711F /* Frameworks */,
 				D9E37F2B1475D684001C711F /* Products */,
@@ -166,11 +192,15 @@
 		D9E37F351475D684001C711F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9D95195150F9A160048D80E /* Default-Landscape~ipad.png */,
-				D9D95193150F99E20048D80E /* Default-Portrait~ipad.png */,
+				D97E6C5615388FC40070D8BB /* iPad_LaunchImage_2048X1496.png */,
+				D97E6C5315388F3D0070D8BB /* iPad_LaunchImage_1024X748.png */,
+				D97E6C4B15388BE50070D8BB /* iPad_LaunchScreen_1536X2008.png */,
+				D97E6C4715388B470070D8BB /* iPad_LaunchImage_768X1004.png */,
+				D97E6C43153889B70070D8BB /* LaunchScreen_320X480.png */,
+				D97DC70D15387F87005A0C5D /* IMG_0424.png */,
+				D97A596B1538610A00F4C144 /* iPad-Icon-144.png */,
+				D924AC6715372D5B001F058C /* 1334001990_Gear.png */,
 				D9D95191150F99D60048D80E /* Icon-72.png */,
-				D9D9518F150F99C00048D80E /* Default@2x.png */,
-				D9D9518D150F99B10048D80E /* Default.png */,
 				D9D9518B150F999E0048D80E /* Icon-114.png */,
 				D9D95188150F99920048D80E /* Icon-57.png */,
 				D9956895147BF5B200588439 /* ExampleData.plist */,
@@ -237,11 +267,21 @@
 				D9956896147BF5B200588439 /* ExampleData.plist in Resources */,
 				D9D95189150F99920048D80E /* Icon-57.png in Resources */,
 				D9D9518C150F999E0048D80E /* Icon-114.png in Resources */,
-				D9D9518E150F99B10048D80E /* Default.png in Resources */,
-				D9D95190150F99C00048D80E /* Default@2x.png in Resources */,
 				D9D95192150F99D60048D80E /* Icon-72.png in Resources */,
-				D9D95194150F99E20048D80E /* Default-Portrait~ipad.png in Resources */,
-				D9D95196150F9A160048D80E /* Default-Landscape~ipad.png in Resources */,
+				D924AC6815372D5B001F058C /* 1334001990_Gear.png in Resources */,
+				D97A596C1538610A00F4C144 /* iPad-Icon-144.png in Resources */,
+				D97DC70E15387F87005A0C5D /* IMG_0424.png in Resources */,
+				D97E6C44153889B70070D8BB /* LaunchScreen_320X480.png in Resources */,
+				D97E6C4815388B470070D8BB /* iPad_LaunchImage_768X1004.png in Resources */,
+				D97E6C4A15388B600070D8BB /* Default-Portrait~ipad.png in Resources */,
+				D97E6C4C15388BE50070D8BB /* iPad_LaunchScreen_1536X2008.png in Resources */,
+				D97E6C4E15388BEF0070D8BB /* Default-Portrait@2x~ipad.png in Resources */,
+				D97E6C5415388F3D0070D8BB /* iPad_LaunchImage_1024X748.png in Resources */,
+				D97E6C5515388F640070D8BB /* Default-Landscape~ipad.png in Resources */,
+				D97E6C5715388FC40070D8BB /* iPad_LaunchImage_2048X1496.png in Resources */,
+				D97E6C5915388FCC0070D8BB /* Default-Landscape@2x~ipad.png in Resources */,
+				D97E6C5A153890090070D8BB /* Default.png in Resources */,
+				D97E6C5B1538900C0070D8BB /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,7 +355,7 @@
 		D9C6341C14C3763800145690 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shelley Barnes (W9ZWGP29W4)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shelley Barnes";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shelley Barnes";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -324,10 +364,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = CookieCount;
-				PROVISIONING_PROFILE = "2C047B08-AE34-4941-9183-B40629E25FE0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5D32434B-DEC1-4A8D-AC5E-554CDA51E8B2";
+				PROVISIONING_PROFILE = "3686B605-A9C1-4FD6-832A-B61A6A3E1079";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3686B605-A9C1-4FD6-832A-B61A6A3E1079";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -390,7 +430,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = CookieCount;
 				PROVISIONING_PROFILE = "2C047B08-AE34-4941-9183-B40629E25FE0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C047B08-AE34-4941-9183-B40629E25FE0";
@@ -409,7 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = CookieCount;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

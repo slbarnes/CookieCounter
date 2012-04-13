@@ -54,7 +54,10 @@
     NSString *regex = @"^\\d+\\.\\d\\d";
     NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     BOOL ret = [valtest evaluateWithObject:self.priceTextField.text];
-    if (!ret) {
+    NSDecimalNumber *topPrice = [NSDecimalNumber decimalNumberWithString:@"999.00"];
+    NSDecimalNumber *theEnteredPrice = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text];
+    // If the price is not in the form d.dd or is above 999.00
+    if ((!ret) || ([theEnteredPrice compare:topPrice] == NSOrderedDescending) ) {
         
         GlobalSettings *globalSettings = [GlobalSettings sharedManager];
         self.priceTextField.text = globalSettings.cookiePrice;
@@ -113,11 +116,24 @@
     if (indexPath.section == 0) {
         [self.priceTextField becomeFirstResponder];
     }
-    else  {
-        //NSLog(@"HERE");
-        //[self.priceTextField resignFirstResponder];
+    if (indexPath.section == 2)  {
+        //UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"About" message:@"Please send and feedback to the developer at sowsoftware@gmail.com." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        //[message show];
+        MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        
+        [controller setToRecipients:[[NSArray alloc] initWithObjects:@"sowsoftware@gmail.com", nil]];
+        [controller setSubject:[NSString stringWithString:@"CookieCount Feedback"]];
+        [controller setMessageBody:@"Thank you for your feedback.\n\n" isHTML:NO];
+        [self presentModalViewController:controller animated:YES];
+
+        
     }
     
+}
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self becomeFirstResponder];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 

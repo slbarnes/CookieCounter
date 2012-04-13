@@ -13,6 +13,16 @@
 		<string>Icon-57.png</string>
 		<string>Icon-114.png</string>
 		<string>Icon-72.png</string>
+		<string>iPad-Icon-144.png</string>
+		<string>Default.png</string>
+		<string>Default.png</string>
+		<string>Default.png</string>
+		<string>Default@2x.png</string>
+		<string>Default.png</string>
+		<string>Default-Portrait~ipad.png</string>
+		<string>Default-Portrait@2x~ipad.png</string>
+		<string>Default-Landscape~ipad.png</string>
+		<string>Default-Landscape@2x~ipad.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -23,6 +33,16 @@
 				<string>Icon-57.png</string>
 				<string>Icon-114.png</string>
 				<string>Icon-72.png</string>
+				<string>iPad-Icon-144.png</string>
+				<string>Default.png</string>
+				<string>Default.png</string>
+				<string>Default.png</string>
+				<string>Default@2x.png</string>
+				<string>Default.png</string>
+				<string>Default-Portrait~ipad.png</string>
+				<string>Default-Portrait@2x~ipad.png</string>
+				<string>Default-Landscape~ipad.png</string>
+				<string>Default-Landscape@2x~ipad.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<false/>
@@ -41,7 +61,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.1</string>
+	<string>1.4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

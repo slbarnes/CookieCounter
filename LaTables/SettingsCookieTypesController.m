@@ -106,7 +106,7 @@
     }
     //NSLog(@"cellforRowAtIndexPath %d %d %@",indexPath.row, [globalSettings.cookieTypes count], self.editing ? @"YES" : @"NO");
     if ( (self.editing == YES) && (indexPath.row == [globalSettings.cookieTypes count] ) ) {
-        cell.textLabel.text = @"ADD";
+        cell.textLabel.text = @"Add New Cookie";
         NSLog(@"Adding");
     }
     else  {

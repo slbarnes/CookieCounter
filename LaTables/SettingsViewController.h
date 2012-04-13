@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
 
 @class SettingsViewController;
 @protocol SettingsViewControllerDelegate <NSObject>
@@ -16,7 +17,9 @@
 
 @end
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : UITableViewController<MFMailComposeViewControllerDelegate> {
+    
+}
 
 @property (nonatomic, weak) id <SettingsViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextField *priceTextField;

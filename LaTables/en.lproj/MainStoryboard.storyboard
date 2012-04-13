@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lko-iM-rUN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Lko-iM-rUN">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Main Table View Controller - Cookie Sales-->
         <scene sceneID="rq6-Pm-IN7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PaL-Ie-4QZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="ac7-ea-5Yq" customClass="MainTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mainTableView" id="ac7-ea-5Yq" customClass="MainTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tJg-7d-G7P">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,13 +32,13 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem systemItem="action" id="0FG-yi-0IW">
+                        <barButtonItem style="plain" systemItem="action" id="0FG-yi-0IW">
                             <connections>
                                 <action selector="sendEmailFromMain" destination="ac7-ea-5Yq" id="agF-QF-LPK"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="NXe-1t-diF"/>
-                        <barButtonItem title="Settings" id="48w-uo-8qX">
+                        <barButtonItem image="1334001990_Gear.png" style="plain" id="48w-uo-8qX">
                             <connections>
                                 <segue destination="TDZ-H4-mUC" kind="modal" identifier="EditSettings" id="bEa-qn-GH0"/>
                             </connections>
@@ -55,6 +57,7 @@
             </objects>
             <point key="canvasLocation" x="607" y="108"/>
         </scene>
+        <!--Cookie Count View Controller - Cookie Count-->
         <scene sceneID="n7U-HO-asb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YiI-sU-QYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,7 +108,7 @@
                                 <rect key="frame" x="0.0" y="107" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="59"/>
+                                    <rect key="frame" x="10" y="0.0" width="300" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="Total" lineBreakMode="tailTruncation" minimumFontSize="10" id="qSf-mi-4Si">
@@ -147,6 +150,7 @@
             </objects>
             <point key="canvasLocation" x="2399" y="-584"/>
         </scene>
+        <!--Cookie List Notes View Controller-->
         <scene sceneID="CUa-Kh-yfU">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbK-5E-8EC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,6 +198,7 @@
             </objects>
             <point key="canvasLocation" x="2866" y="-584"/>
         </scene>
+        <!--Add Cookie Type View Controller - Add-->
         <scene sceneID="CwO-a2-J4f">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eP0-6T-4JL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,6 +255,7 @@
             </objects>
             <point key="canvasLocation" x="2519" y="87"/>
         </scene>
+        <!--Cookie List Details View Controller - Add-->
         <scene sceneID="TzW-me-hmo">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rsw-Oz-zRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,10 +312,11 @@
             </objects>
             <point key="canvasLocation" x="1524" y="110"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="a4a-eP-iXj">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIY-nv-AoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController toolbarHidden="NO" id="Lko-iM-rUN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainnavcontroller" toolbarHidden="NO" id="Lko-iM-rUN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3GB-lM-FXO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -327,6 +334,7 @@
             </objects>
             <point key="canvasLocation" x="81" y="108"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="dzz-hb-8T5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggo-ae-9AG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,6 +352,7 @@
             </objects>
             <point key="canvasLocation" x="998" y="110"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="iK6-P8-MPj">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lZG-Bo-5Id" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,6 +368,7 @@
             </objects>
             <point key="canvasLocation" x="485" y="-575"/>
         </scene>
+        <!--Settings View Controller - Settings-->
         <scene sceneID="ibt-i1-ZDG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZM7-Fq-RV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -423,6 +433,29 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="G3I-Fw-BbA">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Pyd-wI-8CY" style="IBUITableViewCellStyleDefault" id="wF8-vb-ZAN">
+                                        <rect key="frame" x="0.0" y="178" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Contact Sow Software" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Pyd-wI-8CY">
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="lk7-NQ-LYl" id="Ci9-Kn-ia0"/>
@@ -448,6 +481,7 @@
             </objects>
             <point key="canvasLocation" x="974" y="-575"/>
         </scene>
+        <!--Settings Cookie Types Controller - Cookie Types-->
         <scene sceneID="AZD-aF-UjP">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UzF-Y9-2pM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -457,7 +491,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CookieTypeCell" textLabel="2cO-Z3-lCe" style="IBUITableViewCellStyleDefault" id="NEq-Y9-vc8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CookieTypeCell" textLabel="2cO-Z3-lCe" style="IBUITableViewCellStyleDefault" id="NEq-Y9-vc8">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -486,10 +520,11 @@
             </objects>
             <point key="canvasLocation" x="1435" y="-575"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="0nj-ID-IZg">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7q-xR-71h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="P3J-4k-pUS" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="cookiecountnavcont" id="P3J-4k-pUS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="MDf-Hu-wPz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -507,10 +542,11 @@
             </objects>
             <point key="canvasLocation" x="1903" y="-584"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="NGe-Sb-ldk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vCd-qD-Xp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="brS-Vg-p3l" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AddNavController" id="brS-Vg-p3l" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nHZ-7e-Dpt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -525,6 +561,9 @@
             <point key="canvasLocation" x="2047" y="87"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1334001990_Gear.png" width="32" height="32"/>
+    </resources>
     <classes>
         <class className="AddCookieTypeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCookieTypeViewController.h"/>
