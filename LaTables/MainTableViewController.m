@@ -46,6 +46,20 @@
     //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    AppData *sharedAppData = [AppData sharedData];
+    
+    if ([sharedAppData getLoadedDataFromExampleList]) {
+        
+    
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Helpful Tip"
+                                                      message:@"Be sure to set the price and cookie types for your area by clicking the gear on the bottom right."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [message show];
+    }
+
 }
 
 - (void)viewDidUnload
@@ -57,7 +71,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //NSLog(@"Here in MainTableViewController:viewWillAppear");
+    NSLog(@"Here in MainTableViewController:viewWillAppear");
     [super viewWillAppear:animated];
 }
 
@@ -174,7 +188,7 @@
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
 }
 
 
@@ -266,7 +280,7 @@
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
 	controller.mailComposeDelegate = self;
     
-	[controller setSubject:[NSString stringWithString:@"All Cookie Lists Detail Report\n\n"]];
+	[controller setSubject:@"All Cookie Lists Detail Report\n\n"];
 	[controller setMessageBody:[sharedAppData createAllListSummary] isHTML:NO];
 	[self presentModalViewController:controller animated:YES];
      

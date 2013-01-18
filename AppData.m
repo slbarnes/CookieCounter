@@ -27,6 +27,13 @@ static AppData *sharedMyAppData = nil;
     return sharedMyAppData;
 }
 
+- (void)setLoadedDataFromExampleList:(BOOL)yesorno  {
+    loadedDataFromExampleList = yesorno;
+}
+- (BOOL)getLoadedDataFromExampleList  {
+    return loadedDataFromExampleList;
+}
+
 - (id)init  {
     if (self = [super init]) {
         // Do something here for initialization
@@ -60,10 +67,11 @@ static AppData *sharedMyAppData = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"allthedata.plist"];
-    
+    loadedDataFromExampleList = NO;
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
         NSLog(@"Using ExampleData");
         path = [[NSBundle mainBundle] pathForResource:@"ExampleData" ofType:@"plist"];
+        loadedDataFromExampleList = YES;
     }
     
     NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:path];

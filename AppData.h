@@ -13,6 +13,7 @@
 @interface AppData : NSObject  {
     NSMutableDictionary *allTheData;
     NSMutableArray *cookieLists;
+    BOOL loadedDataFromExampleList;
 }
 
 @property (nonatomic, retain) NSMutableDictionary *allTheData;
@@ -20,6 +21,10 @@
 
 
 + (id)sharedData;
+
+- (void)setLoadedDataFromExampleList:(BOOL)yesorno;
+
+- (BOOL)getLoadedDataFromExampleList;
 
 - (void)writeDataToFile;
 

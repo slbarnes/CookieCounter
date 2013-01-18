@@ -123,8 +123,21 @@
         controller.mailComposeDelegate = self;
         
         [controller setToRecipients:[[NSArray alloc] initWithObjects:@"sowsoftware@gmail.com", nil]];
-        [controller setSubject:[NSString stringWithString:@"CookieCount Feedback"]];
-        [controller setMessageBody:@"Thank you for your feedback.\n\n" isHTML:NO];
+        [controller setSubject:@"CookieCount Feedback"];
+        NSString *messageBody = @"Thank you for your feedback.\n\n--- System Information ---\n --- Please do not delete ---\nName: CookieCount";
+        messageBody = [messageBody stringByAppendingString:@"\nVersion: "];
+        messageBody = [messageBody stringByAppendingString:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+        messageBody = [messageBody stringByAppendingString:@"\nDevice Model: "];
+        messageBody = [messageBody stringByAppendingString:[[UIDevice currentDevice] model]];
+        messageBody = [messageBody stringByAppendingString:@"\nDevice System: "];
+        messageBody = [messageBody stringByAppendingString:[[UIDevice currentDevice] systemName]];
+        messageBody = [messageBody stringByAppendingString:@"\nDevice OS Version: "];
+        messageBody = [messageBody stringByAppendingString:[[UIDevice currentDevice] systemVersion]];
+        messageBody = [messageBody stringByAppendingString:@"\n--- End System Information ---\n\n"];
+
+        [controller setMessageBody:messageBody isHTML:NO];
+
+        //[controller setMessageBody:@"Thank you for your feedback.\n\n" isHTML:NO];
         [self presentModalViewController:controller animated:YES];
 
         

@@ -4,6 +4,27 @@
 <dict>
 	<key>Olivia&apos;s Order (Ex)</key>
 	<dict>
+		<key>Thank U Berry Munch</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
+		<key>Dulce de Leche</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
+		<key>Troops For Troops</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>1</string>
+		</dict>
 		<key>SowSoftwareProperties</key>
 		<dict>
 			<key>Order</key>
@@ -56,6 +77,27 @@
 	</dict>
 	<key>Wendy&apos;s Sales Sunday (Ex)</key>
 	<dict>
+		<key>Troops For Troops</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
+		<key>Thank U Berry Munch</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
+		<key>Dulce de Leche</key>
+		<dict>
+			<key>Price</key>
+			<string>3.5</string>
+			<key>Quantity</key>
+			<string>2</string>
+		</dict>
 		<key>SowSoftwareProperties</key>
 		<dict>
 			<key>Order</key>
