@@ -23,7 +23,7 @@
     NSLog(@"Here in AppDelegate:didFinishLaunchingWithOptions");
     AppData *sharedAppData = [AppData sharedData];
     [sharedAppData readDataFromFile];
-    
+    //[window setRootViewController:]
     
     return YES;
 }
