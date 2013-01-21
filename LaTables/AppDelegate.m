@@ -24,6 +24,7 @@
     AppData *sharedAppData = [AppData sharedData];
     [sharedAppData readDataFromFile];
     
+    
     return YES;
 }
 							

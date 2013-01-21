@@ -46,19 +46,25 @@
     //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
+    // This should be here instead of viewWillAppear, but can't get rid of the warning
+    // The warning is only is iOS 5.  iOS 6 is fine
     
     AppData *sharedAppData = [AppData sharedData];
     
     if ([sharedAppData getLoadedDataFromExampleList]) {
         
-    
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Helpful Tip"
-                                                      message:@"Be sure to set the price and cookie types for your area by clicking the gear on the bottom right."
-                                                     delegate:nil
-                                            cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    [message show];
+        
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Helpful Tip"
+                                                          message:@"Be sure to set the price and cookie types for your area by clicking the gear on the bottom right."
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+        [message show];
     }
+     
+     
+
 
 }
 
@@ -73,11 +79,31 @@
 {
     NSLog(@"Here in MainTableViewController:viewWillAppear");
     [super viewWillAppear:animated];
+    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+  /*
+     AppData *sharedAppData = [AppData sharedData];
+     
+     if ([sharedAppData getLoadedDataFromExampleList]) {
+     
+     
+     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Helpful Tip"
+     message:@"Be sure to set the price and cookie types for your area by clicking the gear on the bottom right."
+     delegate:nil
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+     [message show];
+     }
+     */
+     
+
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -297,6 +323,11 @@
     if (price != nil)  {
         GlobalSettings *globalSettings = [GlobalSettings sharedManager];
         globalSettings.cookiePrice = price;
+        
+        AppData *sharedAppData = [AppData sharedData];
+        // Since the price changed, write out the data
+        [sharedAppData writeDataToFile];
+
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

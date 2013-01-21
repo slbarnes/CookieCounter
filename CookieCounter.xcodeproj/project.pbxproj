@@ -360,6 +360,7 @@
 				PRODUCT_NAME = CookieCount;
 				PROVISIONING_PROFILE = "3686B605-A9C1-4FD6-832A-B61A6A3E1079";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3686B605-A9C1-4FD6-832A-B61A6A3E1079";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -390,7 +391,7 @@
 		D9DD4C04155ADC3D0009B702 /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shelley Barnes";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -400,6 +401,8 @@
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = CookieCount;
+				PROVISIONING_PROFILE = "2A5CB038-F115-4B8E-AF8C-A0689A4819F0";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -467,6 +470,7 @@
 				PRODUCT_NAME = CookieCount;
 				PROVISIONING_PROFILE = "2C047B08-AE34-4941-9183-B40629E25FE0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C047B08-AE34-4941-9183-B40629E25FE0";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -485,6 +489,7 @@
 				INFOPLIST_FILE = "LaTables/CookieCounter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = CookieCount;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
