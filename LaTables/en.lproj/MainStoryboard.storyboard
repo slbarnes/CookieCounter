@@ -82,6 +82,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" text="Quantity" lineBreakMode="tailTruncation" minimumFontSize="10" id="WVa-vz-vwH">
                                             <rect key="frame" x="20" y="31" width="198" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <accessibility key="accessibilityConfiguration" label="cookieQuantity"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,6 +97,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <accessibility key="accessibilityConfiguration" label="cookiecountcell">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="cookieNameLabel" destination="inm-jf-bkw" id="Ne2-MS-r93"/>
                                     <outlet property="quantityLabel" destination="WVa-vz-vwH" id="NeA-ag-S3f"/>

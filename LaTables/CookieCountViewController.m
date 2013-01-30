@@ -63,6 +63,9 @@
     
     AppData *sharedAppData = [AppData sharedData];
     self.navigationItem.title = [sharedAppData getListName:selectIndexPath.row];
+    
+    //self.accessibilityLabel = @"cookiecounttable";
+    
     [super viewDidLoad];
     
 

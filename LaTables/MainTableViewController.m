@@ -191,22 +191,50 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSLog(@"MainTableViewController:moveRowAtIndexPath");
+    NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath: %i and toIndexPath: %i",fromIndexPath.row, toIndexPath.row);
     
-    // Update the cookieListName.sowSoftwareListOrder
     AppData *sharedAppData = [AppData sharedData];
-    //CookieListName *fromCookieListName = [sharedAppData.cookieLists objectAtIndex:fromIndexPath.row];
-    //fromCookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",toIndexPath.row];
-    [sharedAppData setSowSoftwareListOrder:fromIndexPath.row order:toIndexPath.row];   
-    //CookieListName *toCookieListName = [sharedAppData.cookieLists objectAtIndex:toIndexPath.row];
-    //toCookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",fromIndexPath.row];
-    [sharedAppData setSowSoftwareListOrder:toIndexPath.row order:fromIndexPath.row];
 
+    if ((fromIndexPath.row == (toIndexPath.row + 1)) || (fromIndexPath.row == (toIndexPath.row - 1))) {
+        //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath and toIndexPath differ by 1");
+        [sharedAppData setSowSoftwareListOrder:fromIndexPath.row order:toIndexPath.row];
+        [sharedAppData setSowSoftwareListOrder:toIndexPath.row order:fromIndexPath.row];
+
+    }
+    else if (fromIndexPath.row > toIndexPath.row) {
+        //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath is greater than toIndexPath (+1)");
+        for (NSInteger i = toIndexPath.row; i < fromIndexPath.row; i++) {
+            NSLog(@"[DEBUG] i: %i",i);
+            // Update data
+            [sharedAppData setSowSoftwareListOrder:i order:i + 1];
+            
+        }
+        [sharedAppData setSowSoftwareListOrder:fromIndexPath.row order:toIndexPath.row];
+
+    }
+    else if (fromIndexPath.row < toIndexPath.row)  {
+        //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath is less than toIndexPath (-1)");
+        for (NSInteger i = toIndexPath.row; i > fromIndexPath.row; i--) {
+            // Update data
+            NSLog(@"[DEBUG] i: %i",i);
+            [sharedAppData setSowSoftwareListOrder:i order:i - 1];
+            
+        }
+        [sharedAppData setSowSoftwareListOrder:fromIndexPath.row order:toIndexPath.row];
+
+    }
+    else  {
+        //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath and toIndexPath are equal.  Doing nothing.");
+    }
     
-    // Update the array
-    [sharedAppData.cookieLists exchangeObjectAtIndex:fromIndexPath.row withObjectAtIndex:toIndexPath.row];
+    CookieListName *cookieListName = [sharedAppData.cookieLists objectAtIndex:fromIndexPath.row];
+    [sharedAppData.cookieLists removeObjectAtIndex:fromIndexPath.row];
+    [sharedAppData.cookieLists insertObject:cookieListName atIndex:toIndexPath.row];
+    
     // Write the data
     [sharedAppData writeDataToFile];
+    // Reload data from file to reset array
+    //[sharedAppData readDataFromFile];
 }
 
 
@@ -214,7 +242,7 @@
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return NO;
+    return YES;
 }
 
 

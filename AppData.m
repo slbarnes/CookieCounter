@@ -104,7 +104,7 @@ static AppData *sharedMyAppData = nil;
                 cookieListName.sowSoftwareListOrder = [[dictOfGSCookieObjects objectForKey:keyGSCookie]objectForKey:@"Order"];
                 //NSLog(@"Found list order tag: %@", cookieListName.sowSoftwareListOrder);
                 cookieListName.sowSoftwareListNotes = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"ListNotes"];
-                NSLog(@"Found list notes tag: %@", cookieListName.sowSoftwareListNotes);
+                //NSLog(@"Found list notes tag: %@", cookieListName.sowSoftwareListNotes);
                 continue;
             }
             GSCookie *newGSCookie = [[GSCookie alloc] init];
@@ -131,8 +131,10 @@ static AppData *sharedMyAppData = nil;
     
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
+    NSLog(@"[DEBUG] before is cookeLists empty: %i",sharedAppData.cookieLists.count);
     sharedAppData.cookieLists = [NSMutableArray arrayWithArray:[unsortedCookieLists sortedArrayUsingDescriptors:sortDescriptors]];
-    
+    NSLog(@"[DEBUG] after is cookeLists empty: %i",sharedAppData.cookieLists.count);
+
     //NSLog(@"readData:mainController.cookieLists count: %d",[mainController.cookieLists count]);
     //NSLog (@"unsortedCookieList count: %d",[unsortedCookieLists count]);
 
