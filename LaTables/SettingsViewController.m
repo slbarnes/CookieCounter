@@ -44,13 +44,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     self.priceTextField.text = globalSettings.cookiePrice;
-    //[self.priceTextField resignFirstResponder];
     [self.priceTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    //[self.priceTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEnd];
 }
 
 - (IBAction)textFieldFinished:(id)sender  {
-    //NSLog(@"textFieldFinished");
+    
+    NSLog(@"[DEBUG] SettingsViewController:textFieldFinished");
     NSString *regex = @"^\\d+\\.\\d\\d";
     NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     BOOL ret = [valtest evaluateWithObject:self.priceTextField.text];
@@ -88,7 +87,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //NSLog(@"viewWillDisappear");
+    NSLog(@"viewWillDisappear");
     [self.priceTextField resignFirstResponder];
     [super viewWillDisappear:animated];
 }
@@ -117,8 +116,7 @@
         [self.priceTextField becomeFirstResponder];
     }
     if (indexPath.section == 2)  {
-        //UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"About" message:@"Please send and feedback to the developer at sowsoftware@gmail.com." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        //[message show];
+        
         MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
         
@@ -137,7 +135,6 @@
 
         [controller setMessageBody:messageBody isHTML:NO];
 
-        //[controller setMessageBody:@"Thank you for your feedback.\n\n" isHTML:NO];
         [self presentModalViewController:controller animated:YES];
 
         
@@ -151,7 +148,7 @@
 
 
 - (IBAction)done:(id)sender  {
-    
+    NSLog(@"Here in done");
     NSString *regex = @"^\\d+\\.\\d\\d";
     NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     BOOL ret = [valtest evaluateWithObject:self.priceTextField.text];

@@ -34,6 +34,10 @@
 
 - (NSString *)getListNotes:(NSUInteger)listIndex;
 
+- (void)setDonation:(NSUInteger)listIndex :(NSString *)donation;
+
+- (NSString *)getDonation:(NSUInteger)listIndex;
+
 - (NSString *)getListName:(NSUInteger)listIndex;
 
 - (void) removeCookieList:(NSUInteger)listIndex;

@@ -60,7 +60,7 @@ static AppData *sharedMyAppData = nil;
     //          Create a GSCookie object (key is name)
     //          Add to array
     //      Add array for list name key
-    NSLog(@"Here reading data");
+    NSLog(@"[DEBUG] AppData:readDataFromFile Reading Data");
     GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     AppData *sharedAppData = [AppData sharedData];
     
@@ -69,7 +69,7 @@ static AppData *sharedMyAppData = nil;
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"allthedata.plist"];
     loadedDataFromExampleList = NO;
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSLog(@"Using ExampleData");
+        NSLog(@"[DEBUG] AppData:readDataFromFile Using ExampleData");
         path = [[NSBundle mainBundle] pathForResource:@"ExampleData" ofType:@"plist"];
         loadedDataFromExampleList = YES;
     }
@@ -102,9 +102,8 @@ static AppData *sharedMyAppData = nil;
         for (NSString *keyGSCookie in keysOfDictOfGSCookieObjects)  {
             if ([keyGSCookie isEqualToString:@"SowSoftwareProperties"]) {
                 cookieListName.sowSoftwareListOrder = [[dictOfGSCookieObjects objectForKey:keyGSCookie]objectForKey:@"Order"];
-                //NSLog(@"Found list order tag: %@", cookieListName.sowSoftwareListOrder);
                 cookieListName.sowSoftwareListNotes = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"ListNotes"];
-                //NSLog(@"Found list notes tag: %@", cookieListName.sowSoftwareListNotes);
+                cookieListName.donation = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Donation"];
                 continue;
             }
             GSCookie *newGSCookie = [[GSCookie alloc] init];
@@ -142,7 +141,7 @@ static AppData *sharedMyAppData = nil;
 
 - (void)writeDataToFile  {
     //Should write data from allTheData to a file
-    NSLog(@"Here writing data");
+    NSLog(@"[DEBUG] AppData:writeDataToFile Here writing data");
     GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     AppData *sharedAppData = [AppData sharedData];
     
@@ -196,6 +195,7 @@ static AppData *sharedMyAppData = nil;
                 NSMutableDictionary *sowSoftwareListOrder = [[NSMutableDictionary alloc] init];
                 [sowSoftwareListOrder setObject:cookieListName.sowSoftwareListOrder forKey:@"Order"];
                 [sowSoftwareListOrder setObject:cookieListName.sowSoftwareListNotes forKey:@"ListNotes"];
+                [sowSoftwareListOrder setObject:cookieListName.donation forKey:@"Donation"];
                 [dictionaryOfGSCookies setObject:sowSoftwareListOrder  forKey:@"SowSoftwareProperties"];
                 //NSLog(@"cookieListName: %@  key: %@",cookieListName.name,key);
                 
@@ -219,6 +219,16 @@ static AppData *sharedMyAppData = nil;
 
 - (NSString *)getListNotes:(NSUInteger)listIndex  {
     return ([[self.cookieLists objectAtIndex:listIndex] sowSoftwareListNotes] );
+}
+
+- (void)setDonation:(NSUInteger)listIndex :(NSString *)donation  {
+    CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
+    c.donation = donation;
+    // Should need to replace the object in the array with c....
+}
+
+- (NSString *)getDonation:(NSUInteger)listIndex  {
+    return ([[self.cookieLists objectAtIndex:listIndex] donation] );
 }
 
 - (NSString *)getListName:(NSUInteger)listIndex  {
@@ -272,7 +282,8 @@ static AppData *sharedMyAppData = nil;
     // Need to determine the value for sowsoftwareListOrder
     cookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",[self.cookieLists count]];
     cookieListName.sowSoftwareListNotes = @"";
-    NSLog(@"cookieListName: %@   sowsoftwareListOrder: %@", cookieListName.name, cookieListName.sowSoftwareListOrder);
+    cookieListName.donation = @"";
+    NSLog(@"[DEBUG] cookieListName: %@   sowsoftwareListOrder: %@", cookieListName.name, cookieListName.sowSoftwareListOrder);
     [self.cookieLists addObject:cookieListName];
     [self.allTheData setObject:initialCookieInfo forKey:cookieListName.name];
 
@@ -320,6 +331,7 @@ static AppData *sharedMyAppData = nil;
         [messageBody appendFormat:@"\nTotal Cookies: %@ \n", totalNumberOfCookies];
         [messageBody appendFormat:@"Total Monies: $%.2f \n\n", [totalMonies floatValue]];
         
+        [messageBody appendFormat:@"\nDonation:\n%@\n",cookieListName.donation];
 
         [messageBody appendFormat:@"\nNotes:\n%@\n",cookieListName.sowSoftwareListNotes];
 
@@ -373,6 +385,8 @@ static AppData *sharedMyAppData = nil;
         [messageBody appendFormat:@"%@: %@ @ $%.2f = $%.2f\n",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
     }
     
+    [messageBody appendFormat:@"\nDonation:\n$%@\n",cookieListName.donation];
+
     [messageBody appendFormat:@"\nNotes:\n%@\n",cookieListName.sowSoftwareListNotes];
 
     return (messageBody);

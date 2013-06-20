@@ -12,10 +12,14 @@
 @interface CookieCountViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate, CookieListNotesViewControllerDelegate>  {
     NSDecimalNumber *totalNumberOfCookies;
     NSDecimalNumber *totalMonies;
+    NSDecimalNumber *donationAmount;
 }
 
 @property(nonatomic, retain)NSIndexPath *selectIndexPath;
 
+
 - (IBAction)stepperChangeValue:(UIStepper *)sender;
 - (IBAction)sendEmailFromCookieCount;
+- (IBAction)textFieldFinished:(id)sender;
+
 @end

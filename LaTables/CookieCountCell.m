@@ -12,4 +12,5 @@
 @synthesize cookieNameLabel;
 @synthesize quantityLabel;
 @synthesize stepper;
+@synthesize donationAmount;
 @end

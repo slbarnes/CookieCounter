@@ -347,7 +347,7 @@
 
 #pragma mark - SettingsViewControllerDelegate
 - (void) settingsViewController:(SettingsViewController *)controller didChangePrice:(NSString *)price  {
-    
+    NSLog(@"[DEBUG] MainTableViewController -settingsViewController:didChangePrice");
     if (price != nil)  {
         GlobalSettings *globalSettings = [GlobalSettings sharedManager];
         globalSettings.cookiePrice = price;

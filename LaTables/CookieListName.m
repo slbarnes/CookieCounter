@@ -12,5 +12,6 @@
 @synthesize name;
 @synthesize sowSoftwareListOrder;
 @synthesize sowSoftwareListNotes;
+@synthesize donation;
 
 @end

@@ -13,5 +13,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *cookieNameLabel;
 @property (nonatomic, strong) IBOutlet UILabel *quantityLabel;
 @property (nonatomic, strong) IBOutlet UIStepper *stepper;
+@property (nonatomic, strong) IBOutlet UITextField *donationAmount;
 
 @end

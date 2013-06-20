@@ -11,7 +11,6 @@
 @class SettingsViewController;
 @protocol SettingsViewControllerDelegate <NSObject>
 
-//- (void)settingsViewControllerDidSave:(SettingsViewController *)controller;
 - (void)settingsViewController:(SettingsViewController *)controller didChangePrice:(NSString   *)price;
 - (void)settingsViewControllerDidCancel: (SettingsViewController *)controller;
 

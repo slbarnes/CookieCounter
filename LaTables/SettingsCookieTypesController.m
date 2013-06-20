@@ -169,7 +169,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    NSLog(@"DidselectRowAtIndexPath");
+    //NSLog(@"[DEBUG] DidselectRowAtIndexPath");
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated

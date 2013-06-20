@@ -31,6 +31,8 @@
 			<string>0</string>
 			<key>ListNotes</key>
 			<string>You can write notes about this list here.</string>
+			<key>Donation</key>
+			<string>5.00</string>
 		</dict>
 		<key>Do-si-dos</key>
 		<dict>
@@ -104,6 +106,8 @@
 			<string>1</string>
 			<key>ListNotes</key>
 			<string>Enter notes about the list here.</string>
+			<key>Donation</key>
+			<string>4.00</string>
 		</dict>
 		<key>Do-si-dos</key>
 		<dict>

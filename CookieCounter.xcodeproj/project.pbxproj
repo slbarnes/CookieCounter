@@ -9,6 +9,46 @@
 /* Begin PBXBuildFile section */
 		D90CCE4B1476C498006FC65B /* CookieCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90CCE4A1476C498006FC65B /* CookieCountCell.m */; };
 		D924AC6815372D5B001F058C /* 1334001990_Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D924AC6715372D5B001F058C /* 1334001990_Gear.png */; };
+		D94EC05016B3001E007FD7CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E37F3A1475D684001C711F /* main.m */; };
+		D94EC05116B3001E007FD7CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E37F3E1475D684001C711F /* AppDelegate.m */; };
+		D94EC05216B3001E007FD7CA /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E37F551475D775001C711F /* MainTableViewController.m */; };
+		D94EC05316B3001E007FD7CA /* CookieListDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E37F5C1475E2F5001C711F /* CookieListDetailsViewController.m */; };
+		D94EC05416B3001E007FD7CA /* CookieListName.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E37F631475EF97001C711F /* CookieListName.m */; };
+		D94EC05516B3001E007FD7CA /* CookieCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F310BF1476984300689DC7 /* CookieCountViewController.m */; };
+		D94EC05616B3001E007FD7CA /* GSCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F310C314769B1200689DC7 /* GSCookie.m */; };
+		D94EC05716B3001E007FD7CA /* CookieCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D90CCE4A1476C498006FC65B /* CookieCountCell.m */; };
+		D94EC05816B3001E007FD7CA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */; };
+		D94EC05916B3001E007FD7CA /* GlobalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AC1B4F14EEBF0D00B60452 /* GlobalSettings.m */; };
+		D94EC05A16B3001E007FD7CA /* SettingsCookieTypesController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AC1B5214EECD8100B60452 /* SettingsCookieTypesController.m */; };
+		D94EC05B16B3001E007FD7CA /* AddCookieTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A4730014F58163004A2A08 /* AddCookieTypeViewController.m */; };
+		D94EC05C16B3001E007FD7CA /* CookieListNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DB21C14F82D530064412A /* CookieListNotesViewController.m */; };
+		D94EC05D16B3001E007FD7CA /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DB62001507F89C00A6B3D4 /* AppData.m */; };
+		D94EC05F16B3001E007FD7CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F2E1475D684001C711F /* UIKit.framework */; };
+		D94EC06016B3001E007FD7CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F301475D684001C711F /* Foundation.framework */; };
+		D94EC06116B3001E007FD7CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9E37F321475D684001C711F /* CoreGraphics.framework */; };
+		D94EC06216B3001E007FD7CA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D0956F14853081006194B5 /* MessageUI.framework */; };
+		D94EC06416B3001E007FD7CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9E37F371475D684001C711F /* InfoPlist.strings */; };
+		D94EC06516B3001E007FD7CA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9E37F401475D684001C711F /* MainStoryboard.storyboard */; };
+		D94EC06616B3001E007FD7CA /* ExampleData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9956895147BF5B200588439 /* ExampleData.plist */; };
+		D94EC06716B3001E007FD7CA /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95188150F99920048D80E /* Icon-57.png */; };
+		D94EC06816B3001E007FD7CA /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518B150F999E0048D80E /* Icon-114.png */; };
+		D94EC06916B3001E007FD7CA /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95191150F99D60048D80E /* Icon-72.png */; };
+		D94EC06A16B3001E007FD7CA /* 1334001990_Gear.png in Resources */ = {isa = PBXBuildFile; fileRef = D924AC6715372D5B001F058C /* 1334001990_Gear.png */; };
+		D94EC06B16B3001E007FD7CA /* iPad-Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D97A596B1538610A00F4C144 /* iPad-Icon-144.png */; };
+		D94EC06C16B3001E007FD7CA /* IMG_0424.png in Resources */ = {isa = PBXBuildFile; fileRef = D97DC70D15387F87005A0C5D /* IMG_0424.png */; };
+		D94EC06D16B3001E007FD7CA /* LaunchScreen_320X480.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C43153889B70070D8BB /* LaunchScreen_320X480.png */; };
+		D94EC06E16B3001E007FD7CA /* iPad_LaunchImage_768X1004.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4715388B470070D8BB /* iPad_LaunchImage_768X1004.png */; };
+		D94EC06F16B3001E007FD7CA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4915388B600070D8BB /* Default-Portrait~ipad.png */; };
+		D94EC07016B3001E007FD7CA /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C4D15388BEF0070D8BB /* Default-Portrait@2x~ipad.png */; };
+		D94EC07116B3001E007FD7CA /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C5115388EE20070D8BB /* Default-Landscape~ipad.png */; };
+		D94EC07216B3001E007FD7CA /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C5815388FCC0070D8BB /* Default-Landscape@2x~ipad.png */; };
+		D94EC07316B3001E007FD7CA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C45153889C10070D8BB /* Default.png */; };
+		D94EC07416B3001E007FD7CA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9E52F4C15388371001B2714 /* Default@2x.png */; };
+		D94EC07516B3001E007FD7CA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D3068A169F22C5009C30A6 /* Default-568h@2x.png */; };
+		D94EC08016B300DB007FD7CA /* libMonkeyTalk-1.0.30.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D94EC07F16B300DB007FD7CA /* libMonkeyTalk-1.0.30.a */; };
+		D94EC08216B30138007FD7CA /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D94EC08116B30138007FD7CA /* libsqlite3.dylib */; };
+		D94EC08416B30144007FD7CA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94EC08316B30144007FD7CA /* CFNetwork.framework */; };
+		D94EC08616B30156007FD7CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94EC08516B30156007FD7CA /* QuartzCore.framework */; };
 		D97A596C1538610A00F4C144 /* iPad-Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D97A596B1538610A00F4C144 /* iPad-Icon-144.png */; };
 		D97DC70E15387F87005A0C5D /* IMG_0424.png in Resources */ = {isa = PBXBuildFile; fileRef = D97DC70D15387F87005A0C5D /* IMG_0424.png */; };
 		D97E6C44153889B70070D8BB /* LaunchScreen_320X480.png in Resources */ = {isa = PBXBuildFile; fileRef = D97E6C43153889B70070D8BB /* LaunchScreen_320X480.png */; };
@@ -49,6 +89,12 @@
 		D90CCE491476C498006FC65B /* CookieCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookieCountCell.h; sourceTree = "<group>"; };
 		D90CCE4A1476C498006FC65B /* CookieCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookieCountCell.m; sourceTree = "<group>"; };
 		D924AC6715372D5B001F058C /* 1334001990_Gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1334001990_Gear.png; sourceTree = "<group>"; };
+		D94EC07B16B3001E007FD7CA /* CookieCounter copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CookieCounter copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D94EC07D16B3001E007FD7CA /* CookieCounter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CookieCounter copy-Info.plist"; path = "/Users/shelley/Projects/GSCookieCounterApp/CookieCounter/CookieCounter copy-Info.plist"; sourceTree = "<absolute>"; };
+		D94EC07F16B300DB007FD7CA /* libMonkeyTalk-1.0.30.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMonkeyTalk-1.0.30.a"; sourceTree = "<group>"; };
+		D94EC08116B30138007FD7CA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		D94EC08316B30144007FD7CA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D94EC08516B30156007FD7CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D97A596B1538610A00F4C144 /* iPad-Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-Icon-144.png"; path = "../iPad-Icon-144.png"; sourceTree = "<group>"; };
 		D97DC70D15387F87005A0C5D /* IMG_0424.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0424.png; sourceTree = "<group>"; };
 		D97E6C43153889B70070D8BB /* LaunchScreen_320X480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen_320X480.png; sourceTree = "<group>"; };
@@ -101,6 +147,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D94EC05E16B3001E007FD7CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94EC08616B30156007FD7CA /* QuartzCore.framework in Frameworks */,
+				D94EC08416B30144007FD7CA /* CFNetwork.framework in Frameworks */,
+				D94EC08216B30138007FD7CA /* libsqlite3.dylib in Frameworks */,
+				D94EC05F16B3001E007FD7CA /* UIKit.framework in Frameworks */,
+				D94EC06016B3001E007FD7CA /* Foundation.framework in Frameworks */,
+				D94EC06116B3001E007FD7CA /* CoreGraphics.framework in Frameworks */,
+				D94EC06216B3001E007FD7CA /* MessageUI.framework in Frameworks */,
+				D94EC08016B300DB007FD7CA /* libMonkeyTalk-1.0.30.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E37F271475D684001C711F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,6 +179,10 @@
 		D9E37F1F1475D684001C711F = {
 			isa = PBXGroup;
 			children = (
+				D94EC08516B30156007FD7CA /* QuartzCore.framework */,
+				D94EC08316B30144007FD7CA /* CFNetwork.framework */,
+				D94EC08116B30138007FD7CA /* libsqlite3.dylib */,
+				D94EC07F16B300DB007FD7CA /* libMonkeyTalk-1.0.30.a */,
 				D9D3068A169F22C5009C30A6 /* Default-568h@2x.png */,
 				D97E6C5815388FCC0070D8BB /* Default-Landscape@2x~ipad.png */,
 				D97E6C5115388EE20070D8BB /* Default-Landscape~ipad.png */,
@@ -128,6 +193,7 @@
 				D9E37F341475D684001C711F /* CookieCounter */,
 				D9E37F2D1475D684001C711F /* Frameworks */,
 				D9E37F2B1475D684001C711F /* Products */,
+				D94EC07D16B3001E007FD7CA /* CookieCounter copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				D9E37F2A1475D684001C711F /* CookieCount.app */,
+				D94EC07B16B3001E007FD7CA /* CookieCounter copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,6 +276,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D94EC04E16B3001E007FD7CA /* CookieCounterMonkey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D94EC07616B3001E007FD7CA /* Build configuration list for PBXNativeTarget "CookieCounterMonkey" */;
+			buildPhases = (
+				D94EC04F16B3001E007FD7CA /* Sources */,
+				D94EC05E16B3001E007FD7CA /* Frameworks */,
+				D94EC06316B3001E007FD7CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CookieCounterMonkey;
+			productName = LaTables;
+			productReference = D94EC07B16B3001E007FD7CA /* CookieCounter copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D9E37F291475D684001C711F /* CookieCounter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9E37F481475D684001C711F /* Build configuration list for PBXNativeTarget "CookieCounter" */;
@@ -232,7 +316,7 @@
 		D9E37F211475D684001C711F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = D9E37F241475D684001C711F /* Build configuration list for PBXProject "CookieCounter" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -247,11 +331,37 @@
 			projectRoot = "";
 			targets = (
 				D9E37F291475D684001C711F /* CookieCounter */,
+				D94EC04E16B3001E007FD7CA /* CookieCounterMonkey */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D94EC06316B3001E007FD7CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94EC06416B3001E007FD7CA /* InfoPlist.strings in Resources */,
+				D94EC06516B3001E007FD7CA /* MainStoryboard.storyboard in Resources */,
+				D94EC06616B3001E007FD7CA /* ExampleData.plist in Resources */,
+				D94EC06716B3001E007FD7CA /* Icon-57.png in Resources */,
+				D94EC06816B3001E007FD7CA /* Icon-114.png in Resources */,
+				D94EC06916B3001E007FD7CA /* Icon-72.png in Resources */,
+				D94EC06A16B3001E007FD7CA /* 1334001990_Gear.png in Resources */,
+				D94EC06B16B3001E007FD7CA /* iPad-Icon-144.png in Resources */,
+				D94EC06C16B3001E007FD7CA /* IMG_0424.png in Resources */,
+				D94EC06D16B3001E007FD7CA /* LaunchScreen_320X480.png in Resources */,
+				D94EC06E16B3001E007FD7CA /* iPad_LaunchImage_768X1004.png in Resources */,
+				D94EC06F16B3001E007FD7CA /* Default-Portrait~ipad.png in Resources */,
+				D94EC07016B3001E007FD7CA /* Default-Portrait@2x~ipad.png in Resources */,
+				D94EC07116B3001E007FD7CA /* Default-Landscape~ipad.png in Resources */,
+				D94EC07216B3001E007FD7CA /* Default-Landscape@2x~ipad.png in Resources */,
+				D94EC07316B3001E007FD7CA /* Default.png in Resources */,
+				D94EC07416B3001E007FD7CA /* Default@2x.png in Resources */,
+				D94EC07516B3001E007FD7CA /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E37F281475D684001C711F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +390,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D94EC04F16B3001E007FD7CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D94EC05016B3001E007FD7CA /* main.m in Sources */,
+				D94EC05116B3001E007FD7CA /* AppDelegate.m in Sources */,
+				D94EC05216B3001E007FD7CA /* MainTableViewController.m in Sources */,
+				D94EC05316B3001E007FD7CA /* CookieListDetailsViewController.m in Sources */,
+				D94EC05416B3001E007FD7CA /* CookieListName.m in Sources */,
+				D94EC05516B3001E007FD7CA /* CookieCountViewController.m in Sources */,
+				D94EC05616B3001E007FD7CA /* GSCookie.m in Sources */,
+				D94EC05716B3001E007FD7CA /* CookieCountCell.m in Sources */,
+				D94EC05816B3001E007FD7CA /* SettingsViewController.m in Sources */,
+				D94EC05916B3001E007FD7CA /* GlobalSettings.m in Sources */,
+				D94EC05A16B3001E007FD7CA /* SettingsCookieTypesController.m in Sources */,
+				D94EC05B16B3001E007FD7CA /* AddCookieTypeViewController.m in Sources */,
+				D94EC05C16B3001E007FD7CA /* CookieListNotesViewController.m in Sources */,
+				D94EC05D16B3001E007FD7CA /* AppData.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9E37F261475D684001C711F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,18 +454,139 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D94EC07716B3001E007FD7CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shelley Barnes (W9ZWGP29W4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shelley Barnes (W9ZWGP29W4)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
+				INFOPLIST_FILE = "CookieCounter copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = "CookieCounter copy";
+				PROVISIONING_PROFILE = "2C047B08-AE34-4941-9183-B40629E25FE0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C047B08-AE34-4941-9183-B40629E25FE0";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D94EC07816B3001E007FD7CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
+				INFOPLIST_FILE = "CookieCounter copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = "CookieCounter copy";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D94EC07916B3001E007FD7CA /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shelley Barnes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
+				INFOPLIST_FILE = "CookieCounter copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = "CookieCounter copy";
+				PROVISIONING_PROFILE = "2A5CB038-F115-4B8E-AF8C-A0689A4819F0";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = AppStore;
+		};
+		D94EC07A16B3001E007FD7CA /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shelley Barnes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shelley Barnes";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LaTables/CookieCounter-Prefix.pch";
+				INFOPLIST_FILE = "CookieCounter copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-lstdc++",
+				);
+				PRODUCT_NAME = "CookieCounter copy";
+				PROVISIONING_PROFILE = "DB1BB594-083D-4D27-895B-5D8EF816A521";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DB1BB594-083D-4D27-895B-5D8EF816A521";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
 		D9C6341B14C3763800145690 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shelley Barnes";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -372,6 +624,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shelley Barnes";
 				COPY_PHASE_STRIP = YES;
@@ -379,6 +635,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -415,6 +672,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -428,6 +689,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -440,12 +702,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -498,6 +765,17 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D94EC07616B3001E007FD7CA /* Build configuration list for PBXNativeTarget "CookieCounterMonkey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D94EC07716B3001E007FD7CA /* Debug */,
+				D94EC07816B3001E007FD7CA /* Release */,
+				D94EC07916B3001E007FD7CA /* AppStore */,
+				D94EC07A16B3001E007FD7CA /* Ad Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D9E37F241475D684001C711F /* Build configuration list for PBXProject "CookieCounter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>CookieCounterMonkey.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>LaTables.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -27,6 +32,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>D94EC04E16B3001E007FD7CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D98C6F921488156000CE65F7</key>
 		<dict>
 			<key>primary</key>

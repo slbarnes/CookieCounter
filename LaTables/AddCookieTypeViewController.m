@@ -97,7 +97,8 @@
 }
 
 - (IBAction)done:(id)sender  {
-        
+    
+    //NSLog(@"[DEBUG] AddCookieTypeViewController:done");
     // Check for only spaces in a name as well as no name entered
     NSString *cookieType = self.cookieTypeToAdd.text;
     NSString *tempString = cookieType;
@@ -110,6 +111,7 @@
         [message show];
         
     }    
+    
     
     //[self.delegate addCookieTypeViewControllerDidSave:self];
     [self.delegate addCookieTypeViewController:self didAddCookieType:cookieType];
