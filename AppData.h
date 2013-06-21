@@ -38,6 +38,8 @@
 
 - (NSString *)getDonation:(NSUInteger)listIndex;
 
+- (void)updateListName:(NSUInteger)listIndex withName:(NSString *)name;
+
 - (NSString *)getListName:(NSUInteger)listIndex;
 
 - (void) removeCookieList:(NSUInteger)listIndex;

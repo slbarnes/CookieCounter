@@ -14,6 +14,8 @@
     
 }
 
+- (void) updateListName:(NSString *)newName atIndex:(int)index;
+
 - (IBAction)sendEmailFromMain;
 
 @end

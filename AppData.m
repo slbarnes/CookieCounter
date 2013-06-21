@@ -231,6 +231,13 @@ static AppData *sharedMyAppData = nil;
     return ([[self.cookieLists objectAtIndex:listIndex] donation] );
 }
 
+- (void)updateListName:(NSUInteger)listIndex withName:(NSString *)name {
+    CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
+    NSLog(@"[DEBUG] AppData:setListName old name: %@  new name: %@ index: %lu",c.name, name, (unsigned long)listIndex);
+    [self replaceKey:c.name withKey:name inMutableDictionary:self.allTheData];
+    c.name = name;
+}
+
 - (NSString *)getListName:(NSUInteger)listIndex  {
     return ([[self.cookieLists objectAtIndex:listIndex] name]);
 }
@@ -404,5 +411,15 @@ static AppData *sharedMyAppData = nil;
     NSMutableArray *allCookies = [self.allTheData objectForKey:cookieListName.name];
     return [allCookies objectAtIndex:cookieIndex];
     
+}
+
+#pragma mark -
+#pragma mark Private methods
+- (void)replaceKey:(NSString *)aKey withKey:(NSString *)aNewKey inMutableDictionary:(NSMutableDictionary *)aDict  {
+    if (![aKey isEqualToString:aNewKey])  {
+        id objectToPreserve = [aDict objectForKey:aKey];
+        [aDict setObject:objectToPreserve forKey:aNewKey];
+        [aDict removeObjectForKey:aKey];
+    }
 }
 @end

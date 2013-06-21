@@ -40,7 +40,7 @@
     
     [super viewDidLoad];
     
-    NSLog(@"Here in MainTableViewController:viewDidLoad");
+    NSLog(@"[DEBUG] MainTableViewController:viewDidLoad");
     
     // Example of how to get the application delegate object
     //AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -77,7 +77,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"Here in MainTableViewController:viewWillAppear");
+    //NSLog(@"Here in MainTableViewController:viewWillAppear");
     [super viewWillAppear:animated];
     
 
@@ -168,7 +168,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        NSLog(@"Here deleting a list");
+        //NSLog(@"Here deleting a list");
         AppData *sharedAppData = [AppData sharedData];
         //CookieListName *cookieListName = [sharedAppData.cookieLists objectAtIndex:indexPath.row];
         //[sharedAppData.allTheData removeObjectForKey:[sharedAppData getListName:indexPath.row]];
@@ -176,7 +176,7 @@
         [sharedAppData removeCookieList:indexPath.row];
         [sharedAppData writeDataToFile];
         //NSLog(@"commitEditingStyle:cookieLists count: %d",[sharedAppData.cookieLists count]);
-        NSLog(@"commitEditingStyle:cookieLists count: %d",[sharedAppData getNumberOfCookieLists]);
+        //NSLog(@"commitEditingStyle:cookieLists count: %d",[sharedAppData getNumberOfCookieLists]);
 
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -191,7 +191,7 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath: %i and toIndexPath: %i",fromIndexPath.row, toIndexPath.row);
+    NSLog(@"[DEBUG] MaintTableViewController:tableView moveRowAtIndexPath: fromIndexPath: %i and toIndexPath: %i",fromIndexPath.row, toIndexPath.row);
     
     AppData *sharedAppData = [AppData sharedData];
 
@@ -204,7 +204,7 @@
     else if (fromIndexPath.row > toIndexPath.row) {
         //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath is greater than toIndexPath (+1)");
         for (NSInteger i = toIndexPath.row; i < fromIndexPath.row; i++) {
-            NSLog(@"[DEBUG] i: %i",i);
+            NSLog(@"[DEBUG] MaintTableViewController:tableView moveRowAtIndexPath: fromIndexPath: i: %i",i);
             // Update data
             [sharedAppData setSowSoftwareListOrder:i order:i + 1];
             
@@ -251,10 +251,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    //NSLog(@"[DEBUG] MaintTableViewController:tableView didSelectRowAtIndexPath: editing: %d", tableView.editing);
+    
     CookieCountViewController *cookieCountViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"cookieCountTable"];
 
-    // Just pass the index path that was selected
+    // Just pass the index path that was selected and the table view so data can be reloaded if there is a name change
     cookieCountViewController.selectIndexPath = indexPath;
+    cookieCountViewController.mainTableView = tableView;
     [self.navigationController pushViewController:cookieCountViewController animated:YES];
      
 }
@@ -363,5 +366,12 @@
 
 - (void) settingsViewControllerDidCancel:(SettingsViewController *)controller  {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) updateListName:(NSString *)newName atIndex:(int)index  {
+    
+    // This method will be called when someone changes the name, need to update the display row.
+    // It is assumed that the global data has already been updated
+    
 }
 @end

@@ -15,7 +15,7 @@
 @implementation CookieCountViewController
 
 @synthesize selectIndexPath;
-
+@synthesize mainTableView;
 - (void)calculateTotals  
 {
     totalMonies = [NSDecimalNumber decimalNumberWithString:@"0"];
@@ -64,7 +64,10 @@
     AppData *sharedAppData = [AppData sharedData];
     self.navigationItem.title = [sharedAppData getListName:selectIndexPath.row];
     
-    //self.accessibilityLabel = @"cookiecounttable";
+    // This will hopefully make the title bar editable on a double tap
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setListTitle)];
+    [tapGestureRecognizer setNumberOfTapsRequired:2];
+    [self.navigationController.navigationBar addGestureRecognizer:tapGestureRecognizer];
     
     [super viewDidLoad];
     
@@ -78,11 +81,54 @@
 
 }
 
+- (void)setListTitle  {
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(70, 25, 200, 30)];
+    //[textField setFont:[UIFont fontWithName:@"Helvetica" size:20]];
+    [textField setFont:[UIFont systemFontOfSize:17.0]];
+    [textField setBorderStyle:UITextBorderStyleBezel];
+    [textField setBackgroundColor:[UIColor whiteColor]];
+    [textField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [textField setReturnKeyType:UIReturnKeyDone];
+    [textField setKeyboardType:UIKeyboardTypeDefault];
+    [textField setAutocapitalizationType:UITextAutocapitalizationTypeWords];
+    [textField setPlaceholder:self.title];
+    [textField setTag:2357];
+    [textField setAutoresizingMask:UIViewAutoresizingNone];
+    [textField setOpaque:NO];
+    [textField addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.navigationController.view addSubview:textField];
+    [textField becomeFirstResponder];
+}
+
+- (void)textFieldDone:(UITextField *)textField  {
+    
+    if (textField.tag == 2357 && ![textField.text isEqualToString:@""]) {
+        
+        self.title = textField.text;
+        
+        // Need to update the main controller view
+        // call tableview releoadData for the MainTableViewController
+        
+        // Save off the data
+        AppData *sharedAppData = [AppData sharedData];
+        [sharedAppData updateListName:self.selectIndexPath.row withName:textField.text];        
+        [sharedAppData writeDataToFile];
+        
+        [self.mainTableView reloadData];
+        
+        
+    }
+    
+    [textField resignFirstResponder];
+    [textField setHidden:YES];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    NSLog(@"[DEBUG] CookieCountViewController:viewDidUnload");
     
 }
 
@@ -101,13 +147,20 @@
     AppData *sharedAppData = [AppData sharedData];
     [sharedAppData writeDataToFile];
     [super viewWillDisappear:animated];
-    NSLog(@"viewWillDisappear");
+    NSLog(@"[DEBUG] CookieCoutViewController:viewWillDisappear");
+    
+    // Need to dismiss the title bar text box that is used to change the list name.
+    // If the user hits the back button before selecting Done.
+    // Don't know if these blind calls are ok or if I need to check if it is even active or displayed
+    [[self.navigationController.view viewWithTag:2357] resignFirstResponder];
+    [[self.navigationController.view viewWithTag:2357] setHidden:YES];
+ 
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    //NSLog(@"viewDidDisappear");
+    NSLog(@"[DEBUG] CookieCountViewController:viewDidDisappear");
 
 }
 

@@ -13,10 +13,11 @@
     NSDecimalNumber *totalNumberOfCookies;
     NSDecimalNumber *totalMonies;
     NSDecimalNumber *donationAmount;
+    //UITextField *textField;
 }
 
 @property(nonatomic, retain)NSIndexPath *selectIndexPath;
-
+@property(nonatomic, retain)UITableView *mainTableView;
 
 - (IBAction)stepperChangeValue:(UIStepper *)sender;
 - (IBAction)sendEmailFromCookieCount;
