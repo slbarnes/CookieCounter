@@ -496,7 +496,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="rmF-ng-Ssi">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="rmF-ng-Ssi">
                                                     <rect key="frame" x="11" y="51" width="275" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
@@ -636,69 +636,6 @@
     <resources>
         <image name="1334001990_Gear.png" width="32" height="32"/>
     </resources>
-    <classes>
-        <class className="AddCookieTypeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCookieTypeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="cookieTypeToAdd" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CookieCountCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieCountCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cookieNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="donationAmount" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="quantityLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
-            </relationships>
-        </class>
-        <class className="CookieCountViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieCountViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="stepperChangeValue:" candidateClass="UIStepper"/>
-                <relationship kind="action" name="textFieldFinished:"/>
-            </relationships>
-        </class>
-        <class className="CookieListDetailsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieListDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CookieListNotesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CookieListNotesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="notesCancel" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="notesDone" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="notesNavigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="notesTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="titleNavigationItem" candidateClass="UINavigationItem"/>
-            </relationships>
-        </class>
-        <class className="MainTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTableViewController.h"/>
-        </class>
-        <class className="SettingsCookieTypesController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsCookieTypesController.h"/>
-        </class>
-        <class className="SettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="segmentedControlChanged:"/>
-                <relationship kind="action" name="textFieldFinished:"/>
-                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -54,7 +54,7 @@
     self.priceTextField.text = globalSettings.cookiePrice;
     [self.priceTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    //NSLog(@"[DEBUG] SettingsViewController:viewDidLoad applySettings : %i",globalSettings.applySettings);
+    NSLog(@"[DEBUG] SettingsViewController:viewDidLoad applySettings : %i",globalSettings.applySettings);
     self.segmentedControl.selectedSegmentIndex = globalSettings.applySettings;
     //self.priceChanged = NO;
     //self.cookieTypesChanged = NO;
