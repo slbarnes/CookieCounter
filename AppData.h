@@ -60,4 +60,9 @@
 
 - (GSCookie *)getGSCookieForList:(NSUInteger)listIndex cookieIndex:(NSUInteger)cookieIndex;
 
+- (void)updateAllWithPrice:(NSString *)price;
+- (void)updateList:(NSString *)listName withPrice:(NSString *)price;
+- (void)updateAllWithCookieTypes;
+- (void)updateCookieTypesForList:(NSString *)listName;
+
 @end

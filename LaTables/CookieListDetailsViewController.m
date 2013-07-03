@@ -8,6 +8,7 @@
 
 #import "CookieListDetailsViewController.h"
 #import "CookieListName.h"
+#import "Constants.h"
 
 @implementation CookieListDetailsViewController
 
@@ -109,8 +110,8 @@
     NSString *trimmedString = [tempString stringByTrimmingCharactersInSet:whitespace];
     if ([trimmedString length] == 0)  {
         cookieListName = nil;
-        NSLog(@"Found only spaces for the list name.  Need to pop up an alert box.");
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Invalid Name" message:@"A list must have a name.  Please enter one." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        //NSLog(@"Found only spaces for the list name.  Need to pop up an alert box.");
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NewListNameSpacesErrorTitle message:NewListNameSpacesErrorMessage delegate:nil cancelButtonTitle:NewListNameSpacesErrorCancelButtonTitle otherButtonTitles:nil];
         [message show];
         
     }

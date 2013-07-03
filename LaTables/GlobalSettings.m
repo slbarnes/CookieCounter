@@ -14,6 +14,7 @@ static GlobalSettings *sharedGlobalSettings = nil;
 
 @synthesize cookiePrice;
 @synthesize cookieTypes;
+@synthesize applySettings;
 
 #pragma mark Singleton Methods
 + (id)sharedManager  {
@@ -28,6 +29,7 @@ static GlobalSettings *sharedGlobalSettings = nil;
     if (self = [super init])  {
         cookiePrice = @"3.50";
         cookieTypes = [NSMutableArray arrayWithObjects:@"Do-si-dos",@"Dulce de Leche", @"Samoas",@"Savannah Smiles",@"Tagalongs",@"Thank U Berry Munch", @"Thin Mints",@"Trefoils", @"Troops For Troops",nil];
+        applySettings = 0; // 0 - All lists 1 - New Lists
     }
     return self;
 }

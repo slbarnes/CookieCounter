@@ -9,8 +9,13 @@
 #import "SettingsCookieTypesController.h"
 #import "GlobalSettings.h"
 #import "AddCookieTypeViewController.h"
+#import "AppData.h"
+#import "SettingsViewController.h"
+
 
 @implementation SettingsCookieTypesController
+
+@synthesize settingsViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -107,7 +112,7 @@
     //NSLog(@"cellforRowAtIndexPath %d %d %@",indexPath.row, [globalSettings.cookieTypes count], self.editing ? @"YES" : @"NO");
     if ( (self.editing == YES) && (indexPath.row == [globalSettings.cookieTypes count] ) ) {
         cell.textLabel.text = @"Add New Cookie";
-        NSLog(@"Adding");
+        //NSLog(@"Adding");
     }
     else  {
         cell.textLabel.text = [globalSettings.cookieTypes objectAtIndex:indexPath.row]; 
@@ -143,8 +148,17 @@
         // Delete the row from the data source
         //NSLog(@"Here to delete a row");
         [globalSettings.cookieTypes removeObjectAtIndex:indexPath.row];
+        // Should probably write data to file here since it has been changed
+        AppData *sharedAppData = [AppData sharedData];
+        [sharedAppData writeDataToFile];
+
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        //SettingsViewController *parent = (SettingsViewController *)self.parentViewController.parentViewController;
+        NSLog(@"Here delete");
+        //parent.cookieTypesChanged = YES;
+        self.settingsViewController.cookieTypesChanged = YES;
+
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         //NSLog(@"Here to add a row");
@@ -188,7 +202,7 @@
 #pragma mark - AddCookieTypeViewController delegate
 
 - (void)addCookieTypeViewControllerDidCancel:(AddCookieTypeViewController *)controller  {
-   // NSLog(@"SettingsCookieTypesController:didCancel");
+   NSLog(@"[DEBUG] SettingsCookieTypesController:didCancel");
     
     // disable editing
     [self setEditing:NO animated:YES];
@@ -199,16 +213,28 @@
 }
 
 - (void)addCookieTypeViewController:(AddCookieTypeViewController *)controller didAddCookieType:(NSString *)cookieType  {
-    //NSLog(@"SettingsCookieTypesController:didAddCookieType");
+    NSLog(@"[DEBUG] SettingsCookieTypesController:didAddCookieType");
     
     // Grab the new cookie name, add it to the table, add it to the global list
     if (cookieType != nil) {
-        //[cookieTypes addObject:cookieType];
         [globalSettings.cookieTypes addObject:cookieType];
+        // Now sort the master cookieTypes
+        //NSArray *sortedKeys = [globalSettings.cookieTypes sortedArrayUsingSelector: @selector(localizedCaseInsensitiveCompare:)];
+        //[globalSettings.cookieTypes sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+        // Should write out the data here
+        AppData *sharedAppData = [AppData sharedData];
+        [sharedAppData writeDataToFile];
 
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[globalSettings.cookieTypes count] - 1 inSection:0];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
+
+        NSLog(@"[DEBUG] SettingsCookieTypesController:didAddCookieType - Setting cookieTypesChanged to YES");
+        self.settingsViewController.cookieTypesChanged = YES;
+
+        
+        
         
     }
     

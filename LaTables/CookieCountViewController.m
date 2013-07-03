@@ -11,11 +11,14 @@
 #import "CookieCountCell.h"
 #import "AppData.h"
 #import "CookieListName.h"
+#import "Constants.h"
 
 @implementation CookieCountViewController
 
 @synthesize selectIndexPath;
 @synthesize mainTableView;
+@synthesize editTitleTextField;
+
 - (void)calculateTotals  
 {
     totalMonies = [NSDecimalNumber decimalNumberWithString:@"0"];
@@ -82,41 +85,68 @@
 }
 
 - (void)setListTitle  {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(70, 25, 200, 30)];
+    //UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(70, 25, 200, 30)];
+    editTitleTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 25, 200, 30)];
+
     //[textField setFont:[UIFont fontWithName:@"Helvetica" size:20]];
-    [textField setFont:[UIFont systemFontOfSize:17.0]];
-    [textField setBorderStyle:UITextBorderStyleBezel];
-    [textField setBackgroundColor:[UIColor whiteColor]];
-    [textField setAutocorrectionType:UITextAutocorrectionTypeNo];
-    [textField setReturnKeyType:UIReturnKeyDone];
-    [textField setKeyboardType:UIKeyboardTypeDefault];
-    [textField setAutocapitalizationType:UITextAutocapitalizationTypeWords];
-    [textField setPlaceholder:self.title];
-    [textField setTag:2357];
-    [textField setAutoresizingMask:UIViewAutoresizingNone];
-    [textField setOpaque:NO];
-    [textField addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.navigationController.view addSubview:textField];
-    [textField becomeFirstResponder];
+    [editTitleTextField setFont:[UIFont systemFontOfSize:17.0]];
+    [editTitleTextField setBorderStyle:UITextBorderStyleBezel];
+    [editTitleTextField setBackgroundColor:[UIColor whiteColor]];
+    [editTitleTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [editTitleTextField setReturnKeyType:UIReturnKeyDone];
+    [editTitleTextField setKeyboardType:UIKeyboardTypeDefault];
+    [editTitleTextField setAutocapitalizationType:UITextAutocapitalizationTypeWords];
+    //[textField setPlaceholder:self.navigationItem.title];
+    [editTitleTextField setText:self.navigationItem.title];
+    [editTitleTextField setClearButtonMode:UITextFieldViewModeAlways];
+    [editTitleTextField setTag:2357];
+    [editTitleTextField setAutoresizingMask:UIViewAutoresizingNone];
+    [editTitleTextField setOpaque:NO];
+    [editTitleTextField addTarget:self action:@selector(textFieldDone:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.navigationController.view addSubview:editTitleTextField];
+    [editTitleTextField becomeFirstResponder];
 }
 
 - (void)textFieldDone:(UITextField *)textField  {
     
-    if (textField.tag == 2357 && ![textField.text isEqualToString:@""]) {
-        
-        self.title = textField.text;
-        
-        // Need to update the main controller view
-        // call tableview releoadData for the MainTableViewController
-        
-        // Save off the data
+    //NSLog(@"[DEBUG] CookieCountViewController:textFieldDone - textField.text: %@  self.navigationItem.title: %@",textField.text,self.navigationItem.title);
+    if (textField.tag == 2357 && ![textField.text isEqualToString:@""] && ![textField.text isEqualToString:self.navigationItem.title]) {
+        //Need to go through the same list verification process as creating a new list
         AppData *sharedAppData = [AppData sharedData];
-        [sharedAppData updateListName:self.selectIndexPath.row withName:textField.text];        
-        [sharedAppData writeDataToFile];
+        // Check for only spaces in a name as well as no name entered
+        NSString *tempString = textField.text;
+        NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+        NSString *trimmedString = [tempString stringByTrimmingCharactersInSet:whitespace];
+
+        if ([sharedAppData doesCookieListNameExist:textField.text]) {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:NewListNameErrorTitle
+                                                          message:NewListNameErrorMessage
+                                                         delegate:nil
+                                                cancelButtonTitle:NewListNameErrorCancelButtonTitle
+                                                otherButtonTitles:nil];
+            [message show];
+        }
+        else if ([trimmedString length] == 0)  {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:NewListNameSpacesErrorTitle message:NewListNameSpacesErrorMessage delegate:nil cancelButtonTitle:NewListNameSpacesErrorCancelButtonTitle otherButtonTitles:nil];
+            [message show];
+
+        }
+        else {
         
-        [self.mainTableView reloadData];
+            self.navigationItem.title = textField.text;
+        
+            // Need to update the main controller view
+            // call tableview releoadData for the MainTableViewController
+        
+            // Save off the data
+            AppData *sharedAppData = [AppData sharedData];
+            [sharedAppData updateListName:self.selectIndexPath.row withName:textField.text];
+            [sharedAppData writeDataToFile];
+        
+            [self.mainTableView reloadData];
         
         
+        }
     }
     
     [textField resignFirstResponder];
@@ -144,23 +174,34 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    //NSLog(@"[DEBUG] CookieCoutViewController:viewWillDisappear");
+
     AppData *sharedAppData = [AppData sharedData];
     [sharedAppData writeDataToFile];
     [super viewWillDisappear:animated];
-    NSLog(@"[DEBUG] CookieCoutViewController:viewWillDisappear");
-    
+
     // Need to dismiss the title bar text box that is used to change the list name.
     // If the user hits the back button before selecting Done.
     // Don't know if these blind calls are ok or if I need to check if it is even active or displayed
-    [[self.navigationController.view viewWithTag:2357] resignFirstResponder];
-    [[self.navigationController.view viewWithTag:2357] setHidden:YES];
- 
+    //[[self.navigationController.view viewWithTag:2357] resignFirstResponder];
+    //[[self.navigationController.view viewWithTag:2357] setHidden:YES];
+    [editTitleTextField resignFirstResponder];
+    [editTitleTextField setHidden:YES];
+
+    //If changes have been made to the name, the the above will not removie the keyboard so this will end editing
+    //[self.view endEditing:YES];
+    //[self.navigationController setEditing:NO animated:YES];
+    //[self.navigationController.view endEditing:YES];
+
+    [super viewWillDisappear:animated];
+
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    NSLog(@"[DEBUG] CookieCountViewController:viewDidDisappear");
+    //NSLog(@"[DEBUG] CookieCountViewController:viewDidDisappear");
 
 }
 
@@ -396,7 +437,7 @@
     // If the price is not in the form d.dd or is above 999.00
     if ((!ret) || ([theEnteredPrice compare:topPrice] == NSOrderedDescending) ) {
         
-        // TODO Need to set it to what it was before
+        // Need to set it to what it was before
         cell.donationAmount.text = [sharedAppData getDonation:self.selectIndexPath.row];
         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The price you entered is not a valid price." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [message show];

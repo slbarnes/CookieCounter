@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString *cookiePrice;
 @property (nonatomic, retain) NSMutableArray *cookieTypes;
+@property (nonatomic, assign) NSInteger applySettings; // 0 - All lists 1 - New Lists
 
 + (id)sharedManager;
 

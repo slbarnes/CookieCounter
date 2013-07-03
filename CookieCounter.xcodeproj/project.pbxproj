@@ -67,6 +67,7 @@
 		D9C9F2F914E5BFDE00BF3D5B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */; };
 		D9D0957014853081006194B5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D0956F14853081006194B5 /* MessageUI.framework */; };
 		D9D3068B169F22C5009C30A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D3068A169F22C5009C30A6 /* Default-568h@2x.png */; };
+		D9D7B7AE177C7723005FB492 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D7B7AD177C7723005FB492 /* Constants.m */; };
 		D9D95189150F99920048D80E /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95188150F99920048D80E /* Icon-57.png */; };
 		D9D9518C150F999E0048D80E /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D9518B150F999E0048D80E /* Icon-114.png */; };
 		D9D95192150F99D60048D80E /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D95191150F99D60048D80E /* Icon-72.png */; };
@@ -117,6 +118,8 @@
 		D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		D9D0956F14853081006194B5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		D9D3068A169F22C5009C30A6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D9D7B7AC177C7723005FB492 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		D9D7B7AD177C7723005FB492 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		D9D95188150F99920048D80E /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-57.png"; path = "../Icon-57.png"; sourceTree = "<group>"; };
 		D9D9518B150F999E0048D80E /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-114.png"; path = "../Icon-114.png"; sourceTree = "<group>"; };
 		D9D95191150F99D60048D80E /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				D9C9F2F714E5BFDE00BF3D5B /* SettingsViewController.h */,
 				D9C9F2F814E5BFDE00BF3D5B /* SettingsViewController.m */,
 				D9E37F351475D684001C711F /* Supporting Files */,
+				D9D7B7AC177C7723005FB492 /* Constants.h */,
+				D9D7B7AD177C7723005FB492 /* Constants.m */,
 			);
 			name = CookieCounter;
 			path = LaTables;
@@ -429,6 +434,7 @@
 				D9A4730114F58163004A2A08 /* AddCookieTypeViewController.m in Sources */,
 				D99DB21D14F82D530064412A /* CookieListNotesViewController.m in Sources */,
 				D9DB62011507F89C00A6B3D4 /* AppData.m in Sources */,
+				D9D7B7AE177C7723005FB492 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

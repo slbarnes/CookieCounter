@@ -12,5 +12,4 @@
 @property (nonatomic, copy) NSString *sowSoftwareListNotes;
 @property (nonatomic, copy) NSString *donation;
 
-
 @end

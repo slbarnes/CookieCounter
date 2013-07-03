@@ -10,6 +10,7 @@
 #import "CookieListName.h"
 #import "GSCookie.h"
 #import "GlobalSettings.h"
+#import "Constants.h"
 
 static AppData *sharedMyAppData = nil;
 
@@ -60,7 +61,7 @@ static AppData *sharedMyAppData = nil;
     //          Create a GSCookie object (key is name)
     //          Add to array
     //      Add array for list name key
-    NSLog(@"[DEBUG] AppData:readDataFromFile Reading Data");
+    //NSLog(@"[DEBUG] AppData:readDataFromFile Reading Data");
     GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     AppData *sharedAppData = [AppData sharedData];
     
@@ -69,7 +70,7 @@ static AppData *sharedMyAppData = nil;
     NSString *path = [documentsDirectory stringByAppendingPathComponent:@"allthedata.plist"];
     loadedDataFromExampleList = NO;
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSLog(@"[DEBUG] AppData:readDataFromFile Using ExampleData");
+        //NSLog(@"[DEBUG] AppData:readDataFromFile Using ExampleData");
         path = [[NSBundle mainBundle] pathForResource:@"ExampleData" ofType:@"plist"];
         loadedDataFromExampleList = YES;
     }
@@ -86,9 +87,10 @@ static AppData *sharedMyAppData = nil;
         NSMutableDictionary *dictOfGSCookieObjects = [plistData objectForKey:key];
         
         if ([key isEqualToString:@"SowSoftwareSettings"]) {
-            //NSLog(@"Found SowSoftwareSettings");
+            //NSLog(@"[DEBUG] AppData:readDataFromFile : Found SowSoftwareSettings");
             globalSettings.cookiePrice = [dictOfGSCookieObjects objectForKey:@"GlobalPrice"];
             globalSettings.cookieTypes = [dictOfGSCookieObjects objectForKey:@"GlobalCookieTypes"];
+            globalSettings.applySettings = [[dictOfGSCookieObjects objectForKey:@"GlobalApplySettings"] integerValue];
             continue;
         }
         NSMutableArray *arrayOfGSCookieObjects = [[NSMutableArray alloc] init];
@@ -130,9 +132,9 @@ static AppData *sharedMyAppData = nil;
     
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
-    NSLog(@"[DEBUG] before is cookeLists empty: %i",sharedAppData.cookieLists.count);
+    //NSLog(@"[DEBUG] before is cookeLists empty: %i",sharedAppData.cookieLists.count);
     sharedAppData.cookieLists = [NSMutableArray arrayWithArray:[unsortedCookieLists sortedArrayUsingDescriptors:sortDescriptors]];
-    NSLog(@"[DEBUG] after is cookeLists empty: %i",sharedAppData.cookieLists.count);
+    //NSLog(@"[DEBUG] after is cookeLists empty: %i",sharedAppData.cookieLists.count);
 
     //NSLog(@"readData:mainController.cookieLists count: %d",[mainController.cookieLists count]);
     //NSLog (@"unsortedCookieList count: %d",[unsortedCookieLists count]);
@@ -162,6 +164,7 @@ static AppData *sharedMyAppData = nil;
     NSMutableDictionary *sowSoftwareSettingsDict = [[NSMutableDictionary alloc] init];
     [sowSoftwareSettingsDict setObject:globalSettings.cookiePrice forKey:@"GlobalPrice"];
     [sowSoftwareSettingsDict setObject:globalSettings.cookieTypes forKey:@"GlobalCookieTypes"];
+    [sowSoftwareSettingsDict setObject:[NSNumber numberWithInteger:globalSettings.applySettings] forKey:@"GlobalApplySettings"];
     [dict setObject:sowSoftwareSettingsDict forKey:@"SowSoftwareSettings"];
     
     // Write out the cookie lists
@@ -273,7 +276,6 @@ static AppData *sharedMyAppData = nil;
     NSMutableArray *initialCookieInfo = [NSMutableArray arrayWithCapacity:[sortedKeys count]];
     
     
-    NSString *STARTING_QTY = @"0";
     
     for (NSString *key in sortedKeys)  {
         GSCookie *gscookie;
@@ -412,6 +414,87 @@ static AppData *sharedMyAppData = nil;
     return [allCookies objectAtIndex:cookieIndex];
     
 }
+
+- (void)updateAllWithPrice:(NSString *)price  {
+    NSLog(@"[DEBUG] ***AppData:updateAllWithPrice***");
+    for (CookieListName *cookieListName in self.cookieLists)  {
+        [self updateList:cookieListName.name withPrice:price];
+    }
+
+}
+
+- (void)updateList:(NSString *)listName withPrice:(NSString *)price {
+    NSLog(@"[DEBUG] AppData:updateListwithPrice - Updating list %@",listName);
+    NSMutableArray *allCookies = [self.allTheData objectForKey:listName];
+    for (GSCookie *gsCookie in allCookies) {
+        gsCookie.price = [[NSDecimalNumber alloc] initWithString:price];;
+    }
+    
+}
+
+- (void)updateAllWithCookieTypes  {
+    NSLog(@"[DEBUG] ***AppData:updateAllWithCookieTypes***");
+    for (CookieListName *cookieListName in self.cookieLists)  {
+        [self updateCookieTypesForList:cookieListName.name];
+    }
+
+}
+
+- (void)updateCookieTypesForList:(NSString *)listName {
+    NSLog(@"[DEBUG] AppData:updateCookieTypesForList - Updating list %@",listName);
+    NSMutableArray *allCookies = [self.allTheData objectForKey:listName];
+    GlobalSettings *globalSettings = [GlobalSettings sharedManager];
+    
+    // Remove cookies that do not exist in the cookie types any more
+    NSMutableIndexSet *indexes = [NSMutableIndexSet indexSet];
+    //for (GSCookie *gsCookie in allCookies) {
+    for (unsigned i = 0; i < [allCookies count]; i++) {
+        GSCookie *gsCookie = [allCookies objectAtIndex:i];
+        // Need to update the cookie name, ie remove or add
+        BOOL foundCookieType = NO;
+        for (unsigned j = 0; j < [globalSettings.cookieTypes count]; j++) {
+            NSString *cookieTypeName = [globalSettings.cookieTypes objectAtIndex:j];
+            if ([gsCookie.name isEqualToString:cookieTypeName]) {
+                foundCookieType = YES;
+                break;
+            }
+        }
+        if (!foundCookieType) {
+            [indexes addIndex:i];
+        }
+    }
+    [allCookies removeObjectsAtIndexes:indexes];
+    
+    // Add cookies that exist in cookie types, but do not exist in the current list
+    for (unsigned i = 0; i < [globalSettings.cookieTypes count]; i++) {
+        NSString *cookieTypeName = [globalSettings.cookieTypes objectAtIndex:i];
+        BOOL foundCookieType = NO;
+        for (unsigned j = 0; j < [allCookies count]; j++) {
+            GSCookie *gsCookie = [allCookies objectAtIndex:j];
+            if ([cookieTypeName isEqualToString:gsCookie.name]) {
+                foundCookieType = YES;
+                break;
+            }
+        }
+        if (!foundCookieType) {
+            //Add the cookieTypeName to allCookies for the list
+            GSCookie *gscookie = [[GSCookie alloc] init];
+            gscookie.name = cookieTypeName;
+            gscookie.price = [[NSDecimalNumber alloc] initWithString:globalSettings.cookiePrice];
+            gscookie.quantity = [[NSDecimalNumber alloc] initWithString:STARTING_QTY];
+            [allCookies addObject:gscookie];
+            
+        }
+    }
+    // Sort the data structure that holds the cookie count list
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    [allCookies sortUsingDescriptors:[NSArray arrayWithObject:sort]];
+    // Sort the data structure that holds the cookie types
+    [globalSettings.cookieTypes sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+
+}
+
 
 #pragma mark -
 #pragma mark Private methods

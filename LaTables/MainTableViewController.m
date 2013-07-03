@@ -13,6 +13,7 @@
 #import "SettingsViewController.h"
 #import "GlobalSettings.h"
 #import "AppData.h"
+#import "Constants.h"
 
 @implementation MainTableViewController
 
@@ -55,10 +56,10 @@
     if ([sharedAppData getLoadedDataFromExampleList]) {
         
         
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Helpful Tip"
-                                                          message:@"Be sure to set the price and cookie types for your area by clicking the gear on the bottom right."
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:HelpfulTipTitle
+                                                          message:HelpfulTipMessage
                                                          delegate:nil
-                                                cancelButtonTitle:@"OK"
+                                                cancelButtonTitle:HelpfulTipCancelButtonTitle
                                                 otherButtonTitles:nil];
         [message show];
     }
@@ -77,32 +78,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //NSLog(@"Here in MainTableViewController:viewWillAppear");
+    NSLog(@"[DEBUG] MainTableViewController:viewWillAppear");
     [super viewWillAppear:animated];
-    
 
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-  /*
-     AppData *sharedAppData = [AppData sharedData];
-     
-     if ([sharedAppData getLoadedDataFromExampleList]) {
-     
-     
-     UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Helpful Tip"
-     message:@"Be sure to set the price and cookie types for your area by clicking the gear on the bottom right."
-     delegate:nil
-     cancelButtonTitle:@"OK"
-     otherButtonTitles:nil];
-     [message show];
-     }
-     */
-     
-
     
 }
 
@@ -145,7 +128,6 @@
     
     // Configure the cell...
     AppData *sharedAppData = [AppData sharedData];
-    //cell.textLabel.text = [[sharedAppData.cookieLists objectAtIndex:indexPath.row] name];
     cell.textLabel.text = [sharedAppData getListName:indexPath.row];
     
     //Arrow
@@ -168,11 +150,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        //NSLog(@"Here deleting a list");
         AppData *sharedAppData = [AppData sharedData];
-        //CookieListName *cookieListName = [sharedAppData.cookieLists objectAtIndex:indexPath.row];
-        //[sharedAppData.allTheData removeObjectForKey:[sharedAppData getListName:indexPath.row]];
-        //[sharedAppData.cookieLists removeObjectAtIndex:indexPath.row];
         [sharedAppData removeCookieList:indexPath.row];
         [sharedAppData writeDataToFile];
         //NSLog(@"commitEditingStyle:cookieLists count: %d",[sharedAppData.cookieLists count]);
@@ -182,7 +160,7 @@
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        NSLog(@"MaintTableViewController:commitEditingStyle editing Style is UITableViewCellEditingStyleInsert");
+        NSLog(@"[DEBUG] MaintTableViewController:commitEditingStyle editing Style is UITableViewCellEditingStyleInsert");
     }   
 }
 
@@ -191,7 +169,7 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSLog(@"[DEBUG] MaintTableViewController:tableView moveRowAtIndexPath: fromIndexPath: %i and toIndexPath: %i",fromIndexPath.row, toIndexPath.row);
+    //NSLog(@"[DEBUG] MaintTableViewController:tableView moveRowAtIndexPath: fromIndexPath: %i and toIndexPath: %i",fromIndexPath.row, toIndexPath.row);
     
     AppData *sharedAppData = [AppData sharedData];
 
@@ -204,7 +182,7 @@
     else if (fromIndexPath.row > toIndexPath.row) {
         //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath is greater than toIndexPath (+1)");
         for (NSInteger i = toIndexPath.row; i < fromIndexPath.row; i++) {
-            NSLog(@"[DEBUG] MaintTableViewController:tableView moveRowAtIndexPath: fromIndexPath: i: %i",i);
+            //NSLog(@"[DEBUG] MaintTableViewController:tableView moveRowAtIndexPath: fromIndexPath: i: %i",i);
             // Update data
             [sharedAppData setSowSoftwareListOrder:i order:i + 1];
             
@@ -216,7 +194,7 @@
         //NSLog(@"[DEBUG] -tableView moveRowAtIndexPath: fromIndexPath is less than toIndexPath (-1)");
         for (NSInteger i = toIndexPath.row; i > fromIndexPath.row; i--) {
             // Update data
-            NSLog(@"[DEBUG] i: %i",i);
+            //NSLog(@"[DEBUG] i: %i",i);
             [sharedAppData setSowSoftwareListOrder:i order:i - 1];
             
         }
@@ -253,7 +231,7 @@
     
     //NSLog(@"[DEBUG] MaintTableViewController:tableView didSelectRowAtIndexPath: editing: %d", tableView.editing);
     
-    CookieCountViewController *cookieCountViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"cookieCountTable"];
+    CookieCountViewController *cookieCountViewController = [self.storyboard instantiateViewControllerWithIdentifier:CookieCountViewControllerIdentifier];
 
     // Just pass the index path that was selected and the table view so data can be reloaded if there is a name change
     cookieCountViewController.selectIndexPath = indexPath;
@@ -263,7 +241,7 @@
 }
 
 - (void) settingsViewController:(SettingsViewController *)controller  {
-    NSLog(@"MainTableViewController:settingsViewController");
+    //NSLog(@"[DEBUG] MainTableViewController:settingsViewController");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -292,16 +270,16 @@
  
     }
     else  {
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Error" 
-                                                    message:@"Duplicate list names are not allowed." 
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:NewListNameErrorTitle 
+                                                    message:NewListNameErrorMessage
                                                     delegate:nil 
-                                                    cancelButtonTitle:@"OK" 
+                                                    cancelButtonTitle:NewListNameErrorCancelButtonTitle
                                                     otherButtonTitles:nil];
         [message show];
     }
     }
     else  {
-        NSLog(@"MainTableViewController:cookieListDetailsViewController - cookieListName was nil");
+        NSLog(@"[DEBUG] MainTableViewController:cookieListDetailsViewController - cookieListName was nil");
     }
 
     
@@ -312,16 +290,16 @@
 # pragma mark
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"AddPlayer"])
+    if ([segue.identifier isEqualToString:CookieListDetailsViewSegueIdentifier])
     {        
-        NSLog(@"MainTableViewController:prepareForSegue AddPlayer");
+        //NSLog(@"MainTableViewController:prepareForSegue AddPlayer");
         UINavigationController *navigationController = segue.destinationViewController;
         CookieListDetailsViewController *cookieListDetailsViewController = [[navigationController viewControllers]objectAtIndex:0];
         cookieListDetailsViewController.delegate = self;
     }
-    if ([segue.identifier isEqualToString:@"EditSettings"])
+    if ([segue.identifier isEqualToString:SettingsViewSegueIdentifier])
     {
-        NSLog(@"MainTableViewController:prepareForSegue EditSettings");
+        //NSLog(@"MainTableViewController:prepareForSegue EditSettings");
         UINavigationController *navigationController = segue.destinationViewController;
         SettingsViewController *settingsViewController = [[navigationController viewControllers]objectAtIndex:0];
         settingsViewController.delegate = self;
@@ -337,7 +315,7 @@
     MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
 	controller.mailComposeDelegate = self;
     
-	[controller setSubject:@"All Cookie Lists Detail Report\n\n"];
+	[controller setSubject:AllSummaryEmailSubject];
 	[controller setMessageBody:[sharedAppData createAllListSummary] isHTML:NO];
 	[self presentModalViewController:controller animated:YES];
      
@@ -349,20 +327,6 @@
 }
 
 #pragma mark - SettingsViewControllerDelegate
-- (void) settingsViewController:(SettingsViewController *)controller didChangePrice:(NSString *)price  {
-    NSLog(@"[DEBUG] MainTableViewController -settingsViewController:didChangePrice");
-    if (price != nil)  {
-        GlobalSettings *globalSettings = [GlobalSettings sharedManager];
-        globalSettings.cookiePrice = price;
-        
-        AppData *sharedAppData = [AppData sharedData];
-        // Since the price changed, write out the data
-        [sharedAppData writeDataToFile];
-
-    }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (void) settingsViewControllerDidCancel:(SettingsViewController *)controller  {
     [self dismissViewControllerAnimated:YES completion:nil];

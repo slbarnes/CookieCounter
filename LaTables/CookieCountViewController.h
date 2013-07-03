@@ -18,6 +18,7 @@
 
 @property(nonatomic, retain)NSIndexPath *selectIndexPath;
 @property(nonatomic, retain)UITableView *mainTableView;
+@property(nonatomic, retain)UITextField *editTitleTextField;
 
 - (IBAction)stepperChangeValue:(UIStepper *)sender;
 - (IBAction)sendEmailFromCookieCount;

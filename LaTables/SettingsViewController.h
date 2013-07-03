@@ -11,7 +11,6 @@
 @class SettingsViewController;
 @protocol SettingsViewControllerDelegate <NSObject>
 
-- (void)settingsViewController:(SettingsViewController *)controller didChangePrice:(NSString   *)price;
 - (void)settingsViewControllerDidCancel: (SettingsViewController *)controller;
 
 @end
@@ -20,11 +19,16 @@
     
 }
 
+@property (nonatomic, assign) BOOL priceChanged;
+@property (nonatomic, assign) BOOL cookieTypesChanged;
+
+
 @property (nonatomic, weak) id <SettingsViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextField *priceTextField;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
 - (IBAction)textFieldFinished:(id)sender;
-
+- (IBAction)segmentedControlChanged:(id)sender;
 @end
