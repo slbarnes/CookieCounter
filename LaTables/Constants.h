@@ -46,3 +46,6 @@ extern NSString *const PaidIcon;
 extern NSString *const DeliveredIcon;
 extern NSString *const PaidAndDeliveredIcon;
 
+extern NSString *const PaidLabel;
+extern NSString *const DeliveredLabel;
+

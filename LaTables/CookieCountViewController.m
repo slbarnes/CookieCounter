@@ -313,12 +313,12 @@
         }
         
         if (indexPath.row==0) {
-            cell.cookieNameLabel.text = @"Paid";
+            cell.cookieNameLabel.text = PaidLabel;
             cell.paidDeliveredControl.selectedSegmentIndex = [[sharedAppData getPaid:self.selectIndexPath.row] integerValue];
             [cell.paidDeliveredControl addTarget:self action:@selector(paidControlChanged:) forControlEvents:UIControlEventValueChanged];
         }
         else if (indexPath.row == 1)  {
-            cell.cookieNameLabel.text = @"Delivered";
+            cell.cookieNameLabel.text = DeliveredLabel;
             cell.paidDeliveredControl.selectedSegmentIndex = [[sharedAppData getDelivered:self.selectIndexPath.row] integerValue];
             [cell.paidDeliveredControl addTarget:self action:@selector(deliveredControlChanged:) forControlEvents:UIControlEventValueChanged];
 
@@ -433,7 +433,7 @@
 	controller.mailComposeDelegate = self;
 	[controller setSubject:[NSString stringWithFormat:@"%@ Cookie List Detail Report",cookieListName.name]];
 
-	[controller setMessageBody:[sharedAppData createSummaryForOneList:cookieListName] isHTML:NO];
+	[controller setMessageBody:[sharedAppData createSummaryForOneList:cookieListName] isHTML:YES];
 	[self presentModalViewController:controller animated:YES];
 
 }

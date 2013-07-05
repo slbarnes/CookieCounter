@@ -328,7 +328,7 @@
 	controller.mailComposeDelegate = self;
     
 	[controller setSubject:AllSummaryEmailSubject];
-	[controller setMessageBody:[sharedAppData createAllListSummary] isHTML:NO];
+	[controller setMessageBody:[sharedAppData createAllListSummary] isHTML:YES];
 	[self presentModalViewController:controller animated:YES];
      
     

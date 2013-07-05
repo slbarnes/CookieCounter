@@ -48,5 +48,8 @@ NSString *const PaidIcon = @"\U0001F4B5";
 NSString *const DeliveredIcon = @"\U0001F4E6";
 NSString *const PaidAndDeliveredIcon =  @"\U0001F4B5 \U0001F4E6";
 
+NSString *const PaidLabel = @"\U0001F4B5  Paid";
+NSString *const DeliveredLabel = @"\U0001F4E6  Delivered";
+
 
 
