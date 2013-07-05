@@ -105,9 +105,29 @@ static AppData *sharedMyAppData = nil;
             if ([keyGSCookie isEqualToString:@"SowSoftwareProperties"]) {
                 cookieListName.sowSoftwareListOrder = [[dictOfGSCookieObjects objectForKey:keyGSCookie]objectForKey:@"Order"];
                 cookieListName.sowSoftwareListNotes = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"ListNotes"];
-                cookieListName.donation = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Donation"];
+                
+                if ([[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Donation"]) {
+                    cookieListName.donation = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Donation"];
+                }
+                else {
+                    cookieListName.donation = @"0.00";
+                }
+                
+                if ([[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Paid"]) {
+                    cookieListName.paid = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Paid"];
+                } else {
+                    cookieListName.paid = @"0";
+                }
+                
+                if ([[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Delivered"]) {
+                    cookieListName.delivered = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"Delivered"];
+                } else {
+                    cookieListName.delivered = @"0";
+                }
+                
                 continue;
             }
+            
             GSCookie *newGSCookie = [[GSCookie alloc] init];
             newGSCookie.name = keyGSCookie;
             NSString *squantity = [[dictOfGSCookieObjects objectForKey:keyGSCookie]objectForKey:@"Quantity"];
@@ -195,10 +215,13 @@ static AppData *sharedMyAppData = nil;
         // dictionarry object so we know what order to load the lists the next time
         for (CookieListName *cookieListName in sharedAppData.cookieLists)  {
             if ([cookieListName.name isEqualToString:key]) {
+                //NSLog(@"donation %@  paid  %@   delivered  %@", cookieListName.donation,cookieListName.paid,cookieListName.delivered);
                 NSMutableDictionary *sowSoftwareListOrder = [[NSMutableDictionary alloc] init];
                 [sowSoftwareListOrder setObject:cookieListName.sowSoftwareListOrder forKey:@"Order"];
                 [sowSoftwareListOrder setObject:cookieListName.sowSoftwareListNotes forKey:@"ListNotes"];
                 [sowSoftwareListOrder setObject:cookieListName.donation forKey:@"Donation"];
+                [sowSoftwareListOrder setObject:cookieListName.paid forKey:@"Paid"];
+                [sowSoftwareListOrder setObject:cookieListName.delivered forKey:@"Delivered"];
                 [dictionaryOfGSCookies setObject:sowSoftwareListOrder  forKey:@"SowSoftwareProperties"];
                 //NSLog(@"cookieListName: %@  key: %@",cookieListName.name,key);
                 
@@ -224,7 +247,7 @@ static AppData *sharedMyAppData = nil;
     return ([[self.cookieLists objectAtIndex:listIndex] sowSoftwareListNotes] );
 }
 
-- (void)setDonation:(NSUInteger)listIndex :(NSString *)donation  {
+- (void)setDonation:(NSString *)donation forIndex:(NSUInteger)listIndex {
     CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
     c.donation = donation;
     // Should need to replace the object in the array with c....
@@ -232,6 +255,26 @@ static AppData *sharedMyAppData = nil;
 
 - (NSString *)getDonation:(NSUInteger)listIndex  {
     return ([[self.cookieLists objectAtIndex:listIndex] donation] );
+}
+
+- (void)setPaid:(NSString *)paid forIndex:(NSUInteger)listIndex {
+    CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
+    c.paid = paid;
+    // Should need to replace the object in the array with c....
+}
+
+- (NSString *)getPaid:(NSUInteger)listIndex  {
+    return ([[self.cookieLists objectAtIndex:listIndex] paid] );
+}
+
+- (void)setDelivered:(NSString *)delivered forIndex:(NSUInteger)listIndex {
+    CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
+    c.delivered = delivered;
+    // Should need to replace the object in the array with c....
+}
+
+- (NSString *)getDelivered:(NSUInteger)listIndex  {
+    return ([[self.cookieLists objectAtIndex:listIndex] delivered] );
 }
 
 - (void)updateListName:(NSUInteger)listIndex withName:(NSString *)name {
@@ -290,8 +333,10 @@ static AppData *sharedMyAppData = nil;
     cookieListName.name = name;
     // Need to determine the value for sowsoftwareListOrder
     cookieListName.sowSoftwareListOrder = [NSString stringWithFormat:@"%d",[self.cookieLists count]];
-    cookieListName.sowSoftwareListNotes = @"";
+    cookieListName.sowSoftwareListNotes = DefaultNotesText;
     cookieListName.donation = @"";
+    cookieListName.paid = @"0";
+    cookieListName.delivered = @"0";
     NSLog(@"[DEBUG] cookieListName: %@   sowsoftwareListOrder: %@", cookieListName.name, cookieListName.sowSoftwareListOrder);
     [self.cookieLists addObject:cookieListName];
     [self.allTheData setObject:initialCookieInfo forKey:cookieListName.name];
@@ -341,6 +386,19 @@ static AppData *sharedMyAppData = nil;
         [messageBody appendFormat:@"Total Monies: $%.2f \n\n", [totalMonies floatValue]];
         
         [messageBody appendFormat:@"\nDonation:\n%@\n",cookieListName.donation];
+        
+        if ([cookieListName.paid isEqualToString:@"0"]) {
+            [messageBody appendFormat:@"\nPaid: No\n"];
+        }
+        else  {
+            [messageBody appendFormat:@"\nPaid: Yes\n"];
+        }
+        if ([cookieListName.delivered isEqualToString:@"0"]) {
+            [messageBody appendFormat:@"\nDelivered: No\n"];
+        }
+        else  {
+            [messageBody appendFormat:@"\nDelivered: Yes\n"];
+        }
 
         [messageBody appendFormat:@"\nNotes:\n%@\n",cookieListName.sowSoftwareListNotes];
 
@@ -395,6 +453,19 @@ static AppData *sharedMyAppData = nil;
     }
     
     [messageBody appendFormat:@"\nDonation:\n$%@\n",cookieListName.donation];
+    if ([cookieListName.paid isEqualToString:@"0"]) {
+        [messageBody appendFormat:@"\nPaid: No\n"];
+    }
+    else  {
+        [messageBody appendFormat:@"\nPaid: Yes\n"];
+    }
+    if ([cookieListName.delivered isEqualToString:@"0"]) {
+        [messageBody appendFormat:@"\nDelivered: No\n"];
+    }
+    else  {
+        [messageBody appendFormat:@"\nDelivered: Yes\n"];
+    }
+
 
     [messageBody appendFormat:@"\nNotes:\n%@\n",cookieListName.sowSoftwareListNotes];
 

@@ -13,5 +13,21 @@
 @synthesize sowSoftwareListOrder;
 @synthesize sowSoftwareListNotes;
 @synthesize donation;
+@synthesize paid;
+@synthesize delivered;
+
+- (id)init  {
+    self = [super init];
+    if (self) {
+        name = @"";
+        sowSoftwareListOrder = @"";
+        sowSoftwareListNotes = @"";
+        donation = @"0.00";
+        paid = @"0";
+        delivered = @"0";
+    }
+    
+    return self;
+}
 
 @end

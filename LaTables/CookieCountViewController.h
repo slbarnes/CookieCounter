@@ -23,5 +23,8 @@
 - (IBAction)stepperChangeValue:(UIStepper *)sender;
 - (IBAction)sendEmailFromCookieCount;
 - (IBAction)textFieldFinished:(id)sender;
+//- (void)paidControlChanged:(id)sender;
+//- (void)deliveredControlChanged:(id)sender;
+
 
 @end

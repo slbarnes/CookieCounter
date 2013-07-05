@@ -182,18 +182,11 @@
 
     // Need to dismiss the title bar text box that is used to change the list name.
     // If the user hits the back button before selecting Done.
-    // Don't know if these blind calls are ok or if I need to check if it is even active or displayed
-    //[[self.navigationController.view viewWithTag:2357] resignFirstResponder];
-    //[[self.navigationController.view viewWithTag:2357] setHidden:YES];
     [editTitleTextField resignFirstResponder];
     [editTitleTextField setHidden:YES];
 
-    //If changes have been made to the name, the the above will not removie the keyboard so this will end editing
-    //[self.view endEditing:YES];
-    //[self.navigationController setEditing:NO animated:YES];
-    //[self.navigationController.view endEditing:YES];
-
-    [super viewWillDisappear:animated];
+    // Reload what the paid and delivered icons should be
+    [self.mainTableView reloadData];
 
 
 }
@@ -231,7 +224,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -245,6 +238,9 @@
     }
     else if (section == 2)  {
         return 1;
+    }
+    else if (section == 3)  {
+        return 2;
     }
     else {
         return 2;
@@ -263,6 +259,9 @@
     else if (section == 1)  {
         sectionHeader = @"Cookie Totals";
     }
+    else if (section == 3)  {
+        sectionHeader = @"Paid and Delivery";
+    }
     
     return sectionHeader;
 }
@@ -271,6 +270,8 @@
     static NSString *CellIdentifier = @"CookieCountCell";
     static NSString *TotalCellIdentifier = @"TotalCountCell";
     static NSString *DonationCellIdentifier = @"DonationCountCell";
+    static NSString *PaidDeliveredCellIdentifier = @"PaidDeliveredCell";
+
 
     
     CookieCountCell *cell;
@@ -300,9 +301,28 @@
         
         
         cell.cookieNameLabel.text = [NSString stringWithFormat:@"$ "];
-        // Need to set donation amount from file
         cell.donationAmount.text = [sharedAppData getDonation:self.selectIndexPath.row];
         [cell.donationAmount addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        
+    }
+    else if (indexPath.section == 3)  {
+        cell = [tableView dequeueReusableCellWithIdentifier:PaidDeliveredCellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[CookieCountCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:PaidDeliveredCellIdentifier];
+        }
+        
+        if (indexPath.row==0) {
+            cell.cookieNameLabel.text = @"Paid";
+            cell.paidDeliveredControl.selectedSegmentIndex = [[sharedAppData getPaid:self.selectIndexPath.row] integerValue];
+            [cell.paidDeliveredControl addTarget:self action:@selector(paidControlChanged:) forControlEvents:UIControlEventValueChanged];
+        }
+        else if (indexPath.row == 1)  {
+            cell.cookieNameLabel.text = @"Delivered";
+            cell.paidDeliveredControl.selectedSegmentIndex = [[sharedAppData getDelivered:self.selectIndexPath.row] integerValue];
+            [cell.paidDeliveredControl addTarget:self action:@selector(deliveredControlChanged:) forControlEvents:UIControlEventValueChanged];
+
+        }
         
     }
     else if (indexPath.section == 1)  {
@@ -324,6 +344,26 @@
     return cell;
 }
 
+- (void)paidControlChanged:(id)sender  {
+    CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    NSLog(@"[DEBUG]CookieCountViewController:paidControlChanged %d",cell.paidDeliveredControl.selectedSegmentIndex);
+    AppData *sharedAppData = [AppData sharedData];
+
+    [sharedAppData setPaid:[NSString stringWithFormat:@"%d",(int)cell.paidDeliveredControl.selectedSegmentIndex] forIndex:self.selectIndexPath.row];
+
+    [sharedAppData writeDataToFile];
+
+    
+}
+- (void)deliveredControlChanged:(id)sender  {
+    NSLog(@"[DEBUG]CookieCountViewController:deliveredControlChanged");
+    CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    AppData *sharedAppData = [AppData sharedData];
+    [sharedAppData setDelivered:[NSString stringWithFormat:@"%d",(int)cell.paidDeliveredControl.selectedSegmentIndex] forIndex:self.selectIndexPath.row];
+    [sharedAppData writeDataToFile];
+
+
+}
 
 #pragma mark - Table view delegate
 
@@ -443,7 +483,8 @@
         [message show];
     }
         
-    [sharedAppData setDonation:self.selectIndexPath.row :cell.donationAmount.text];
+    //[sharedAppData setDonation:self.selectIndexPath.row :cell.donationAmount.text];
+    [sharedAppData setDonation:cell.donationAmount.text forIndex:self.selectIndexPath.row];
 
     [sharedAppData writeDataToFile];
     

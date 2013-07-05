@@ -42,5 +42,11 @@ NSInteger const ApplyChangesNewListsIndexValue = 1;
 
 NSString *const STARTING_QTY = @"0";
 
+NSString *const DefaultNotesText=@"\nName: \nAddress: \nTelephone: \n\nEnter notes about the list here.";
+
+NSString *const PaidIcon = @"\U0001F4B5";
+NSString *const DeliveredIcon = @"\U0001F4E6";
+NSString *const PaidAndDeliveredIcon =  @"\U0001F4B5 \U0001F4E6";
+
 
 

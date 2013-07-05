@@ -34,9 +34,15 @@
 
 - (NSString *)getListNotes:(NSUInteger)listIndex;
 
-- (void)setDonation:(NSUInteger)listIndex :(NSString *)donation;
-
+- (void)setDonation:(NSString *)donation forIndex:(NSUInteger)listIndex;
 - (NSString *)getDonation:(NSUInteger)listIndex;
+
+- (void)setPaid:(NSString *)paid forIndex:(NSUInteger)listIndex;
+- (NSString *)getPaid:(NSUInteger)listIndex;
+
+- (void)setDelivered:(NSString *)paid forIndex:(NSUInteger)listIndex;
+- (NSString *)getDelivered:(NSUInteger)listIndex;
+
 
 - (void)updateListName:(NSUInteger)listIndex withName:(NSString *)name;
 

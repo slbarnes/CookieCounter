@@ -14,5 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *quantityLabel;
 @property (nonatomic, strong) IBOutlet UIStepper *stepper;
 @property (nonatomic, strong) IBOutlet UITextField *donationAmount;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *paidDeliveredControl;
 
 @end

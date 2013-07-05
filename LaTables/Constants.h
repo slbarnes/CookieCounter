@@ -40,3 +40,9 @@ extern NSInteger const ApplyChangesNewListsIndexValue;
 
 extern NSString *const STARTING_QTY;
 
+extern NSString *const DefaultNotesText;
+
+extern NSString *const PaidIcon;
+extern NSString *const DeliveredIcon;
+extern NSString *const PaidAndDeliveredIcon;
+

@@ -13,4 +13,5 @@
 @synthesize quantityLabel;
 @synthesize stepper;
 @synthesize donationAmount;
+@synthesize paidDeliveredControl;
 @end

@@ -11,5 +11,8 @@
 @property (nonatomic, copy) NSString *sowSoftwareListOrder;
 @property (nonatomic, copy) NSString *sowSoftwareListNotes;
 @property (nonatomic, copy) NSString *donation;
+@property (nonatomic, copy) NSString *paid;
+@property (nonatomic, copy) NSString *delivered;
+
 
 @end

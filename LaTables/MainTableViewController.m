@@ -129,6 +129,18 @@
     // Configure the cell...
     AppData *sharedAppData = [AppData sharedData];
     cell.textLabel.text = [sharedAppData getListName:indexPath.row];
+    if ([[sharedAppData getPaid:indexPath.row] isEqualToString:@"1"] && [[sharedAppData getDelivered:indexPath.row] isEqualToString:@"1"]) {
+        cell.detailTextLabel.text = PaidAndDeliveredIcon;
+    }
+    else if ([[sharedAppData getPaid:indexPath.row] isEqualToString:@"1"])  {
+        cell.detailTextLabel.text = PaidIcon;
+    }
+    else if ([[sharedAppData getDelivered:indexPath.row] isEqualToString:@"1"]) {
+        cell.detailTextLabel.text = DeliveredIcon;
+    }
+    else  {
+        cell.detailTextLabel.text = @"";
+    }
     
     //Arrow
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
