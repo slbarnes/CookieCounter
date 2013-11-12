@@ -12,6 +12,7 @@
 #import "AppData.h"
 #import "CookieListName.h"
 #import "Constants.h"
+#import "HelperClass.h"
 
 @implementation CookieCountViewController
 
@@ -345,7 +346,8 @@
 }
 
 - (void)paidControlChanged:(id)sender  {
-    CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    //CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    CookieCountCell *cell = (CookieCountCell *)[HelperClass getTableViewCellFromSubview:sender];
     NSLog(@"[DEBUG]CookieCountViewController:paidControlChanged %d",cell.paidDeliveredControl.selectedSegmentIndex);
     AppData *sharedAppData = [AppData sharedData];
 
@@ -357,7 +359,8 @@
 }
 - (void)deliveredControlChanged:(id)sender  {
     NSLog(@"[DEBUG]CookieCountViewController:deliveredControlChanged");
-    CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    //CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    CookieCountCell *cell = (CookieCountCell *)[HelperClass getTableViewCellFromSubview:sender];
     AppData *sharedAppData = [AppData sharedData];
     [sharedAppData setDelivered:[NSString stringWithFormat:@"%d",(int)cell.paidDeliveredControl.selectedSegmentIndex] forIndex:self.selectIndexPath.row];
     [sharedAppData writeDataToFile];
@@ -385,10 +388,13 @@
     double value = [sender value];
     NSDecimalNumber *decimalNumber = [[NSDecimalNumber alloc] initWithDouble:value];
     
-    //NSLog (@"Performing stepper action: %d", (int)value);
-    CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    NSLog (@"Performing stepper action: %d", (int)value);
+    // Change for iOS 7
+    //CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    //UITableView *table = (UITableView *)[cell superview];
+    CookieCountCell *cell = (CookieCountCell *)[HelperClass getTableViewCellFromSubview:sender];
+    UITableView *table = [HelperClass getTableViewFromSubview:cell];
     
-    UITableView *table = (UITableView *)[cell superview];
     NSIndexPath *path = [table indexPathForCell:cell];
     
     //NSLog(@"pressed with row %d",path.row);
@@ -403,10 +409,10 @@
     //GSCookie *gscookie = [cookiesAllInfo objectAtIndex:path.row];
     gscookie.quantity = decimalNumber;
     //[allCookies replaceObjectAtIndex:path.row withObject:gscookie];
-        
+    
     NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
     cell.quantityLabel.text = [NSString stringWithFormat:@" %@ @ $%.2f = $%.2f", gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
-    
+
     NSIndexPath *totalCookiesIndex = [NSIndexPath indexPathForRow:0 inSection:1];
     NSIndexPath *totalMoniesIndex = [NSIndexPath indexPathForRow:1 inSection:1];
     
@@ -464,7 +470,8 @@
     NSString *regex = @"^\\d+\\.\\d\\d";
     NSPredicate *valtest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     
-    CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    //CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
+    CookieCountCell *cell = (CookieCountCell *)[HelperClass getTableViewCellFromSubview:sender];
 
     BOOL ret = [valtest evaluateWithObject:cell.donationAmount.text];
 
@@ -479,11 +486,10 @@
         
         // Need to set it to what it was before
         cell.donationAmount.text = [sharedAppData getDonation:self.selectIndexPath.row];
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The price you entered is not a valid price." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Alert" message:PriceErrorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [message show];
     }
         
-    //[sharedAppData setDonation:self.selectIndexPath.row :cell.donationAmount.text];
     [sharedAppData setDonation:cell.donationAmount.text forIndex:self.selectIndexPath.row];
 
     [sharedAppData writeDataToFile];

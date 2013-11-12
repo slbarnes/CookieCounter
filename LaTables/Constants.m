@@ -27,7 +27,7 @@ NSString *const NewListNameSpacesErrorCancelButtonTitle = @"OK";
 
 // Error with price
 NSString *const PriceErrorTitle = @"Invalid Price";
-NSString *const PriceErrorMessage = @"The price you entered is not a valid price.";
+NSString *const PriceErrorMessage = @"The price you entered is not a valid price. It must be in the format of d.cc";
 NSString *const PriceErrorCancelButtonTitle = @"OK";
 
 NSString *const CookieListDetailsViewSegueIdentifier = @"AddPlayer";
