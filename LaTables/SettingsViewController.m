@@ -255,7 +255,7 @@
 
         [controller setMessageBody:messageBody isHTML:NO];
 
-        [self presentModalViewController:controller animated:YES];
+        [self presentViewController:controller animated:YES completion:NULL];
 
         
     }
@@ -268,7 +268,7 @@
 }
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
 	[self becomeFirstResponder];
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 
