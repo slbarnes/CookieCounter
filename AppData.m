@@ -352,55 +352,64 @@ static AppData *sharedMyAppData = nil;
     NSDecimalNumber *grandTotalNumberOfCookies = [NSDecimalNumber decimalNumberWithString:@"0"];
     
     NSMutableDictionary *grandTotalEachType = [[NSMutableDictionary alloc] init];
-        
+    
+    NSMutableString *eachList = [NSMutableString stringWithString:@""];
+    
     for (CookieListName *cookieListName in self.cookieLists) {
         
         NSDecimalNumber *totalMonies = [NSDecimalNumber decimalNumberWithString:@"0"];
         NSDecimalNumber *totalNumberOfCookies = [NSDecimalNumber decimalNumberWithString:@"0"];
 
-        [messageBody appendFormat:@"<b>Name:</b> %@<br><br>",cookieListName.name];
+        [eachList appendFormat:@"<b>Name:</b> %@<br><br>",cookieListName.name];
         
         for (GSCookie *gscookie in [self.allTheData objectForKey:cookieListName.name])
         {
-            NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
-            [messageBody appendFormat:@"<b>%@</b>: %@ @ $%.2f = $%.2f<br>",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
-            totalNumberOfCookies = [totalNumberOfCookies decimalNumberByAdding:gscookie.quantity];
-            totalMonies = [totalNumberOfCookies decimalNumberByMultiplyingBy:gscookie.price];
+            if ([gscookie.quantity compare:[NSNumber numberWithInt:0]] == NSOrderedDescending) {
             
-            // Check if the cookie name is in grandTotalEachType.  If not, set the quantity.  If so, add the quantity
-            if ([grandTotalEachType objectForKey:gscookie.name]) {
-                NSDecimalNumber *t = [grandTotalEachType objectForKey:gscookie.name];
-                //NSLog(@"Cookie name exists: %@  with quantity %@",gscookie.name,t);
+                NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
+                [eachList appendFormat:@"<b>%@</b>: %@ @ $%.2f = $%.2f<br>",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
+                totalNumberOfCookies = [totalNumberOfCookies decimalNumberByAdding:gscookie.quantity];
+                totalMonies = [totalNumberOfCookies decimalNumberByMultiplyingBy:gscookie.price];
+            
+                // Check if the cookie name is in grandTotalEachType.  If not, set the quantity.  If so, add the quantity
+                if ([grandTotalEachType objectForKey:gscookie.name]) {
+                    NSDecimalNumber *t = [grandTotalEachType objectForKey:gscookie.name];
+                    //NSLog(@"Cookie name exists: %@  with quantity %@",gscookie.name,t);
                 
-                t = [t decimalNumberByAdding:gscookie.quantity];
-                [grandTotalEachType setObject:t forKey:gscookie.name];
-            }
-            else  {
-                [grandTotalEachType setObject:gscookie.quantity forKey:gscookie.name];
+                    t = [t decimalNumberByAdding:gscookie.quantity];
+                    [grandTotalEachType setObject:t forKey:gscookie.name];
+                }
+                else  {
+                    [grandTotalEachType setObject:gscookie.quantity forKey:gscookie.name];
+                }
             }
             
         }
-        [messageBody appendFormat:@"<br><b>Total Cookies</b>: %@ <br>", totalNumberOfCookies];
-        [messageBody appendFormat:@"<b>Total Monies</b>: $%.2f <br><br>", [totalMonies floatValue]];
+        [eachList appendFormat:@"<br><b>Total Cookies</b>: %@ <br>", totalNumberOfCookies];
+        [eachList appendFormat:@"<b>Total Monies</b>: $%.2f <br><br>", [totalMonies floatValue]];
         
-        [messageBody appendFormat:@"<b>Donation</b>: $%@<br>",cookieListName.donation];
-        
-        if ([cookieListName.paid isEqualToString:@"0"]) {
-            [messageBody appendFormat:@"<b>Paid</b>: No<br>"];
+        if ([cookieListName.donation length] < 1) {
+            [eachList appendFormat:@"<br><b>Donation</b>: $0.00<br>"];
         }
         else  {
-            [messageBody appendFormat:@"<b>Paid</b>: Yes<br>"];
+            [eachList appendFormat:@"<b>Donation</b>: $%@<br>",cookieListName.donation];
+        }
+        if ([cookieListName.paid isEqualToString:@"0"]) {
+            [eachList appendFormat:@"<b>Paid</b>: No<br>"];
+        }
+        else  {
+            [eachList appendFormat:@"<b>Paid</b>: Yes<br>"];
         }
         if ([cookieListName.delivered isEqualToString:@"0"]) {
-            [messageBody appendFormat:@"<b>Delivered</b>: No<br>"];
+            [eachList appendFormat:@"<b>Delivered</b>: No<br>"];
         }
         else  {
-            [messageBody appendFormat:@"<b>Delivered</b>: Yes<br>"];
+            [eachList appendFormat:@"<b>Delivered</b>: Yes<br>"];
         }
 
-        [messageBody appendFormat:@"<br><b>Notes</b>:<br><pre>%@</pre><br>",cookieListName.sowSoftwareListNotes];
+        [eachList appendFormat:@"<br><b>Notes</b>:<br><pre>%@</pre><br>",cookieListName.sowSoftwareListNotes];
 
-        [messageBody appendString:@"<br><hr><br>"];
+        [eachList appendString:@"<br><hr><br>"];
         
         grandTotalNumberOfCookies = [grandTotalNumberOfCookies decimalNumberByAdding:totalNumberOfCookies];
         grandTotalMonies = [grandTotalMonies decimalNumberByAdding:totalMonies];
@@ -420,7 +429,8 @@ static AppData *sharedMyAppData = nil;
         [messageBody appendFormat:@"<b>%@</b> : %@<br>",key,[grandTotalEachType objectForKey:key]];
     }
     
-    [messageBody appendString:@"<br><br>"];
+    [messageBody appendString:@"<br><br><hr><br><br>"];
+    [messageBody appendString:eachList];
     
     return (messageBody);
     
@@ -428,7 +438,7 @@ static AppData *sharedMyAppData = nil;
 
 - (NSString *)createSummaryForOneList:(CookieListName *)cookieListName  { 
             
-    NSMutableString *messageBody = [NSMutableString stringWithFormat:@"<b><u>%@ Cookie List Detail Report</u></b><br><br>",cookieListName.name];
+    NSMutableString *messageBody = [NSMutableString stringWithFormat:@"<b><u>%@</u></b><br>Detail Report<br><br>",cookieListName.name];
     
     NSMutableArray *allCookies = [self.allTheData objectForKey:cookieListName.name];
 
@@ -446,11 +456,19 @@ static AppData *sharedMyAppData = nil;
     
     for (GSCookie *gscookie in allCookies)
     {
-        NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
-        [messageBody appendFormat:@"<b>%@</b>: %@ @ $%.2f = $%.2f<br>",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
+        if ([gscookie.quantity compare:[NSNumber numberWithInt:0]] == NSOrderedDescending) {
+
+            NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
+            [messageBody appendFormat:@"<b>%@</b>: %@ @ $%.2f = $%.2f<br>",gscookie.name, gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
+        }
     }
     
-    [messageBody appendFormat:@"<br><b>Donation</b>: $%@<br>",cookieListName.donation];
+    if ([cookieListName.donation length] < 1) {
+        [messageBody appendFormat:@"<br><b>Donation</b>: $0.00<br>"];
+    }
+    else  {
+        [messageBody appendFormat:@"<br><b>Donation</b>: $%@<br>",cookieListName.donation];
+    }
     if ([cookieListName.paid isEqualToString:@"0"]) {
         [messageBody appendFormat:@"<b>Paid</b>: No<br>"];
     }
