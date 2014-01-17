@@ -13,6 +13,7 @@
 #import "CookieListName.h"
 #import "Constants.h"
 #import "HelperClass.h"
+#import "GlobalSettings.h"
 
 @implementation CookieCountViewController
 
@@ -277,6 +278,7 @@
     
     CookieCountCell *cell;
     AppData *sharedAppData = [AppData sharedData];
+    GlobalSettings *globalSettings = [GlobalSettings sharedManager];
     
     if (indexPath.section == 0)  {
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -292,6 +294,16 @@
         NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
         cell.quantityLabel.text = [NSString stringWithFormat:@" %@ @ $%.2f = $%.2f", gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
         cell.stepper.value = [gscookie.quantity doubleValue];
+        NSLog(@"[DEBUG] globalSettings.countBy : %ld", (long)globalSettings.countBy);
+        if (globalSettings.countBy == 0) {
+            cell.stepper.stepValue = 1;
+        }
+        else if (globalSettings.countBy == 1)  {
+            cell.stepper.stepValue = 12;
+        }
+        else  {
+            cell.stepper.stepValue = 1; // default
+        }
     }
     else if (indexPath.section == 2)  {
         cell = [tableView dequeueReusableCellWithIdentifier:DonationCellIdentifier];

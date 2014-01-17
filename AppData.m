@@ -91,6 +91,9 @@ static AppData *sharedMyAppData = nil;
             globalSettings.cookiePrice = [dictOfGSCookieObjects objectForKey:@"GlobalPrice"];
             globalSettings.cookieTypes = [dictOfGSCookieObjects objectForKey:@"GlobalCookieTypes"];
             globalSettings.applySettings = [[dictOfGSCookieObjects objectForKey:@"GlobalApplySettings"] integerValue];
+            globalSettings.countBy = [[dictOfGSCookieObjects objectForKey:@"GlobalCountBy"] integerValue];
+            NSLog(@"[DEBUG] globalSettings.countBy : %ld", (long)globalSettings.countBy);
+
             continue;
         }
         NSMutableArray *arrayOfGSCookieObjects = [[NSMutableArray alloc] init];
@@ -185,6 +188,7 @@ static AppData *sharedMyAppData = nil;
     [sowSoftwareSettingsDict setObject:globalSettings.cookiePrice forKey:@"GlobalPrice"];
     [sowSoftwareSettingsDict setObject:globalSettings.cookieTypes forKey:@"GlobalCookieTypes"];
     [sowSoftwareSettingsDict setObject:[NSNumber numberWithInteger:globalSettings.applySettings] forKey:@"GlobalApplySettings"];
+    [sowSoftwareSettingsDict setObject:[NSNumber numberWithInteger:globalSettings.countBy] forKey:@"GlobalCountBy"];
     [dict setObject:sowSoftwareSettingsDict forKey:@"SowSoftwareSettings"];
     
     // Write out the cookie lists

@@ -26,6 +26,7 @@
 @property (nonatomic, weak) id <SettingsViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextField *priceTextField;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *countBySegmentedControl;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
