@@ -15,6 +15,7 @@
 @synthesize donation;
 @synthesize paid;
 @synthesize delivered;
+@synthesize listCountBy;
 
 - (id)init  {
     self = [super init];
@@ -25,6 +26,7 @@
         donation = @"0.00";
         paid = @"0";
         delivered = @"0";
+        listCountBy = @"99";
     }
     
     return self;

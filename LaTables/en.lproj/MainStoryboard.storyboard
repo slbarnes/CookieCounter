@@ -210,6 +210,12 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="nyT-kK-rbA"/>
+                        <barButtonItem title="Box" id="ADv-6U-yVT">
+                            <connections>
+                                <action selector="countByChangeValue:" destination="I9G-Ab-9RX" id="Xxf-f4-FiI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="eRN-Yr-AlQ"/>
                         <barButtonItem systemItem="compose" id="666-WZ-mEJ">
                             <connections>
                                 <segue destination="SoB-cN-Svu" kind="modal" identifier="AddNotes" id="vX2-K1-VWL"/>
@@ -218,6 +224,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Cookie Count" id="n0e-fB-5bc"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="countByButton" destination="ADv-6U-yVT" id="GyI-4a-C7j"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YiI-sU-QYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -501,7 +510,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Count By Case or Box" id="vp1-Ks-at9">
+                            <tableViewSection headerTitle="Count By Box or Case" id="vp1-Ks-at9">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CountByCaseOrBox" rowHeight="64" id="Xbz-6Z-sFE">
                                         <rect key="frame" x="0.0" y="275" width="320" height="64"/>

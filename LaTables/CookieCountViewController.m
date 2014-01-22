@@ -20,6 +20,7 @@
 @synthesize selectIndexPath;
 @synthesize mainTableView;
 @synthesize editTitleTextField;
+@synthesize countByButton;
 
 - (void)calculateTotals  
 {
@@ -73,6 +74,17 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setListTitle)];
     [tapGestureRecognizer setNumberOfTapsRequired:2];
     [self.navigationController.navigationBar addGestureRecognizer:tapGestureRecognizer];
+    
+    if ([[sharedAppData getListCountBy:selectIndexPath.row] integerValue] == 99) {
+        [self.countByButton setTitle:@"Default"];
+    }
+    else if ([[sharedAppData getListCountBy:selectIndexPath.row] integerValue] == 1)  {
+        [self.countByButton setTitle:@"Case"];
+    }
+    else  {
+        [self.countByButton setTitle:@"Box"];
+    }
+    
     
     [super viewDidLoad];
     
@@ -265,6 +277,7 @@
         sectionHeader = @"Paid and Delivery";
     }
     
+    
     return sectionHeader;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -273,8 +286,6 @@
     static NSString *TotalCellIdentifier = @"TotalCountCell";
     static NSString *DonationCellIdentifier = @"DonationCountCell";
     static NSString *PaidDeliveredCellIdentifier = @"PaidDeliveredCell";
-
-
     
     CookieCountCell *cell;
     AppData *sharedAppData = [AppData sharedData];
@@ -294,15 +305,31 @@
         NSDecimalNumber *total = [gscookie.quantity decimalNumberByMultiplyingBy:gscookie.price];
         cell.quantityLabel.text = [NSString stringWithFormat:@" %@ @ $%.2f = $%.2f", gscookie.quantity, [gscookie.price floatValue], [total floatValue]];
         cell.stepper.value = [gscookie.quantity doubleValue];
-        NSLog(@"[DEBUG] globalSettings.countBy : %ld", (long)globalSettings.countBy);
-        if (globalSettings.countBy == 0) {
+        //NSLog(@"[DEBUG] globalSettings.countBy : %ld", (long)globalSettings.countBy);
+        
+        //NSLog(@"[DEBUG] setting stepper step value");
+        if ([[sharedAppData getListCountBy:selectIndexPath.row] integerValue] == 0) {
             cell.stepper.stepValue = 1;
+            //NSLog(@"[DEBUG] stepper value set by list setting ... 1");
+
         }
-        else if (globalSettings.countBy == 1)  {
+        else if ([[sharedAppData getListCountBy:selectIndexPath.row] integerValue] == 1) {
             cell.stepper.stepValue = 12;
+            //NSLog(@"[DEBUG] stepper value set by list setting ... 12");
+
         }
         else  {
-            cell.stepper.stepValue = 1; // default
+            //NSLog(@"[DEBUG] stepper value set by list setting ... using global setting");
+
+            if (globalSettings.countBy == 0) {
+                cell.stepper.stepValue = 1;
+            }
+            else if (globalSettings.countBy == 1)  {
+                cell.stepper.stepValue = 12;
+            }
+            else  {
+                cell.stepper.stepValue = 1; // default
+            }
         }
     }
     else if (indexPath.section == 2)  {
@@ -360,7 +387,7 @@
 - (void)paidControlChanged:(id)sender  {
     //CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
     CookieCountCell *cell = (CookieCountCell *)[HelperClass getTableViewCellFromSubview:sender];
-    NSLog(@"[DEBUG]CookieCountViewController:paidControlChanged %d",cell.paidDeliveredControl.selectedSegmentIndex);
+    //NSLog(@"[DEBUG]CookieCountViewController:paidControlChanged %d",cell.paidDeliveredControl.selectedSegmentIndex);
     AppData *sharedAppData = [AppData sharedData];
 
     [sharedAppData setPaid:[NSString stringWithFormat:@"%d",(int)cell.paidDeliveredControl.selectedSegmentIndex] forIndex:self.selectIndexPath.row];
@@ -370,7 +397,7 @@
     
 }
 - (void)deliveredControlChanged:(id)sender  {
-    NSLog(@"[DEBUG]CookieCountViewController:deliveredControlChanged");
+    //NSLog(@"[DEBUG]CookieCountViewController:deliveredControlChanged");
     //CookieCountCell *cell = (CookieCountCell *)[[sender superview] superview];
     CookieCountCell *cell = (CookieCountCell *)[HelperClass getTableViewCellFromSubview:sender];
     AppData *sharedAppData = [AppData sharedData];
@@ -396,6 +423,27 @@
     return 60;
 }
 
+- (IBAction)countByChangeValue:(UIBarButtonItem *)sender  {
+    //NSLog(@"[DEBUG] CountBy selected");
+    AppData *sharedAppData = [AppData sharedData];
+    if ([countByButton.title isEqualToString:@"Default"]) {
+        [countByButton setTitle:@"Box"];
+        [sharedAppData setListCountBy:@"0" forIndex:self.selectIndexPath.row];
+    }
+    else if ([countByButton.title isEqualToString:@"Box"]) {
+        [countByButton setTitle:@"Case"];
+        [sharedAppData setListCountBy:@"1" forIndex:self.selectIndexPath.row];
+
+    }
+    else if ([countByButton.title isEqualToString:@"Case"]) {
+        [countByButton setTitle:@"Default"];
+        [sharedAppData setListCountBy:@"99" forIndex:self.selectIndexPath.row];
+    }
+    
+    [sharedAppData writeDataToFile];
+    [self.tableView reloadData]; // This will update all the steppers to a new increment value
+    
+}
 - (IBAction)stepperChangeValue:(UIStepper *)sender  {
     double value = [sender value];
     NSDecimalNumber *decimalNumber = [[NSDecimalNumber alloc] initWithDouble:value];

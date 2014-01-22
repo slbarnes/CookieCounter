@@ -19,10 +19,12 @@
 @property(nonatomic, retain)NSIndexPath *selectIndexPath;
 @property(nonatomic, retain)UITableView *mainTableView;
 @property(nonatomic, retain)UITextField *editTitleTextField;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *countByButton;
 
 - (IBAction)stepperChangeValue:(UIStepper *)sender;
 - (IBAction)sendEmailFromCookieCount;
 - (IBAction)textFieldFinished:(id)sender;
+- (IBAction)countByChangeValue:(UIBarButtonItem *)sender;
 //- (void)paidControlChanged:(id)sender;
 //- (void)deliveredControlChanged:(id)sender;
 

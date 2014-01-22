@@ -40,9 +40,11 @@
 - (void)setPaid:(NSString *)paid forIndex:(NSUInteger)listIndex;
 - (NSString *)getPaid:(NSUInteger)listIndex;
 
-- (void)setDelivered:(NSString *)paid forIndex:(NSUInteger)listIndex;
+- (void)setDelivered:(NSString *)delivered forIndex:(NSUInteger)listIndex;
 - (NSString *)getDelivered:(NSUInteger)listIndex;
 
+- (void)setListCountBy:(NSString *)countBy forIndex:(NSUInteger)listIndex;
+- (NSString *)getListCountBy:(NSUInteger)listIndex;
 
 - (void)updateListName:(NSUInteger)listIndex withName:(NSString *)name;
 

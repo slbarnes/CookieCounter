@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *donation;
 @property (nonatomic, copy) NSString *paid;
 @property (nonatomic, copy) NSString *delivered;
+@property (nonatomic, copy) NSString *listCountBy;
 
 
 @end

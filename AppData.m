@@ -128,6 +128,11 @@ static AppData *sharedMyAppData = nil;
                     cookieListName.delivered = @"0";
                 }
                 
+                if ([[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"ListCountBy"]) {
+                    cookieListName.listCountBy = [[dictOfGSCookieObjects objectForKey:keyGSCookie] objectForKey:@"ListCountBy"];
+                } else {
+                    cookieListName.listCountBy = @"99"; // Use global setting
+                }
                 continue;
             }
             
@@ -226,6 +231,7 @@ static AppData *sharedMyAppData = nil;
                 [sowSoftwareListOrder setObject:cookieListName.donation forKey:@"Donation"];
                 [sowSoftwareListOrder setObject:cookieListName.paid forKey:@"Paid"];
                 [sowSoftwareListOrder setObject:cookieListName.delivered forKey:@"Delivered"];
+                [sowSoftwareListOrder setObject:cookieListName.listCountBy forKey:@"ListCountBy"];
                 [dictionaryOfGSCookies setObject:sowSoftwareListOrder  forKey:@"SowSoftwareProperties"];
                 //NSLog(@"cookieListName: %@  key: %@",cookieListName.name,key);
                 
@@ -280,6 +286,17 @@ static AppData *sharedMyAppData = nil;
 - (NSString *)getDelivered:(NSUInteger)listIndex  {
     return ([[self.cookieLists objectAtIndex:listIndex] delivered] );
 }
+
+- (void)setListCountBy:(NSString *)countBy forIndex:(NSUInteger)listIndex {
+    CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
+    c.listCountBy = countBy;
+    // Should need to replace the object in the array with c....
+}
+
+- (NSString *)getListCountBy:(NSUInteger)listIndex  {
+    return ([[self.cookieLists objectAtIndex:listIndex] listCountBy] );
+}
+
 
 - (void)updateListName:(NSUInteger)listIndex withName:(NSString *)name {
     CookieListName *c = [self.cookieLists objectAtIndex:listIndex];
@@ -341,7 +358,8 @@ static AppData *sharedMyAppData = nil;
     cookieListName.donation = @"";
     cookieListName.paid = @"0";
     cookieListName.delivered = @"0";
-    NSLog(@"[DEBUG] cookieListName: %@   sowsoftwareListOrder: %@", cookieListName.name, cookieListName.sowSoftwareListOrder);
+    cookieListName.listCountBy = @"99";
+    //NSLog(@"[DEBUG] cookieListName: %@   sowsoftwareListOrder: %@", cookieListName.name, cookieListName.sowSoftwareListOrder);
     [self.cookieLists addObject:cookieListName];
     [self.allTheData setObject:initialCookieInfo forKey:cookieListName.name];
 

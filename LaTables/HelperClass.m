@@ -28,10 +28,10 @@
 
 + (UITableView *) getTableViewFromSubview:(UIView*)subview  {
     
-    UITableView* tableViewCell = nil;
+    UITableView* tableView = nil;
     while (subview.superview != Nil) {
         if ([subview.superview isKindOfClass:[UITableView class]]) {
-            tableViewCell = (UITableView*)subview.superview;
+            tableView = (UITableView*)subview.superview;
             break;
         }
         else  {
@@ -39,7 +39,7 @@
         }
     }
     
-    return tableViewCell;
+    return tableView;
 }
 
 @end
