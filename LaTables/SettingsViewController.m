@@ -19,6 +19,7 @@
 @synthesize segmentedControl;
 @synthesize priceChanged;
 @synthesize cookieTypesChanged;
+@synthesize countBySegmentedControl;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -56,6 +57,7 @@
     
     NSLog(@"[DEBUG] SettingsViewController:viewDidLoad applySettings : %i",globalSettings.applySettings);
     self.segmentedControl.selectedSegmentIndex = globalSettings.applySettings;
+    self.countBySegmentedControl.selectedSegmentIndex = globalSettings.countBy;
     //self.priceChanged = NO;
     //self.cookieTypesChanged = NO;
 
@@ -113,6 +115,7 @@
         // Since the price is good, then verify apply settings
         // 1.  If apply settings was changed from New to All, then verify to continue with an alert
    
+        globalSettings.countBy = [self.countBySegmentedControl selectedSegmentIndex];
         NSInteger currentSelection = [self.segmentedControl selectedSegmentIndex];
         if ( (globalSettings.applySettings == ApplyChangesNewListsIndexValue) &&
             (currentSelection == ApplyChangesAllListsIndexValue) )  {
@@ -235,8 +238,8 @@
         //NSLog(@"HERE");
         [self.priceTextField becomeFirstResponder];
     }
-    if (indexPath.section == 2)  {
-        //NSLog(@"HERE 2");
+    if (indexPath.section == 4)  {
+        //NSLog(@"HERE 4");
         MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
         

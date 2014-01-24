@@ -15,6 +15,7 @@ static GlobalSettings *sharedGlobalSettings = nil;
 @synthesize cookiePrice;
 @synthesize cookieTypes;
 @synthesize applySettings;
+@synthesize countBy;
 
 #pragma mark Singleton Methods
 + (id)sharedManager  {
@@ -30,6 +31,7 @@ static GlobalSettings *sharedGlobalSettings = nil;
         cookiePrice = @"3.50";
         cookieTypes = [NSMutableArray arrayWithObjects:@"Do-si-dos",@"Dulce de Leche", @"Samoas",@"Savannah Smiles",@"Tagalongs",@"Thank U Berry Munch", @"Thin Mints",@"Trefoils", @"Troops For Troops",nil];
         applySettings = 1; // 0 - All lists 1 - New Lists
+        countBy = 0;
     }
     return self;
 }
